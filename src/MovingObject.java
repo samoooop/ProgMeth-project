@@ -14,7 +14,7 @@ public class MovingObject implements IRenderable {
 		return y;
 	}
 
-	private boolean isdestroy = false;
+	private boolean isDestroyed = false;
 	protected int x;
 	protected int y;
 	protected int i;
@@ -40,11 +40,10 @@ public class MovingObject implements IRenderable {
 		temp.x = startPoint.x;
 		temp.y = startPoint.y;
 		objectline.addPoint(temp);
-		System.out.println(Math.cos(Math.toRadians(firstangle)));
-		System.out.println(Math.sin(Math.toRadians(firstangle)));
-		for (int i = 0; i < 1500; i++) {
-			temp.x += (int) (Math.cos(Math.toRadians(firstangle))) * 10;
-			temp.y += (int) (Math.sin(Math.toRadians(firstangle))) * 10;
+		System.out.println(firstangle);
+		for (int i = 1; i <= 1500; i++) {
+			temp = new Point();
+			
 			objectline.addPoint(temp);
 		}
 		this.x = startPoint.x;
@@ -54,18 +53,16 @@ public class MovingObject implements IRenderable {
 
 	public void update() {
 		if (this.x > 1202 || this.x < -2 || this.y > 902 || this.y < -2) {
-			this.isdestroy = true;
+			this.isDestroyed = true;
 		}
-		while (!isdestroy) {
+		if (!this.isDestroyed) {
 			if (this.objectline.getPointList().get(i) == null) {
-				this.x = (this.objectline.getPointList().get(5)).x;
-				this.y = (this.objectline.getPointList().get(5)).y;
+				this.isDestroyed = true;
 			} // for exception out of bound
 			this.x = (this.objectline.getPointList().get(i)).x;
 			this.y = (this.objectline.getPointList().get(i)).y;
 			i++;
 		}
-
 	}
 
 	public double getAngle(int x1, int y1, int x2, int y2) {
@@ -182,11 +179,11 @@ public class MovingObject implements IRenderable {
 	}
 
 	public void setDestroyed(boolean a) {
-		this.isdestroy = a;
+		this.isDestroyed = a;
 	}
 
 	public boolean isDestroyed() {
-		return this.isdestroy;
+		return this.isDestroyed;
 	}
 
 	public Line getObjectline() {
