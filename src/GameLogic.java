@@ -33,16 +33,7 @@ public class GameLogic {
 
 		}
 
-		ArrayList<IRenderable> temp = RenderableHolder.getInstance().getEntities();
-		for (int i = 0; i < temp.size(); i++) {
-			if (temp.get(i) instanceof MovingObject) {
-				if (((MovingObject) temp.get(i)).isDestroyed()) {
-					temp.remove(i);
-					i--;
-				}
-			}
-		}
-
+		
 		spawnDelayCounter++;
 		if (spawnDelayCounter >= SPAWN_DELAY) {
 			spawnDelayCounter = 0;

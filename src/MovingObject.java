@@ -18,7 +18,7 @@ public class MovingObject implements IRenderable {
 	protected int x;
 	protected int y;
 	protected int i;
-	protected int radius = 10;
+	protected int radius = 40;
 	private Line objectline;
 	private boolean isLeaded;
 	private Point startPoint;
@@ -207,7 +207,7 @@ public class MovingObject implements IRenderable {
 	@Override
 	public void draw(Graphics2D a) {
 		a.setColor(Color.blue);
-		a.fillOval(x - radius, y - radius, radius * 10, radius * 10);
+		a.fillOval(x - radius, y - radius, radius * 2, radius * 2);
 
 	}
 
