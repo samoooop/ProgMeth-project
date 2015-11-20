@@ -7,7 +7,7 @@ import java.awt.event.MouseMotionListener;
 
 public class GameScreen extends JComponent {
 	public boolean checkboundary = false;
-	public int jk;
+	public MovingObject now;
 	public GameScreen() {
 		this.setPreferredSize(new Dimension(640, 480));
 		this.setVisible(true);
@@ -104,12 +104,12 @@ public class GameScreen extends JComponent {
 					MovingObject tem = new MovingObject();
 					tem =(MovingObject)RenderableHolder.getInstance().getEntities().get(i);
 					if(Math.hypot(x1-tem.x, y1-tem.y)<=5){checkboundary = true;
-					jk = i;
+					now = (MovingObject)RenderableHolder.getInstance().getEntities().get(i);
 					};
 				
 				}
 			}
-			if(InputUtility.getMouseLeftDown()&&checkboundary){RenderableHolder.getInstance().addPointToLine(InputUtility.getMouseLocation(),(MovingObject)RenderableHolder.getInstance().getEntities().get(jk));
+			if(InputUtility.getMouseLeftDown()&&checkboundary){RenderableHolder.getInstance().addPointToLine(InputUtility.getMouseLocation(),now);
 			System.out.println(InputUtility.getMouseLocation());}
 		} else {
 			RenderableHolder.endLine();
