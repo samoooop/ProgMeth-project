@@ -1,6 +1,7 @@
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import render.IRenderable;
 
@@ -14,7 +15,7 @@ public class RenderableHolder {
 	 */
 
 	private static final RenderableHolder instance = new RenderableHolder();
-	private static ArrayList<IRenderable> entities;
+	private static ArrayList<IRenderable> entities = new ArrayList<IRenderable>();
 
 	public static RenderableHolder getInstance() {
 
@@ -23,6 +24,7 @@ public class RenderableHolder {
 
 	private static Line currentLine;
 	public boolean candraw;
+	public static boolean isDebug = true;
 
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
@@ -55,9 +57,18 @@ public class RenderableHolder {
 		if (entities == null)
 			return;
 		synchronized (entities) {
-			for (IRenderable r : entities) {
-				r.draw(g);
+			for (Iterator<IRenderable> itr = entities.iterator(); itr.hasNext();) {
+				IRenderable r = itr.next();
+				if (r instanceof Destroyable && ((Destroyable) r).isDestroyed()) {
+					itr.remove();
+				} else {
+					//System.out.println("HelloW"+ (r instanceof Target) + ((Target)r).getX());
+					r.draw(g);
+				}
 			}
+		}
+		if (isDebug) {
+			g.drawString(String.format("Total render object : %d", entities.size()), 0, 10);
 		}
 	}
 }

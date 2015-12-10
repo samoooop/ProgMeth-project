@@ -1,20 +1,30 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import render.IRenderable;
 
 public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 1;
+	private static final int SPAWN_DELAY = 100;
 	private int spawnDelayCounter;
 	private GameScreen gs;
-
+	private boolean canSpawnNewTarget = false;
 	public GameLogic(GameScreen gs) {
 		this.gs = gs;
 		movingObjects = new ArrayList<MovingObject>();
 		targets = new ArrayList<Target>();
 		spawnDelayCounter = 0;
+		
+		init();
 	}
-
+	public void init() {
+		Target t  = new Target(gs.getWidth()/2,gs.getHeight()/2,0,0,gs);
+		targets.add(t);
+		RenderableHolder.add(t);
+		
+	}
 	public void logicUpdate() {
 		/*
 		 * for (int i = 0; i < movingObjects.size(); i++) {
@@ -27,11 +37,17 @@ public class GameLogic {
 		 * 
 		 * }
 		 */
-		for (Target t : targets) {
-			t.update();
+		for(Iterator<Target> itr = targets.iterator();itr.hasNext();){
+			Target t = itr.next();
+			if(t.isDestroyed()){
+				System.out.println(String.format("Remove(%d,%d) Total : %d %d", t.getX(),t.getY(),targets.size(),RenderableHolder.getInstance().getEntities().size()));
+				itr.remove();
+			}else{
+				t.update();
+			}
 		}
 		spawnDelayCounter++;
-		if (spawnDelayCounter >= SPAWN_DELAY) {
+		if (spawnDelayCounter >= SPAWN_DELAY && canSpawnNewTarget) {
 			spawnDelayCounter = 0;
 			spawnNewTarget();
 
@@ -62,11 +78,11 @@ public class GameLogic {
 			break;
 		}
 		double vel_x = cenX - x, vel_y = cenY - y;
-		vel_x /= gs.getWidth() * 2;
-		vel_y /= gs.getHeight() * 2;
-		Target t = new Target(x, y, vel_x, vel_y);
+		vel_x /= gs.getWidth() / 2;
+		vel_y /= gs.getHeight() / 2;
+		Target t = new Target(x, y, vel_x, vel_y, gs);
 		targets.add(t);
-		System.out.println("Spawned Target" + String.format(" -> %d %d %f %f (%d)", x, y, vel_x, vel_y, ranFactor));
+		//System.out.println("Spawned Target" + String.format(" -> %d %d %f %f (%d) TOTAL : %d", x, y, vel_x, vel_y, ranFactor,targets.size()));
 		RenderableHolder.add(t);
 	}
 }

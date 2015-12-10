@@ -2,14 +2,14 @@ import javax.swing.JFrame;
 
 public class Main {
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Catch a fruit");
+		JFrame frame = new JFrame("PROJECT");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameScreen gameScreen = new GameScreen();
-		GameLogic gameLogic = new GameLogic(gameScreen);
 
 		frame.getContentPane().add(gameScreen);
 		frame.setVisible(true);
 		frame.pack();
+		GameLogic gameLogic = new GameLogic(gameScreen);
 		gameScreen.requestFocus();
 		while (true) {
 			try {
