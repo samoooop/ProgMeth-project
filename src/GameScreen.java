@@ -35,7 +35,6 @@ public class GameScreen extends JComponent {
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				if (InputUtility.getMouseLeftDown()) {
 					InputUtility.setMouseLeftDown(true);
 					InputUtility.setMouseLeftTriggered(true);
@@ -44,7 +43,6 @@ public class GameScreen extends JComponent {
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				InputUtility.setMouseLeftDown(false);
 			}
 
@@ -53,7 +51,6 @@ public class GameScreen extends JComponent {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
 				InputUtility.setMouseMoved(true);
 				InputUtility.setMouseLocation(e.getPoint());
 
@@ -61,7 +58,6 @@ public class GameScreen extends JComponent {
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
 				InputUtility.setMouseMoved(true);
 				InputUtility.setMouseLocation(e.getPoint());
 			}
@@ -74,7 +70,7 @@ public class GameScreen extends JComponent {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.yellow);
+		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
 		requestFocus();
 		RenderableHolder.draw(g2d);

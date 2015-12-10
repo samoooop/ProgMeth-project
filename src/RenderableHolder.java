@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -62,12 +63,14 @@ public class RenderableHolder {
 				if (r instanceof Destroyable && ((Destroyable) r).isDestroyed()) {
 					itr.remove();
 				} else {
-					//System.out.println("HelloW"+ (r instanceof Target) + ((Target)r).getX());
+					// System.out.println("HelloW"+ (r instanceof Target) +
+					// ((Target)r).getX());
 					r.draw(g);
 				}
 			}
 		}
 		if (isDebug) {
+			g.setColor(Color.RED);
 			g.drawString(String.format("Total render object : %d", entities.size()), 0, 10);
 		}
 	}
