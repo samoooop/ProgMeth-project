@@ -35,10 +35,8 @@ public class GameScreen extends JComponent {
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				if (InputUtility.getMouseLeftDown()) {
-					InputUtility.setMouseLeftDown(true);
-					InputUtility.setMouseLeftTriggered(true);
-				}
+				InputUtility.setMouseLeftDown(true);
+				InputUtility.setMouseLeftTriggered(true);
 			}
 
 			@Override
@@ -72,7 +70,7 @@ public class GameScreen extends JComponent {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
-		requestFocus();
+		// requestFocus();
 		RenderableHolder.draw(g2d);
 		InputUtility.update();
 		// System.out.println(RenderableHolder.totalLine());

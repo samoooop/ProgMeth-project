@@ -9,7 +9,7 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	private int x, y;
 	private double vel_x, vel_y;
 	private double SPEED = 10;
-	private int RADIUS = 10;
+	private int RADIUS = 15;
 	private GameScreen gs;
 	boolean isDestroyed;
 	private Line path;
@@ -60,9 +60,8 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		g2.setColor(Color.BLUE);
 		g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 		if (isSelected) {
-			System.out.println("Select");
 			g2.setComposite(transcluentWhite);
-			g2.setColor(Color.BLACK);
+			g2.setColor(Color.YELLOW);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 			g2.setComposite(opaque);
 		} else if (isMouseOver()) {
@@ -70,6 +69,9 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			g2.setColor(Color.WHITE);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 			g2.setComposite(opaque);
+		}
+		if (path != null) {
+			path.draw(g2);
 		}
 
 	}
@@ -93,5 +95,13 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			return true;
 		else
 			return false;
+	}
+
+	public void addPointToPath(Point p,boolean isNewLine) {
+		if (path == null || isNewLine) {
+			path = new Line();
+			path.addPoint(new Point(x,y));
+		}
+		path.addPoint(p);
 	}
 }

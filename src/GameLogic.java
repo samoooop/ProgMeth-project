@@ -95,14 +95,16 @@ public class GameLogic {
 	public void selectionHandler() {
 		if (InputUtility.getMouseLeftDown()) {
 			if (selected == null) {
-				System.out.println("Down");
 				for (Target t : targets) {
 					if (t.isMouseOver()) {
 						selected = t;
 						t.setSelected(true);
+						t.addPointToPath(InputUtility.getMouseLocation(),true);
 						break;
 					}
 				}
+			} else {
+				selected.addPointToPath(InputUtility.getMouseLocation(),false);
 			}
 		} else {
 			if (selected != null) {
