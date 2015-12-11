@@ -9,9 +9,10 @@ import java.awt.event.MouseMotionListener;
 public class GameScreen extends JComponent {
 	public boolean checkboundary = false;
 	public MovingObject now;
-
+	public static int screenWidth = 1200;
+	public static int screenHeight = 800;
 	public GameScreen() {
-		this.setPreferredSize(new Dimension(640, 480));
+		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
 		this.addMouseListener(new MouseListener() {
 
@@ -68,7 +69,7 @@ public class GameScreen extends JComponent {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.BLACK);
+		g2d.setColor(Color.DARK_GRAY);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
 		// requestFocus();
 		RenderableHolder.draw(g2d);

@@ -5,14 +5,15 @@ import java.awt.AlphaComposite;
 
 import render.IRenderable;
 
-public class Target implements Updatable, IRenderable, Destroyable {
+public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int x, y;
 	private double vel_x, vel_y;
 	private double SPEED = 10;
 	private double SELECTED_SPEED = 15;
-	private int RADIUS = 30;
+	private int RADIUS = 20;
 	private GameScreen gs;
-	boolean isDestroyed;
+	boolean destroyed;
+
 	private boolean isSelected;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
@@ -25,18 +26,19 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	public void setSelected(boolean isSelected) {
 		this.isSelected = isSelected;
 	}
-	public Target(GameScreen gs){
+
+	public Target(GameScreen gs) {
 		this.gs = gs;
 		this.randomSpawn();
 	}
-	
+
 	public Target(int x, int y, double vel_x, double vel_y, GameScreen gs) {
 		System.out.println("Spawning " + x + " " + y + " " + vel_x + " " + vel_y);
 		this.x = x;
 		this.y = y;
 		this.vel_x = vel_x;
 		this.vel_y = vel_y;
-		//this.SPEED = Math.random() * 10;
+		// this.SPEED = Math.random() * 10;
 		this.gs = gs;
 		this.isSelected = false;
 	}
@@ -44,8 +46,8 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	@Override
 	public void update() {
 		changePosition();
-		if(x<0||x>gs.getWidth()||y<0||y>gs.getHeight()){
-			this.isDestroyed = true;
+		if (x < 0 || x > gs.getWidth() || y < 0 || y > gs.getHeight()) {
+			this.destroyed = true;
 		}
 	}
 
@@ -55,6 +57,10 @@ public class Target implements Updatable, IRenderable, Destroyable {
 
 	public int getY() {
 		return y;
+	}
+
+	public int getRadius() {
+		return this.RADIUS;
 	}
 
 	@Override
@@ -84,8 +90,12 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		return false;
 	}
 
+	public void setDestroyed(boolean destroyed) {
+		this.destroyed = destroyed;
+	}
+
 	public boolean isDestroyed() {
-		return isDestroyed;
+		return destroyed;
 	}
 
 	public boolean isMouseOver() {
@@ -107,31 +117,33 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		Point p = InputUtility.getMouseLocation();
 		double dx = p.x - x;
 		double dy = p.y - y;
-		double ds = Math.sqrt(dx*dx+dy*dy);
+		double ds = Math.sqrt(dx * dx + dy * dy);
 		if (ds != 0) {
-			vel_x = (dx*dx)/(ds*ds);
-			vel_y = (dy*dy)/(ds*ds);
-			if(dx < 0)
+			vel_x = (dx * dx) / (ds * ds);
+			vel_y = (dy * dy) / (ds * ds);
+			if (dx < 0)
 				vel_x = -vel_x;
-			if(dy < 0)
+			if (dy < 0)
 				vel_y = -vel_y;
 		}
-		//System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x, vel_y, ds, mouseX, mouseY, x, y));
+		// System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x,
+		// vel_y, ds, mouseX, mouseY, x, y));
 	}
-	
-	private void changeSpeed(int xf,int yf) {
+
+	private void changeSpeed(int xf, int yf) {
 		double dx = xf - x;
 		double dy = yf - y;
-		double ds = Math.sqrt(dx*dx+dy*dy);
+		double ds = Math.sqrt(dx * dx + dy * dy);
 		if (ds != 0) {
-			vel_x = (dx*dx)/(ds*ds);
-			vel_y = (dy*dy)/(ds*ds);
-			if(dx < 0)
+			vel_x = (dx * dx) / (ds * ds);
+			vel_y = (dy * dy) / (ds * ds);
+			if (dx < 0)
 				vel_x = -vel_x;
-			if(dy < 0)
+			if (dy < 0)
 				vel_y = -vel_y;
 		}
-		//System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x, vel_y, ds, mouseX, mouseY, x, y));
+		// System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x,
+		// vel_y, ds, mouseX, mouseY, x, y));
 	}
 
 	private void changePosition() {
@@ -154,8 +166,8 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		}
 
 	}
-	
-	private void randomSpawn(){
+
+	private void randomSpawn() {
 		int ranFactor = (int) (Math.random() * 10000) % 4;
 		switch (ranFactor) {
 		case 0: // spawn from EAST
@@ -175,6 +187,19 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			y = gs.getHeight();
 			break;
 		}
-		changeSpeed(gs.getWidth()/2,gs.getHeight()/2);
+		changeSpeed(gs.getWidth() / 2, gs.getHeight() / 2);
+	}
+
+	private double calculateDistance(int x1, int y1, int x2, int y2) {
+		return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+	}
+
+	@Override
+	public boolean hit(int x, int y, int r) {
+		if (calculateDistance(x, y, this.x, this.y) < RADIUS + r) {
+			this.destroyed = true;
+			return true;
+		}
+		return false;
 	}
 }
