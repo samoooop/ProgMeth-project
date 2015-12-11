@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import render.IRenderable;
 
-public class Line implements IRenderable{
+public class Line implements IRenderable {
 	private ArrayList<Point> pointList;
 
 	public ArrayList<Point> getPointList() {
@@ -20,6 +20,17 @@ public class Line implements IRenderable{
 		pointList.add(c);
 	}
 
+	public Point getIndex(int i) {
+		return pointList.get(i);
+	}
+	
+	public int getSize(){
+		return pointList.size();
+	}
+	
+	public void removeIndex(int i){
+		pointList.remove(i);
+	}
 	public void draw(Graphics2D g) {
 		for (int i = 1; i < pointList.size(); i++) {
 			// i = 1 : Skip first point
@@ -27,7 +38,7 @@ public class Line implements IRenderable{
 			p1 = pointList.get(i - 1);
 			p2 = pointList.get(i);
 			g.setColor(Color.WHITE);
-			g.drawLine((int)p1.getX(), (int)p1.getY(), (int)p2.getX(), (int)p2.getY());
+			g.drawLine((int) p1.getX(), (int) p1.getY(), (int) p2.getX(), (int) p2.getY());
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class GameLogic {
 	private static final int SPAWN_DELAY = 100;
 	private int spawnDelayCounter;
 	private GameScreen gs;
-	private boolean canSpawnNewTarget = false;
+	private boolean canSpawnNewTarget = true;
 	private Target selected;
 
 	public GameLogic(GameScreen gs) {
@@ -17,7 +17,7 @@ public class GameLogic {
 		targets = new ArrayList<Target>();
 		spawnDelayCounter = 0;
 		selected = null;
-		init();
+		//init();
 	}
 
 	public void init() {

@@ -14,6 +14,9 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	boolean isDestroyed;
 	private Line path;
 	private boolean isSelected;
+	private int currentPoint;
+	private int movingDelay = 2;
+	private int movingDelayCounter;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -36,12 +39,22 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		this.gs = gs;
 		this.isSelected = false;
 		this.path = null;
+		this.movingDelayCounter = 0;
 	}
 
 	@Override
 	public void update() {
-		x += vel_x * SPEED;
-		y += vel_y * SPEED;
+		if (path == null) {
+			x += vel_x * SPEED;
+			y += vel_y * SPEED;
+		} else {
+			if (movingDelayCounter == movingDelay) {
+				changeSpeed();
+				changePosition();
+				movingDelayCounter = 0;
+			}
+			movingDelayCounter++;
+		}
 		if (x < 0 || x > gs.getWidth() || y < 0 || y > gs.getHeight()) {
 			isDestroyed = true;
 		}
@@ -57,6 +70,9 @@ public class Target implements Updatable, IRenderable, Destroyable {
 
 	@Override
 	public void draw(Graphics2D g2) {
+		if (path != null) {
+			path.draw(g2);
+		}
 		g2.setColor(Color.BLUE);
 		g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 		if (isSelected) {
@@ -69,9 +85,6 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			g2.setColor(Color.WHITE);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 			g2.setComposite(opaque);
-		}
-		if (path != null) {
-			path.draw(g2);
 		}
 
 	}
@@ -97,11 +110,40 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			return false;
 	}
 
-	public void addPointToPath(Point p,boolean isNewLine) {
+	public void addPointToPath(Point p, boolean isNewLine) {
 		if (path == null || isNewLine) {
 			path = new Line();
-			path.addPoint(new Point(x,y));
+			currentPoint = 0;
+			path.addPoint(new Point(x, y));
 		}
 		path.addPoint(p);
+	}
+
+	public static double calculateSpeed(int x1, int x2, int y1, int y2) {
+		double dist = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
+		return (x2 - x1) / dist;
+	}
+
+	private void changeSpeed() {
+		double new_vel_x = calculateSpeed(x,path.getIndex(currentPoint).x, y,
+				(int) path.getIndex(currentPoint).y);
+		double new_vel_y = calculateSpeed(y,path.getIndex(currentPoint).y, x,
+				(int) path.getIndex(currentPoint).x);
+		System.out.println(vel_x+" "+vel_y);
+		if (new_vel_x + new_vel_y > 0.8) {
+			vel_x = new_vel_x;
+			vel_y = new_vel_y;
+		}
+	}
+
+	private void changePosition() {
+		x = path.getIndex(currentPoint).x;
+		y = path.getIndex(currentPoint).y;
+		if (currentPoint == path.getSize() - 1) { // last point in line
+			if (!isSelected) {
+				path = null;
+			}
+		}
+		currentPoint++;
 	}
 }
