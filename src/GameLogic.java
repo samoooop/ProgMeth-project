@@ -5,7 +5,7 @@ public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 100;
+	private static final int SPAWN_DELAY = 10;
 	private int spawnDelayCounter;
 	private GameScreen gs;
 	private boolean canSpawnNewTarget = true;
