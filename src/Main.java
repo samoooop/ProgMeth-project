@@ -11,15 +11,41 @@ public class Main {
 		frame.pack();
 		GameLogic gameLogic = new GameLogic(gameScreen);
 		gameScreen.requestFocus();
-		while (true) {
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
+		/*
+		 * while (true) { try { Thread.sleep(20); } catch (InterruptedException
+		 * e) { } gameScreen.repaint(); gameLogic.logicUpdate(); //
+		 * GameLogic.getInstance().logicUpdate(); //
+		 * System.out.println("Updated"+InputUtility.getKeyPressed(KeyEvent.
+		 * VK_LEFT)+InputUtility.getKeyPressed(KeyEvent.VK_RIGHT)); }
+		 */
+		Thread drawThread = new Thread() {
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+					}
+					gameScreen.repaint();
+
+				}
 			}
-			gameScreen.repaint();
-			gameLogic.logicUpdate();
-			// GameLogic.getInstance().logicUpdate();
-			// System.out.println("Updated"+InputUtility.getKeyPressed(KeyEvent.VK_LEFT)+InputUtility.getKeyPressed(KeyEvent.VK_RIGHT));
-		}
+
+		};
+		Thread logicThread = new Thread() {
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+					}
+					if(!Player.getInstance().isPause())
+					gameLogic.logicUpdate();
+
+				}
+			}
+
+		};
+		logicThread.start();
+		drawThread.start();
 	}
 }

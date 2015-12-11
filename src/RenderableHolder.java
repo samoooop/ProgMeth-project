@@ -54,6 +54,22 @@ public class RenderableHolder {
 		}
 	}
 
+	public static void addBack(IRenderable r) {
+		if (entities != null) {
+			synchronized (entities) {
+				entities.add(entities.size(), r);
+			}
+		}
+	}
+
+	public static void addFront(IRenderable r) {
+		if (entities != null) {
+			synchronized (entities) {
+				entities.add(0,r);
+			}
+		}
+	}
+
 	public static void draw(Graphics2D g) {
 		if (entities == null)
 			return;

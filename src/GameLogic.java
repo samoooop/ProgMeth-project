@@ -5,7 +5,7 @@ public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 10;
+	private static final int SPAWN_DELAY = 50;
 	private int spawnDelayCounter;
 	private GameScreen gs;
 	private boolean canSpawnNewTarget = true;
@@ -50,7 +50,7 @@ public class GameLogic {
 	public void spawnNewTarget() {
 		Target t = new Target(gs);
 		targets.add(t);
-		RenderableHolder.add(t);
+		RenderableHolder.addBack(t);
 	}
 
 	public void selectionHandler() {
@@ -83,6 +83,8 @@ public class GameLogic {
 			for(int j=i+1;j<targets.size();j++){
 				Target t2 = targets.get(j);
 				if(t.hit(t2.getX(), t2.getY(), t2.getRadius())){
+					RenderableHolder.addFront(new HitAnimation(t.getX(),t.getY(),1));
+					RenderableHolder.addFront(new HitAnimation(t2.getX(),t2.getY(),1));
 					t2.setDestroyed(true);
 				}
 			}

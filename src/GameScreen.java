@@ -1,6 +1,8 @@
 import javax.swing.JComponent;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -14,6 +16,32 @@ public class GameScreen extends JComponent {
 	public GameScreen() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
+		DrawingUtility.setGameScreen(this);
+		this.addKeyListener(new KeyListener(){
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				System.out.println("HELOOOOO " + arg0.getKeyCode() + " " + KeyEvent.VK_ENTER);
+				if(arg0.getKeyCode() == 0){
+					System.out.println("HELOOOOO");
+					Player.getInstance().setPause(!Player.getInstance().isPause());
+				}
+				
+			}
+			
+		});
 		this.addMouseListener(new MouseListener() {
 
 			@Override
@@ -77,4 +105,5 @@ public class GameScreen extends JComponent {
 		// System.out.println(RenderableHolder.totalLine());
 		// System.out.println(InputUtility.getMouseLocation().toString());
 	}
+	
 }
