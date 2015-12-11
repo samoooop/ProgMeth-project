@@ -17,6 +17,8 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	private int currentPoint;
 	private int movingDelay = 2;
 	private int movingDelayCounter;
+	private int addPointDelay = 100;
+	private int addPointDelayCounter = 0;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -40,6 +42,7 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		this.isSelected = false;
 		this.path = null;
 		this.movingDelayCounter = 0;
+		this.addPointDelayCounter = this.addPointDelay;
 	}
 
 	@Override
@@ -116,6 +119,7 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			currentPoint = 0;
 			path.addPoint(new Point(x, y));
 		}
+
 		path.addPoint(p);
 	}
 
@@ -125,11 +129,9 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	}
 
 	private void changeSpeed() {
-		double new_vel_x = calculateSpeed(x,path.getIndex(currentPoint).x, y,
-				(int) path.getIndex(currentPoint).y);
-		double new_vel_y = calculateSpeed(y,path.getIndex(currentPoint).y, x,
-				(int) path.getIndex(currentPoint).x);
-		System.out.println(vel_x+" "+vel_y);
+		double new_vel_x = calculateSpeed(x, path.getIndex(currentPoint).x, y, (int) path.getIndex(currentPoint).y);
+		double new_vel_y = calculateSpeed(y, path.getIndex(currentPoint).y, x, (int) path.getIndex(currentPoint).x);
+		System.out.println(vel_x + " " + vel_y);
 		if (new_vel_x + new_vel_y > 0.8) {
 			vel_x = new_vel_x;
 			vel_y = new_vel_y;
@@ -145,5 +147,6 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			}
 		}
 		currentPoint++;
+
 	}
 }
