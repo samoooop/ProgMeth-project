@@ -50,34 +50,8 @@ public class GameLogic {
 	}
 
 	public void spawnNewTarget() {
-		int x, y;
-		int cenX = gs.getWidth() / 2, cenY = gs.getHeight() / 2;
-		int ranFactor = (int) (Math.random() * 10000) % 4;
-		switch (ranFactor) {
-		case 0: // spawn from EAST
-			x = 0;
-			y = (int) (Math.random() * 10000) % gs.getHeight();
-			break;
-		case 1: // spawn from WEST
-			x = gs.getWidth();
-			y = (int) (Math.random() * 10000) % gs.getHeight();
-			break;
-		case 2: // spawn from NORTH
-			x = (int) (Math.random() * 10000) % gs.getWidth();
-			y = 0;
-			break;
-		default: // spawn from SOUTH
-			x = (int) (Math.random() * 10000) % gs.getWidth();
-			y = gs.getHeight();
-			break;
-		}
-		double vel_x = cenX - x, vel_y = cenY - y;
-		vel_x /= gs.getWidth() / 2;
-		vel_y /= gs.getHeight() / 2;
-		Target t = new Target(x, y, vel_x, vel_y, gs);
+		Target t = new Target(gs);
 		targets.add(t);
-		// System.out.println("Spawned Target" + String.format(" -> %d %d %f %f
-		// (%d) TOTAL : %d", x, y, vel_x, vel_y, ranFactor,targets.size()));
 		RenderableHolder.add(t);
 	}
 

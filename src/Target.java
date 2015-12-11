@@ -10,12 +10,10 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	private double vel_x, vel_y;
 	private double SPEED = 10;
 	private double SELECTED_SPEED = 15;
-	private int RADIUS = 15;
+	private int RADIUS = 30;
 	private GameScreen gs;
 	boolean isDestroyed;
 	private boolean isSelected;
-	private int movingDelay = 2;
-	private int movingDelayCounter;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -27,22 +25,28 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	public void setSelected(boolean isSelected) {
 		this.isSelected = isSelected;
 	}
-
+	public Target(GameScreen gs){
+		this.gs = gs;
+		this.randomSpawn();
+	}
+	
 	public Target(int x, int y, double vel_x, double vel_y, GameScreen gs) {
 		System.out.println("Spawning " + x + " " + y + " " + vel_x + " " + vel_y);
 		this.x = x;
 		this.y = y;
 		this.vel_x = vel_x;
 		this.vel_y = vel_y;
-		this.SPEED = Math.random() * 10;
+		//this.SPEED = Math.random() * 10;
 		this.gs = gs;
 		this.isSelected = false;
-		this.movingDelayCounter = 0;
 	}
 
 	@Override
 	public void update() {
 		changePosition();
+		if(x<0||x>gs.getWidth()||y<0||y>gs.getHeight()){
+			this.isDestroyed = true;
+		}
 	}
 
 	public int getX() {
@@ -57,6 +61,8 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	public void draw(Graphics2D g2) {
 		g2.setColor(Color.BLUE);
 		g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
+		g2.setColor(Color.BLACK);
+		g2.fillOval(x - RADIUS + 2, y - RADIUS + 2, RADIUS * 2 - 4, RADIUS * 2 - 4);
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
 			g2.setColor(Color.YELLOW);
@@ -112,6 +118,21 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		}
 		//System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x, vel_y, ds, mouseX, mouseY, x, y));
 	}
+	
+	private void changeSpeed(int xf,int yf) {
+		double dx = xf - x;
+		double dy = yf - y;
+		double ds = Math.sqrt(dx*dx+dy*dy);
+		if (ds != 0) {
+			vel_x = (dx*dx)/(ds*ds);
+			vel_y = (dy*dy)/(ds*ds);
+			if(dx < 0)
+				vel_x = -vel_x;
+			if(dy < 0)
+				vel_y = -vel_y;
+		}
+		//System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x, vel_y, ds, mouseX, mouseY, x, y));
+	}
 
 	private void changePosition() {
 		Point p = InputUtility.getMouseLocation();
@@ -132,5 +153,28 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			y += vel_y * SPEED;
 		}
 
+	}
+	
+	private void randomSpawn(){
+		int ranFactor = (int) (Math.random() * 10000) % 4;
+		switch (ranFactor) {
+		case 0: // spawn from EAST
+			x = 0;
+			y = (int) (Math.random() * 10000) % gs.getHeight();
+			break;
+		case 1: // spawn from WEST
+			x = gs.getWidth();
+			y = (int) (Math.random() * 10000) % gs.getHeight();
+			break;
+		case 2: // spawn from NORTH
+			x = (int) (Math.random() * 10000) % gs.getWidth();
+			y = 0;
+			break;
+		default: // spawn from SOUTH
+			x = (int) (Math.random() * 10000) % gs.getWidth();
+			y = gs.getHeight();
+			break;
+		}
+		changeSpeed(gs.getWidth()/2,gs.getHeight()/2);
 	}
 }
