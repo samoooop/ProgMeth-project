@@ -9,16 +9,13 @@ public class Target implements Updatable, IRenderable, Destroyable {
 	private int x, y;
 	private double vel_x, vel_y;
 	private double SPEED = 10;
+	private double SELECTED_SPEED = 15;
 	private int RADIUS = 15;
 	private GameScreen gs;
 	boolean isDestroyed;
-	private Line path;
 	private boolean isSelected;
-	private int currentPoint;
 	private int movingDelay = 2;
 	private int movingDelayCounter;
-	private int addPointDelay = 100;
-	private int addPointDelayCounter = 0;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -40,27 +37,12 @@ public class Target implements Updatable, IRenderable, Destroyable {
 		this.SPEED = Math.random() * 10;
 		this.gs = gs;
 		this.isSelected = false;
-		this.path = null;
 		this.movingDelayCounter = 0;
-		this.addPointDelayCounter = this.addPointDelay;
 	}
 
 	@Override
 	public void update() {
-		if (path == null) {
-			x += vel_x * SPEED;
-			y += vel_y * SPEED;
-		} else {
-			if (movingDelayCounter == movingDelay) {
-				changeSpeed();
-				changePosition();
-				movingDelayCounter = 0;
-			}
-			movingDelayCounter++;
-		}
-		if (x < 0 || x > gs.getWidth() || y < 0 || y > gs.getHeight()) {
-			isDestroyed = true;
-		}
+		changePosition();
 	}
 
 	public int getX() {
@@ -73,9 +55,6 @@ public class Target implements Updatable, IRenderable, Destroyable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		if (path != null) {
-			path.draw(g2);
-		}
 		g2.setColor(Color.BLUE);
 		g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 		if (isSelected) {
@@ -113,40 +92,45 @@ public class Target implements Updatable, IRenderable, Destroyable {
 			return false;
 	}
 
-	public void addPointToPath(Point p, boolean isNewLine) {
-		if (path == null || isNewLine) {
-			path = new Line();
-			currentPoint = 0;
-			path.addPoint(new Point(x, y));
-		}
-
-		path.addPoint(p);
-	}
-
 	public static double calculateSpeed(int x1, int x2, int y1, int y2) {
 		double dist = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
 		return (x2 - x1) / dist;
 	}
 
 	private void changeSpeed() {
-		double new_vel_x = calculateSpeed(x, path.getIndex(currentPoint).x, y, (int) path.getIndex(currentPoint).y);
-		double new_vel_y = calculateSpeed(y, path.getIndex(currentPoint).y, x, (int) path.getIndex(currentPoint).x);
-		System.out.println(vel_x + " " + vel_y);
-		if (new_vel_x + new_vel_y > 0.8) {
-			vel_x = new_vel_x;
-			vel_y = new_vel_y;
+		Point p = InputUtility.getMouseLocation();
+		double dx = p.x - x;
+		double dy = p.y - y;
+		double ds = Math.sqrt(dx*dx+dy*dy);
+		if (ds != 0) {
+			vel_x = (dx*dx)/(ds*ds);
+			vel_y = (dy*dy)/(ds*ds);
+			if(dx < 0)
+				vel_x = -vel_x;
+			if(dy < 0)
+				vel_y = -vel_y;
 		}
+		//System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x, vel_y, ds, mouseX, mouseY, x, y));
 	}
 
 	private void changePosition() {
-		x = path.getIndex(currentPoint).x;
-		y = path.getIndex(currentPoint).y;
-		if (currentPoint == path.getSize() - 1) { // last point in line
-			if (!isSelected) {
-				path = null;
+		Point p = InputUtility.getMouseLocation();
+		if (isSelected) {
+			changeSpeed();
+			if (Math.abs(p.x - x) <= Math.abs(vel_x * SELECTED_SPEED)) {
+				x = p.x;
+			} else {
+				x += vel_x * SELECTED_SPEED;
 			}
+			if (Math.abs(p.y - y) <= Math.abs(vel_y * SELECTED_SPEED)) {
+				y = p.y;
+			} else {
+				y += vel_y * SELECTED_SPEED;
+			}
+		} else {
+			x += vel_x * SPEED;
+			y += vel_y * SPEED;
 		}
-		currentPoint++;
 
 	}
 }

@@ -5,7 +5,7 @@ public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 10;
+	private static final int SPAWN_DELAY = 100;
 	private int spawnDelayCounter;
 	private GameScreen gs;
 	private boolean canSpawnNewTarget = true;
@@ -17,7 +17,7 @@ public class GameLogic {
 		targets = new ArrayList<Target>();
 		spawnDelayCounter = 0;
 		selected = null;
-		//init();
+		// init();
 	}
 
 	public void init() {
@@ -28,17 +28,6 @@ public class GameLogic {
 	}
 
 	public void logicUpdate() {
-		/*
-		 * for (int i = 0; i < movingObjects.size(); i++) {
-		 * movingObjects.get(i).update(); for (int j = 0; j <
-		 * movingObjects.size(); j++) { if
-		 * (movingObjects.get(i).collideWith(movingObjects.get(j))) {
-		 * movingObjects.get(i).setDestroyed(true); } } if
-		 * (movingObjects.get(i).isDestroyed()) { movingObjects.remove(i); i--;
-		 * }
-		 * 
-		 * }
-		 */
 		selectionHandler(); // a function handle mouse Target selection
 
 		for (Iterator<Target> itr = targets.iterator(); itr.hasNext();) {
@@ -99,12 +88,9 @@ public class GameLogic {
 					if (t.isMouseOver()) {
 						selected = t;
 						t.setSelected(true);
-						t.addPointToPath(InputUtility.getMouseLocation(),true);
 						break;
 					}
 				}
-			} else {
-				selected.addPointToPath(InputUtility.getMouseLocation(),false);
 			}
 		} else {
 			if (selected != null) {
