@@ -32,7 +32,7 @@ public class HitAnimation implements IRenderable, Destroyable {
 
 	@Override
 	public void draw(Graphics2D g) {
-		DrawingUtility.drawCircle(g, x, y, radius, radius + CIRCLE_THICK, DrawingUtility.BACKGROUND_COLOR,
+		DrawingUtility.drawCircle(g, x, y, 0, radius + CIRCLE_THICK, DrawingUtility.BACKGROUND_COLOR,
 				ANIMATION_COLOR);
 		synchronized (this) {
 			if (radius > MAX_RADIUS) {

@@ -1,5 +1,8 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 public class DrawingUtility {
 	
@@ -40,5 +43,20 @@ public class DrawingUtility {
 	}
 	public static void drawCircle_2(Graphics2D g2,int x,int y,int stroke){
 		
+	}
+	public static void drawCenteredString(Graphics2D g, String text, Rectangle rect, Font font) {
+	    g.setColor(Color.BLACK);
+		// Get the FontMetrics
+	    FontMetrics metrics = g.getFontMetrics(font);
+	    // Determine the X coordinate for the text
+	    int x = (rect.width - metrics.stringWidth(text)) / 2;
+	    // Determine the Y coordinate for the text
+	    int y = ((rect.height - metrics.getHeight()) / 2) - metrics.getAscent();
+	    // Set the font
+	    g.setFont(font);
+	    // Draw the String
+	    g.drawString(text, x, y);
+	    // Dispose the Graphics
+	    //g.dispose();
 	}
 }

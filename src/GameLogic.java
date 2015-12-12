@@ -77,15 +77,20 @@ public class GameLogic {
 	
 	public void checkHit(){
 		// check if something hit player
+		for(int i=0;i<targets.size();i++){
+			Target  t = targets.get(i);
+			if(Player.getInstance().hit(t.getX(), t.getY(), t.getRadius())){
+				t.destroy();
+			}
+		}
 		// check if target hit each other
 		for(int i=0;i<targets.size();i++){
 			Target t = targets.get(i);
 			for(int j=i+1;j<targets.size();j++){
 				Target t2 = targets.get(j);
 				if(t.hit(t2.getX(), t2.getY(), t2.getRadius())){
-					RenderableHolder.addFront(new HitAnimation(t.getX(),t.getY(),1));
-					RenderableHolder.addFront(new HitAnimation(t2.getX(),t2.getY(),1));
-					t2.setDestroyed(true);
+					t.destroy();
+					t2.destroy();
 				}
 			}
 		}
