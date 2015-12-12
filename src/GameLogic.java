@@ -5,7 +5,7 @@ public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 20;
+	private static final int SPAWN_DELAY = 10;
 	private int spawnDelayCounter;
 	private GameScreen gs;
 	private boolean canSpawnNewTarget = true;
@@ -26,6 +26,7 @@ public class GameLogic {
 	}
 
 	public void logicUpdate() {
+		Player.getInstance().update();
 		selectionHandler(); // a function handle mouse Target selection
 		checkHit();
 		for (Iterator<Target> itr = targets.iterator(); itr.hasNext();) {
