@@ -13,19 +13,26 @@ public class DrawingUtility {
 		if(gameScreen == null){
 			return 1;
 		}else{
-			return gameScreen.getWidth()/GameScreen.screenWidth;
+			return gameScreen.getWidth()*1.0/GameScreen.screenWidth;
 		}
 	}
 	public static double getHeightResizeFactor(){
 		if(gameScreen == null){
 			return 1;
 		}else{
-			return gameScreen.getWidth()/GameScreen.screenHeight;
+			return gameScreen.getHeight()*1.0/GameScreen.screenHeight;
 		}
 	}
 	public static void drawCircle(Graphics2D g2,int x,int y,int innerRadius,int outterRadius,Color innerColor,Color outterColor){
-		x*=getWidthResizeFactor();
-		y*=getHeightResizeFactor();
+		//double wrf = getWidthResizeFactor();
+		//double hrf = getHeightResizeFactor();
+		//int oh = (int)(outterRadius*wrf);
+		//int ow = (int)(outterRadius*)
+		//int ir = (int)(innerRadius*hrf)
+		//x*=wrf;
+		//y*=hrf;
+		//g2.scale(getWidthResizeFactor(), getHeightResizeFactor());
+		//System.out.println(x + " " + getWidthResizeFactor() + " " + getHeightResizeFactor() + " " +(gameScreen==null));
 		g2.setColor(outterColor);
 		g2.fillOval(x - outterRadius, y - outterRadius, outterRadius * 2, outterRadius * 2);
 		g2.setColor(innerColor);

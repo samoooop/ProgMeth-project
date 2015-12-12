@@ -97,7 +97,7 @@ public class GameScreen extends JComponent {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.DARK_GRAY);
+		g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
 		// requestFocus();
 		RenderableHolder.draw(g2d);
