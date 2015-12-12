@@ -9,12 +9,12 @@ import render.IRenderable;
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int x, y;
 	private double vel_x, vel_y;
-	private double SPEED = 5;
+	private double SPEED = 10;
 	private double SELECTED_SPEED = 10;
 	private int RADIUS = 20;
 	private GameScreen gs;
-	boolean destroyed;
-
+	private boolean destroyed;
+	private boolean canScore;
 	private boolean isSelected;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
@@ -25,7 +25,14 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	}
 
 	public void setSelected(boolean isSelected) {
+		if(isSelected){
+			canScore = true;
+		}
 		this.isSelected = isSelected;
+	}
+
+	public boolean isCanScore() {
+		return canScore;
 	}
 
 	public Target(GameScreen gs) {
@@ -42,6 +49,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		// this.SPEED = Math.random() * 10;
 		this.gs = gs;
 		this.isSelected = false;
+		this.canScore = false;
 	}
 
 	@Override

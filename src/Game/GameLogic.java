@@ -93,6 +93,12 @@ public class GameLogic {
 				if(t.hit(t2.getX(), t2.getY(), t2.getRadius())){
 					t.destroy();
 					t2.destroy();
+					if(t.isCanScore()){
+						Player.getInstance().addScore(Player.TARGET_HIT_SCORE);
+					}
+					if(t2.isCanScore()){
+						Player.getInstance().addScore(Player.TARGET_HIT_SCORE);
+					}
 				}
 			}
 		}

@@ -33,7 +33,7 @@ public class Title extends JPanel{
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
 	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Config.screenWidth, Config.screenHeight,
 	        Image.SCALE_SMOOTH);
-	public Image earth =  DrawingUtility.earth2.getScaledInstance(400, 400,
+	public Image earth =  DrawingUtility.earth2.getScaledInstance(300, 300,
 	        Image.SCALE_SMOOTH);
 	public Title(GameWindow window){
           super();

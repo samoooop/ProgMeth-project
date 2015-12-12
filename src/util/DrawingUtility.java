@@ -69,6 +69,7 @@ public class DrawingUtility {
 	public static void drawCircle_2(Graphics2D g2,int x,int y,int stroke){
 		
 	}
+	
 	public static void drawCenteredString(Graphics2D g, String text, Rectangle rect, Font font) {
 	    g.setColor(Color.BLACK);
 		// Get the FontMetrics

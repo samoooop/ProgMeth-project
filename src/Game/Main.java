@@ -32,7 +32,7 @@ public class Main {
 		};
 		Thread logicThread = new Thread() {
 			public void run() {
-				while (true) {
+				while (!Player.getInstance().isDead()) {
 					try {
 						Thread.sleep(20);
 					} catch (InterruptedException e) {
