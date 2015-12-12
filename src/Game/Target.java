@@ -1,4 +1,5 @@
 package Game;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -16,6 +17,8 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private boolean destroyed;
 	private boolean canScore;
 	private boolean isSelected;
+	private int movingDelayCounter = 0;
+	private int movingDelay = Configuration.TARGET_MOVING_DELAY;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -25,7 +28,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	}
 
 	public void setSelected(boolean isSelected) {
-		if(isSelected){
+		if (isSelected) {
 			canScore = true;
 		}
 		this.isSelected = isSelected;
@@ -52,7 +55,11 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	@Override
 	public void update() {
-		changePosition();
+		if (movingDelayCounter >= movingDelay) {
+			changePosition();
+			movingDelayCounter = 0;
+		}
+		movingDelayCounter++;
 		if (x < 0 || x > Configuration.screenWidth || y < 0 || y > Configuration.screenHeight) {
 			this.destroyed = true;
 		}
@@ -72,7 +79,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS+2, Color.ORANGE, Color.RED);
+		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS + 2, Color.ORANGE, Color.RED);
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
 			g2.setColor(Color.YELLOW);
@@ -206,9 +213,9 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		}
 		return false;
 	}
-	
-	public void destroy(){
+
+	public void destroy() {
 		this.setDestroyed(true);
-		RenderableHolder.addFront(new HitAnimation(x,y,1));
+		RenderableHolder.addFront(new HitAnimation(x, y, 1));
 	}
 }

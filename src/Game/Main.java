@@ -1,6 +1,8 @@
 package Game;
 import javax.swing.JFrame;
 
+import util.Configuration;
+
 public class Main {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("PROJECT");
@@ -25,7 +27,7 @@ public class Main {
 				while (true) {
 					gameScreen.repaint();
 					try {
-						Thread.sleep(20);
+						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
 				}
@@ -36,7 +38,7 @@ public class Main {
 			public void run() {
 				while (!Player.getInstance().isDead()) {
 					try {
-						Thread.sleep(20);
+						Thread.sleep(Configuration.TIME_PER_TICK);
 					} catch (InterruptedException e) {
 					}
 					if(!Player.getInstance().isPause())
