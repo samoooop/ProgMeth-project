@@ -54,8 +54,6 @@ public class Player implements IRenderable, Hitable {
 	public void update() {
 		if (!dead) {
 			regen();
-		}else{
-			TimeUtility.end();
 		}
 	}
 
@@ -88,6 +86,9 @@ public class Player implements IRenderable, Hitable {
 	public void reduceHitPoint(int d) {
 		hitPoint -= d;
 		if (hitPoint < 0) {
+			if(!dead){
+				TimeUtility.end();
+			}
 			hitPoint = 0;
 			dead = true;
 		}
@@ -123,7 +124,7 @@ public class Player implements IRenderable, Hitable {
 		if (!dead) {
 			g2.setColor(Color.BLACK);
 			g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
-			g2.drawString(String.format("%.2f ", getPercentHitPoint()), 0 + HEALTH_BAR_THICK,
+			g2.drawString(String.format("%.2f ", getPercentHitPoint())+"%", 0 + HEALTH_BAR_THICK,
 					Config.screenHeight - HEALTH_BAR_THICK);
 		} else {
 			g2.setColor(Color.RED);
