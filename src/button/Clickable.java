@@ -100,12 +100,16 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	protected void drawButton(Graphics g, BufferedImage buttonSprite){
 		Graphics2D g2 = (Graphics2D) g;
 		if(!isMouseOn())
-			g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_NORMAL), null, x, y);
+			{if(!(this instanceof PlayButton)){g2.drawImage(DrawingUtility.fireball, x-45,y-15, null);}
+			g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_NORMAL), null, x, y);}
 		else
 			if(InputUtility.isMouseDown())
-				g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_CLICK), null, x, y);
+				{
+				if(!(this instanceof PlayButton)){g2.drawImage(DrawingUtility.fireball, x-45,y-15, null);}
+				g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_CLICK), null, x, y);}
 			else	
-				g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_HOVER), null, x, y);
+				{if(!(this instanceof PlayButton)){g2.drawImage(DrawingUtility.fireball, x-45,y-15, null);}
+				g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_HOVER), null, x, y);}
 	}
 	
 	protected void mute(){
