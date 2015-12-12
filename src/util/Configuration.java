@@ -9,7 +9,7 @@ public class Configuration {
 	public static int animationFrameCount = 10;
 	
 	//GameLogic Configuration
-	public static final int SPAWN_DELAY = 20;
+	public static final int SPAWN_DELAY = 2;
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
 	//Target Configuration

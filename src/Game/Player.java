@@ -86,9 +86,6 @@ public class Player implements IRenderable, Hitable {
 	public void reduceHitPoint(int d) {
 		hitPoint -= d;
 		if (hitPoint < 0) {
-			if(!dead){
-				TimeUtility.end();
-			}
 			hitPoint = 0;
 			dead = true;
 		}

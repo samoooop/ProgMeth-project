@@ -1,7 +1,10 @@
 package Game;
+
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import util.Configuration;
+import util.TimeUtility;
 
 public class Main {
 	public static void main(String[] args) {
@@ -9,19 +12,26 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameScreen gameScreen = new GameScreen();
 		frame.getContentPane().add(gameScreen);
-		//frame.add(gameScreen);
 		frame.setVisible(true);
-		//frame.setResizable(false);
 		frame.pack();
 		GameLogic gameLogic = new GameLogic();
-		gameScreen.requestFocus();
-		/*
-		 * while (true) { try { Thread.sleep(20); } catch (InterruptedException
-		 * e) { } gameScreen.repaint(); gameLogic.logicUpdate(); //
-		 * GameLogic.getInstance().logicUpdate(); //
-		 * System.out.println("Updated"+InputUtility.getKeyPressed(KeyEvent.
-		 * VK_LEFT)+InputUtility.getKeyPressed(KeyEvent.VK_RIGHT)); }
-		 */
+		Thread logicThread = new Thread() {
+			public void run() {
+				while (!Player.getInstance().isDead()) {
+					if (!Player.getInstance().isPause()) {
+						gameLogic.logicUpdate();
+						TimeUtility.inceaseTick();
+					}
+					try {
+						Thread.sleep(Configuration.TIME_PER_TICK);
+					} catch (InterruptedException e) {
+					}
+					
+				}
+				
+			}
+
+		};
 		Thread drawThread = new Thread() {
 			public void run() {
 				while (true) {
@@ -30,21 +40,9 @@ public class Main {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
+					System.out.println(logicThread.isAlive());
 				}
-			}
-
-		};
-		Thread logicThread = new Thread() {
-			public void run() {
-				while (!Player.getInstance().isDead()) {
-					try {
-						Thread.sleep(Configuration.TIME_PER_TICK);
-					} catch (InterruptedException e) {
-					}
-					if(!Player.getInstance().isPause())
-					gameLogic.logicUpdate();
-
-				}
+				
 			}
 
 		};
