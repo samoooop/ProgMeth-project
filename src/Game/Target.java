@@ -9,7 +9,7 @@ import render.IRenderable;
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int x, y;
 	private double vel_x, vel_y;
-	private double SPEED = 10;
+	private double SPEED = 5;
 	private double SELECTED_SPEED = 10;
 	private int RADIUS = 20;
 	private GameScreen gs;
