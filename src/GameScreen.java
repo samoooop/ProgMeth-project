@@ -16,7 +16,7 @@ public class GameScreen extends JPanel{
 	public static int screenHeight = 800;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
-		//this.setDoubleBuffered(true);
+		this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
 		DrawingUtility.setGameScreen(this);
