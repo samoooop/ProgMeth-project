@@ -1,3 +1,4 @@
+package Game;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
