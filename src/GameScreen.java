@@ -9,13 +9,14 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 @SuppressWarnings("serial")
-public class GameScreen extends Canvas{
+public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
 	public static int screenWidth = 1200;
 	public static int screenHeight = 800;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
+		this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
 		DrawingUtility.setGameScreen(this);

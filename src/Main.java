@@ -5,7 +5,6 @@ public class Main {
 		JFrame frame = new JFrame("PROJECT");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameScreen gameScreen = new GameScreen();
-
 		frame.getContentPane().add(gameScreen);
 		frame.setVisible(true);
 		frame.pack();
