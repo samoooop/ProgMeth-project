@@ -1,16 +1,19 @@
 package Game;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
 import render.IRenderable;
 import util.Config;
+import util.TimeUtility;
 
 public class Player implements IRenderable, Hitable {
 
+	@SuppressWarnings("unused")
 	private Color PLAYER_COLOR = Color.GREEN;
-	private int x = GameScreen.screenWidth / 2;
-	private int y = GameScreen.screenHeight / 2;
+	private int x = Config.screenWidth / 2;
+	private int y = Config.screenHeight / 2;
 	public static int RADIUS = 150;
 	private long score = 0;
 	private static final Player instance = new Player();
@@ -18,10 +21,13 @@ public class Player implements IRenderable, Hitable {
 	private double MAX_HIT_POINT = 100;
 	private boolean dead = false;
 	public static int hitDamage = 5;
-	private double hitPointRegenRate = 0.01;
+	private double hitPointRegenRate = 0.03;
 
 	private int HEALTH_BAR_MAX_WIDTH = 500;
 	private int HEALTH_BAR_MAX_HEIGHT = 40;
+	private int HEALTH_BAR_THICK = 5;
+
+	public static int TARGET_HIT_SCORE = 10000;
 
 	public static Player getInstance() {
 
@@ -40,21 +46,17 @@ public class Player implements IRenderable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		//DrawingUtility.drawCircle(g2, x, y, 0, Player.RADIUS, Color.BLACK, PLAYER_COLOR);
-		g2.drawImage(util.DrawingUtility.earth, Config.screenWidth/2-150, Config.screenHeight/2-150, null);
+		g2.drawImage(util.DrawingUtility.earth, Config.screenWidth / 2 - 150, Config.screenHeight / 2 - 150, null);
 		drawHealthBar(g2);
-		// System.out.println(x-RADIUS);
-		// DrawingUtility.drawCenteredString(g2, this.getPercentHitPoint()+"%",
-		// new Rectangle(this.x-RADIUS,this.y-RADIUS,RADIUS*2,RADIUS*2), new
-		// Font(Font.SANS_SERIF,0,20));
-		// g2.setFont(new Font(Font.SANS_SERIF,0,20));
-		// g2.setColor(Color.BLACK);
-		// 1g2.drawString(this.getPercentHitPoint()+"%", x, y);
+		drawScore(g2);
 	}
 
 	public void update() {
-		if (!dead)
+		if (!dead) {
 			regen();
+		}else{
+			TimeUtility.end();
+		}
 	}
 
 	@Override
@@ -76,7 +78,7 @@ public class Player implements IRenderable, Hitable {
 	}
 
 	public long getScore() {
-		return score;
+		return score + TimeUtility.getEscalatedTime();
 	}
 
 	public double getPercentHitPoint() {
@@ -99,22 +101,49 @@ public class Player implements IRenderable, Hitable {
 	}
 
 	public int getX() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int getY() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	private void drawHealthBar(Graphics2D g2) {
-		g2.setColor(Color.RED);
-		g2.fillRect(0, GameScreen.screenHeight - HEALTH_BAR_MAX_HEIGHT,
-				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
+		g2.setColor(Color.GRAY);
+		g2.fillRect(0, Config.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
+				HEALTH_BAR_MAX_WIDTH + HEALTH_BAR_THICK * 2, HEALTH_BAR_MAX_HEIGHT + HEALTH_BAR_THICK * 2);
 		g2.setColor(Color.BLACK);
-		g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
-		g2.drawString(String.format("%.2f ", getPercentHitPoint()), 0, GameScreen.screenHeight);
+		g2.fillRect(0 + HEALTH_BAR_THICK, Config.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
+				HEALTH_BAR_MAX_WIDTH, HEALTH_BAR_MAX_HEIGHT);
+
+		g2.setColor(Color.RED);
+		g2.fillRect(0 + HEALTH_BAR_THICK, Config.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
+				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
+
+		if (!dead) {
+			g2.setColor(Color.BLACK);
+			g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
+			g2.drawString(String.format("%.2f ", getPercentHitPoint()), 0 + HEALTH_BAR_THICK,
+					Config.screenHeight - HEALTH_BAR_THICK);
+		} else {
+			g2.setColor(Color.RED);
+			g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
+			g2.drawString(String.format("	YOU ARE DEAD"), 0 + HEALTH_BAR_THICK,
+					Config.screenHeight - HEALTH_BAR_THICK);
+		}
+
+	}
+
+	public void drawScore(Graphics2D g) {
+		String s = String.format("SCORE : %010d", getScore());
+		g.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
+		g.setColor(Color.WHITE);
+		g.drawString(s, Config.screenWidth - g.getFontMetrics().stringWidth(s), Config.screenHeight - HEALTH_BAR_THICK);
+
+	}
+
+	public boolean isDead() {
+		return dead;
 	}
 
 }
