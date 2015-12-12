@@ -1,8 +1,7 @@
 package Game;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import util.Config;
+import util.Configuration;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,8 +14,8 @@ import java.awt.event.MouseMotionListener;
 public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
-	public static int screenWidth = Config.screenWidth;
-	public static int screenHeight = Config.screenHeight;
+	public static int screenWidth = Configuration.screenWidth;
+	public static int screenHeight = Configuration.screenHeight;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
 		this.setDoubleBuffered(true);

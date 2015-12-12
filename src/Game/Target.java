@@ -3,16 +3,16 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.AlphaComposite;
+import util.Configuration;
 
 import render.IRenderable;
 
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int x, y;
 	private double vel_x, vel_y;
-	private double SPEED = 5;
-	private double SELECTED_SPEED = 10;
-	private int RADIUS = 20;
-	private GameScreen gs;
+	private double SPEED = Configuration.SPEED;
+	private double SELECTED_SPEED = Configuration.SELECTED_SPEED;
+	private int RADIUS = Configuration.TARGET_RADIUS;
 	private boolean destroyed;
 	private boolean canScore;
 	private boolean isSelected;
@@ -35,8 +35,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		return canScore;
 	}
 
-	public Target(GameScreen gs) {
-		this.gs = gs;
+	public Target() {
 		this.randomSpawn();
 	}
 
@@ -47,7 +46,6 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		this.vel_x = vel_x;
 		this.vel_y = vel_y;
 		// this.SPEED = Math.random() * 10;
-		this.gs = gs;
 		this.isSelected = false;
 		this.canScore = false;
 	}
@@ -55,7 +53,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	@Override
 	public void update() {
 		changePosition();
-		if (x < 0 || x > gs.getWidth() || y < 0 || y > gs.getHeight()) {
+		if (x < 0 || x > Configuration.screenWidth || y < 0 || y > Configuration.screenHeight) {
 			this.destroyed = true;
 		}
 	}
@@ -178,22 +176,22 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		switch (ranFactor) {
 		case 0: // spawn from EAST
 			x = 0;
-			y = (int) (Math.random() * 10000) % gs.getHeight();
+			y = (int) (Math.random() * 10000) % Configuration.screenHeight;
 			break;
 		case 1: // spawn from WEST
-			x = gs.getWidth();
-			y = (int) (Math.random() * 10000) % gs.getHeight();
+			x = Configuration.screenWidth;
+			y = (int) (Math.random() * 10000) % Configuration.screenHeight;
 			break;
 		case 2: // spawn from NORTH
-			x = (int) (Math.random() * 10000) % gs.getWidth();
+			x = (int) (Math.random() * 10000) % Configuration.screenWidth;
 			y = 0;
 			break;
 		default: // spawn from SOUTH
-			x = (int) (Math.random() * 10000) % gs.getWidth();
-			y = gs.getHeight();
+			x = (int) (Math.random() * 10000) % Configuration.screenWidth;
+			y = Configuration.screenHeight;
 			break;
 		}
-		changeSpeed(gs.getWidth() / 2, gs.getHeight() / 2);
+		changeSpeed(Configuration.screenWidth / 2, Configuration.screenHeight / 2);
 	}
 
 	public static double calculateDistance(int x1, int y1, int x2, int y2) {

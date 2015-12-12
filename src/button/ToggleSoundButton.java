@@ -15,7 +15,7 @@ import IRenderable.IRenderable2;
 //import ui.Clickable;
 
 import util.AudioUtility;
-import util.Config;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
@@ -44,8 +44,8 @@ public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	public void updatePosition() {
 		width = 50;
 		height = 50;
-		x = Config.screenWidth - width -15;
-		y = Config.screenHeight - 160;
+		x = Configuration.screenWidth - width -15;
+		y = Configuration.screenHeight - 160;
 	}
 	
 	@Override

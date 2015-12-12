@@ -17,7 +17,7 @@ import IRenderable.IRenderable2;
 //import control.ScreenState;
 //import ui.Clickable;
 
-import util.Config;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
@@ -27,8 +27,8 @@ public class PlayButton extends Clickable implements IRenderable2 {
 		type = Clickable.CIRCLE;
 		width = 100;
 		height = 100;
-		x = (Config.screenWidth - width) / 2;
-		y = (Config.screenHeight) / 2;
+		x = (Configuration.screenWidth - width) / 2;
+		y = (Configuration.screenHeight) / 2;
 	}
 
 	@Override

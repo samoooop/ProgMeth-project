@@ -25,13 +25,13 @@ public class DrawingUtility {
 	public static final BufferedImage earth2 = loadImage("res/img/earth.png");
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
-	public static Image dimg =  DrawingUtility.gameBG.getScaledInstance(Config.screenWidth, Config.screenHeight,
+	public static Image dimg =  DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
 	        Image.SCALE_SMOOTH);
 	public static Image earth =  DrawingUtility.earth2.getScaledInstance(300, 300,
 	        Image.SCALE_SMOOTH);
 	public static Image fireball =  DrawingUtility.fireball2.getScaledInstance(115, 80,
 	        Image.SCALE_SMOOTH);
-	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Config.screenWidth, Config.screenHeight,
+	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
 	        Image.SCALE_SMOOTH);
     
 	

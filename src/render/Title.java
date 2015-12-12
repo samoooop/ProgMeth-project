@@ -24,14 +24,14 @@ import button.ToggleSoundButton;
 import control.GameWindow;
 import control.ScreenState;
 import util.AudioUtility;
-import util.Config;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 
 public class Title extends JPanel{
 	private List<IRenderable2> renderList = new ArrayList<IRenderable2>();
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
-	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Config.screenWidth, Config.screenHeight,
+	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
 	        Image.SCALE_SMOOTH);
 	public Image earth =  DrawingUtility.earth2.getScaledInstance(300, 300,
 	        Image.SCALE_SMOOTH);
@@ -42,7 +42,7 @@ public class Title extends JPanel{
 		
 		window.addPanel(this);
 		window.setFrame();
-		setPreferredSize(new Dimension(Config.screenWidth, Config.screenHeight));
+		setPreferredSize(new Dimension(Configuration.screenWidth, Configuration.screenHeight));
 		window.pack();
 		
 		addBoth(new PlayButton());
@@ -79,7 +79,7 @@ public class Title extends JPanel{
 		Graphics2D g2 = (Graphics2D) g;
 		g.drawImage(dimg,0,0,null);
 		//g.drawImage(DrawingUtility.myframe,0,0,null);
-		g.drawImage(earth,Config.screenWidth/2-150,Config.screenHeight/2-150,null);
+		g.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);
 		/*
 		g2.setColor(new Color(192, 192, 192));

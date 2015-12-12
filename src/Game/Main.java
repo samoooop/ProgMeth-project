@@ -7,9 +7,11 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameScreen gameScreen = new GameScreen();
 		frame.getContentPane().add(gameScreen);
+		//frame.add(gameScreen);
 		frame.setVisible(true);
+		//frame.setResizable(false);
 		frame.pack();
-		GameLogic gameLogic = new GameLogic(gameScreen);
+		GameLogic gameLogic = new GameLogic();
 		gameScreen.requestFocus();
 		/*
 		 * while (true) { try { Thread.sleep(20); } catch (InterruptedException

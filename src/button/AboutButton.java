@@ -16,7 +16,7 @@ import IRenderable.IRenderable2;
 //import control.Game;
 //import control.ScreenState;
 import ui.*;
-import util.Config;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
@@ -42,8 +42,8 @@ public class AboutButton extends Clickable  {
 	public void updatePosition() {
 		width = 50;
 		height = 50;
-		x = Config.screenWidth - width - 15;
-		y = Config.screenHeight - 75;
+		x = Configuration.screenWidth - width - 15;
+		y = Configuration.screenHeight - 75;
 	}
 	
 	@Override

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 //import control.Game;
 //import control.ScreenState;
 import ui.*;
-import util.Config;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
@@ -41,7 +41,7 @@ public class SettingsButton extends Clickable {
 		width = 50;   // 50 naja
 		height = 50;
 		x = 25;
-		y = Config.screenHeight - width - 25;
+		y = Configuration.screenHeight - width - 25;
 	}
 	
 	/*@Override

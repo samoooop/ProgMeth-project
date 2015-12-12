@@ -2,18 +2,18 @@ package Game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import util.Configuration;
+
 public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = 20;
+	private static final int SPAWN_DELAY = Configuration.SPAWN_DELAY;
 	private int spawnDelayCounter;
-	private GameScreen gs;
 	private boolean canSpawnNewTarget = true;
 	private Target selected;
 
-	public GameLogic(GameScreen gs) {
-		this.gs = gs;
+	public GameLogic() {
 		movingObjects = new ArrayList<MovingObject>();
 		targets = new ArrayList<Target>();
 		spawnDelayCounter = 0;
@@ -50,7 +50,7 @@ public class GameLogic {
 	}
 
 	public void spawnNewTarget() {
-		Target t = new Target(gs);
+		Target t = new Target();
 		targets.add(t);
 		RenderableHolder.addBack(t);
 	}

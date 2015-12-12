@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 import control.GameWindow;
 
-import util.Config;
+import util.Configuration;
 import util.InputUtility;
 
 public class Main {

@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-import util.Config;
+import util.Configuration;
 import util.InputUtility;
 
 
@@ -106,7 +106,7 @@ public class GameWindow extends JFrame {
 	
 	public void setFrame(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(Config.screenWidth + 16, Config.screenHeight + 24);
+		setSize(Configuration.screenWidth + 16, Configuration.screenHeight + 24);
 		setVisible(true);
 		setResizable(false);
 	}
