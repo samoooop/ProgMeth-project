@@ -2,6 +2,7 @@ package Game;
 import javax.swing.JPanel;
 
 import util.Configuration;
+import util.DrawingUtility;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

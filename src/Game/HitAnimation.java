@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import render.IRenderable;
+import util.DrawingUtility;
 
 public class HitAnimation implements IRenderable, Destroyable {
 

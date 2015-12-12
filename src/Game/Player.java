@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 
 import render.IRenderable;
 import util.Configuration;
+import util.DrawingUtility;
 import util.TimeUtility;
 
 public class Player implements IRenderable, Hitable {
@@ -120,7 +121,7 @@ public class Player implements IRenderable, Hitable {
 
 		if (!dead) {
 			g2.setColor(Color.BLACK);
-			g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
+			g2.setFont(DrawingUtility.drawFont);
 			g2.drawString(String.format("%.2f ", getPercentHitPoint())+"%", 0 + HEALTH_BAR_THICK,
 					Configuration.screenHeight - HEALTH_BAR_THICK);
 		} else {

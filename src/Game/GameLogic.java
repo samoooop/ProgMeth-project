@@ -33,8 +33,7 @@ public class GameLogic {
 		for (Iterator<Target> itr = targets.iterator(); itr.hasNext();) {
 			Target t = itr.next();
 			if (t.isDestroyed()) {
-				System.out.println(String.format("Remove(%d,%d) Total : %d %d", t.getX(), t.getY(), targets.size(),
-						RenderableHolder.getInstance().getEntities().size()));
+				//System.out.println(String.format("Remove(%d,%d) Total : %d %d", t.getX(), t.getY(), targets.size(),RenderableHolder.getInstance().getEntities().size()));
 				itr.remove();
 			} else {
 				t.update();

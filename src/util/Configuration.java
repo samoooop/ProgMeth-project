@@ -8,6 +8,9 @@ public class Configuration {
 	
 	public static int animationFrameCount = 10;
 	
+	//Drawing Util
+	public static final int FONT_SIZE = 30;
+	
 	//GameLogic Configuration
 	public static final int SPAWN_DELAY = 2;
 	public static final int TIME_PER_TICK = 20; // mils per tick

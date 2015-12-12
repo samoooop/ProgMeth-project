@@ -40,7 +40,7 @@ public class Main {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
-					System.out.println(logicThread.isAlive());
+					//System.out.println(logicThread.isAlive());
 				}
 				
 			}

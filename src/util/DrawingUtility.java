@@ -1,6 +1,8 @@
 package util;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -31,10 +33,9 @@ public class DrawingUtility {
 	        Image.SCALE_SMOOTH);
 	public static Image fireball =  DrawingUtility.fireball2.getScaledInstance(115, 80,
 	        Image.SCALE_SMOOTH);
-	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
-	        Image.SCALE_SMOOTH);
+	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,Image.SCALE_SMOOTH);
     
-	
+	public static final Font drawFont = loadFont("res/font/","digital-7.ttf");
 	
 	
 	
@@ -52,7 +53,18 @@ public class DrawingUtility {
 		else return null;
 	}
 	
-	
+	private static Font loadFont(String directory,String name){
+		Font f;
+		try {
+		     GraphicsEnvironment ge = 
+		         GraphicsEnvironment.getLocalGraphicsEnvironment();
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)));
+		     f = Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)).deriveFont(Configuration.FONT_SIZE);
+		} catch (IOException|FontFormatException e) {
+		     f = new Font(Font.SANS_SERIF,0,Configuration.FONT_SIZE);
+		}
+		return f;
+	}
 	
 	public static void setGameScreen(GameScreen gs){
 		gameScreen = gs;

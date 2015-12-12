@@ -5,7 +5,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-public class DrawingUtility {
+public class DrawingUtility_OLD {
 	
 	private static GameScreen gameScreen;
 	public static Color BACKGROUND_COLOR = Color.DARK_GRAY;
