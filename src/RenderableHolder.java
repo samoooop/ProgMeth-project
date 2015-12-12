@@ -65,7 +65,7 @@ public class RenderableHolder {
 	public static void addFront(IRenderable r) {
 		if (entities != null) {
 			synchronized (entities) {
-				entities.add(0,r);
+				entities.add(0, r);
 			}
 		}
 	}
@@ -76,12 +76,15 @@ public class RenderableHolder {
 		synchronized (entities) {
 			for (Iterator<IRenderable> itr = entities.iterator(); itr.hasNext();) {
 				IRenderable r = itr.next();
-				if (r instanceof Destroyable && ((Destroyable) r).isDestroyed()) {
-					itr.remove();
-				} else {
-					// System.out.println("HelloW"+ (r instanceof Target) +
-					// ((Target)r).getX());
-					r.draw(g);
+				synchronized (r) {
+					if (r instanceof Destroyable && ((Destroyable) r).isDestroyed()) {
+						itr.remove();
+					} else {
+						// System.out.println("HelloW"+ (r instanceof
+						// Target) +
+						// ((Target)r).getX());
+						r.draw(g);
+					}
 				}
 			}
 		}
