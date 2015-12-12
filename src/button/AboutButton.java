@@ -34,6 +34,7 @@ public class AboutButton extends Clickable  {
 
 	@Override
 	public void draw(Graphics g) {
+		
 		drawButton(g, DrawingUtility.aboutButton);
 	}
 
@@ -41,8 +42,8 @@ public class AboutButton extends Clickable  {
 	public void updatePosition() {
 		width = 50;
 		height = 50;
-		x = Config.screenWidth - width - 5;
-		y = Config.screenHeight - 55;
+		x = Config.screenWidth - width - 15;
+		y = Config.screenHeight - 75;
 	}
 	
 	@Override

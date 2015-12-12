@@ -23,11 +23,22 @@ public class DrawingUtility {
 	public static final BufferedImage settingsButtonImg = loadImage("res/img/settingsButton.png");
 	public static final BufferedImage playButtonImg = loadImage("res/img/playButton.png");
 	public static final BufferedImage earth2 = loadImage("res/img/earth.png");
+	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
+	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static Image dimg =  DrawingUtility.gameBG.getScaledInstance(Config.screenWidth, Config.screenHeight,
 	        Image.SCALE_SMOOTH);
 	public static Image earth =  DrawingUtility.earth2.getScaledInstance(300, 300,
 	        Image.SCALE_SMOOTH);
-     private static BufferedImage loadImage(String directory){
+	public static Image fireball =  DrawingUtility.fireball2.getScaledInstance(115, 80,
+	        Image.SCALE_SMOOTH);
+	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Config.screenWidth, Config.screenHeight,
+	        Image.SCALE_SMOOTH);
+    
+	
+	
+	
+	
+	private static BufferedImage loadImage(String directory){
 		BufferedImage a  ;
 		try{
 			ClassLoader load = DrawingUtility.class.getClassLoader();

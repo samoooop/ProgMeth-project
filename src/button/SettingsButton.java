@@ -40,8 +40,8 @@ public class SettingsButton extends Clickable {
 	public void updatePosition() {
 		width = 50;   // 50 naja
 		height = 50;
-		x = 5;
-		y = Config.screenHeight - width - 5;
+		x = 25;
+		y = Config.screenHeight - width - 25;
 	}
 	
 	/*@Override
