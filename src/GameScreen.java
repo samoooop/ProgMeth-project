@@ -12,8 +12,8 @@ import java.awt.event.MouseMotionListener;
 public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
-	public static int screenWidth = 1200;
-	public static int screenHeight = 800;
+	public static int screenWidth = 1600;
+	public static int screenHeight = 900;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
 		this.setDoubleBuffered(true);

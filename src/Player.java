@@ -111,7 +111,7 @@ public class Player implements IRenderable, Hitable {
 				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
 		g2.setColor(Color.BLACK);
 		g2.setFont(new Font(Font.SANS_SERIF, 0, HEALTH_BAR_MAX_HEIGHT));
-		g2.drawString(getPercentHitPoint() + " %", 0, GameScreen.screenHeight);
+		g2.drawString(String.format("%.2f ", getPercentHitPoint()), 0, GameScreen.screenHeight);
 	}
 
 }
