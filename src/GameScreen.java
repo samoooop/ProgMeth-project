@@ -16,7 +16,7 @@ public class GameScreen extends JPanel{
 	public static int screenHeight = 800;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
-		this.setDoubleBuffered(true);
+		//this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
 		DrawingUtility.setGameScreen(this);
@@ -97,8 +97,8 @@ public class GameScreen extends JPanel{
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		//super.paint(g);
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
