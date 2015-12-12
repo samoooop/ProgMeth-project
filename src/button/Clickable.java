@@ -11,6 +11,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
+
+import IRenderable.IRenderable2;
+
 import java.util.ArrayList;
 
 import ui.IRenderable;
@@ -22,7 +25,7 @@ import util.DrawingUtility;
 import util.InputUtility;
 //import logic.*;
 
-public abstract class Clickable implements IRenderable, IUpdatable{
+public abstract class Clickable implements IRenderable2, IUpdatable{
 	protected int x, y;
 	protected int width, height;
 	protected int type;

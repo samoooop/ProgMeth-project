@@ -32,7 +32,7 @@ public class AboutButton extends Clickable {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		drawButton(g, DrawingUtility.aboutButton);
 	}
 
@@ -52,4 +52,17 @@ public class AboutButton extends Clickable {
 								+ "for course 2110215 PROG METH (2014/1)\n"
 								+ "Computer Engineering Chulalongkorn University", "About", JOptionPane.INFORMATION_MESSAGE);
 	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
+	
+
+	
 }
