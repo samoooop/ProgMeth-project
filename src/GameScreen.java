@@ -9,12 +9,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 @SuppressWarnings("serial")
-public class GameScreen extends Canvas{
+public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
 	public static int screenWidth = 1200;
 	public static int screenHeight = 800;
 	public GameScreen() {
+		//this.createBufferStrategy(2);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
 		DrawingUtility.setGameScreen(this);
@@ -96,7 +97,7 @@ public class GameScreen extends Canvas{
 
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
+		//super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen

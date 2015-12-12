@@ -22,7 +22,10 @@ public class Main {
 			public void run() {
 				while (true) {
 					gameScreen.repaint();
-
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+					}
 				}
 			}
 
