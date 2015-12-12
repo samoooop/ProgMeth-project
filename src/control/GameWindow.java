@@ -5,7 +5,7 @@
  */
 
 package control;
-
+import render.*;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,7 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import ui.Title;
+
 import util.Config;
 import util.InputUtility;
 

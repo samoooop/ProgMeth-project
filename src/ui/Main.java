@@ -9,7 +9,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 import control.GameWindow;
-import ui.Title;
+
 import util.Config;
 import util.InputUtility;
 

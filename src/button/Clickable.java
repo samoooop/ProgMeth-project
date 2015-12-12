@@ -16,8 +16,7 @@ import IRenderable.IRenderable2;
 
 import java.util.ArrayList;
 
-import ui.IRenderable;
-import ui.IUpdatable;
+
 import button.*;
 //import ui.winpanel.*;
 import util.AudioUtility;

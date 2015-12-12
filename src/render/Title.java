@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import IRenderable.IRenderable2;
 import button.AboutButton;
 import button.PlayButton;
 import button.SettingsButton;
@@ -28,7 +29,7 @@ import util.DrawingUtility;
 import util.InputUtility;
 
 public class Title extends JPanel{
-	private List<IRenderable> renderList = new ArrayList<IRenderable>();
+	private List<IRenderable2> renderList = new ArrayList<IRenderable2>();
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
 	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Config.screenWidth, Config.screenHeight,
 	        Image.SCALE_SMOOTH);
@@ -127,7 +128,7 @@ public class Title extends JPanel{
 	}
 	
 	
-	private void addBoth(IRenderable a){
+	private void addBoth(IRenderable2 a){
 		if(a instanceof IUpdatable){
 			renderList.add(a);
 			updateList.add((IUpdatable)a);

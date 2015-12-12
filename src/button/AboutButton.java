@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
+import IRenderable.IRenderable2;
 //import control.Game;
 //import control.ScreenState;
 import ui.*;
@@ -20,7 +21,7 @@ import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
 
-public class AboutButton extends Clickable {
+public class AboutButton extends Clickable  {
 	public AboutButton(){
 		type = Clickable.CIRCLE;
 		updatePosition();
@@ -32,7 +33,7 @@ public class AboutButton extends Clickable {
 	}
 
 	@Override
-	public void draw(Graphics2D g) {
+	public void draw(Graphics g) {
 		drawButton(g, DrawingUtility.aboutButton);
 	}
 
@@ -53,11 +54,8 @@ public class AboutButton extends Clickable {
 								+ "Computer Engineering Chulalongkorn University", "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	@Override
-	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 
 	
 

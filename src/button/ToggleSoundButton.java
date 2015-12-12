@@ -11,15 +11,16 @@ import java.awt.Graphics;
 
 import javax.swing.JOptionPane;
 
+import IRenderable.IRenderable2;
 //import ui.Clickable;
-import ui.IRenderable;
+
 import util.AudioUtility;
 import util.Config;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
 
-public class ToggleSoundButton extends Clickable implements IRenderable {
+public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	public ToggleSoundButton(){
 		type = Clickable.CIRCLE;
 		updatePosition();

@@ -12,16 +12,17 @@ import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
+import IRenderable.IRenderable2;
 //import control.Game;
 //import control.ScreenState;
 //import ui.Clickable;
-import ui.IRenderable;
+
 import util.Config;
 import util.DrawingUtility;
 import util.InputUtility;
 //import logic.Board;
 
-public class PlayButton extends Clickable implements IRenderable {
+public class PlayButton extends Clickable implements IRenderable2 {
 	public PlayButton(){
 		type = Clickable.CIRCLE;
 		width = 100;
