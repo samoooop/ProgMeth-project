@@ -90,7 +90,7 @@ public class RenderableHolder {
 			}
 		}
 		Player.getInstance().draw(g);
-		if (isDebug) {
+		if (!isDebug) {
 			g.setColor(Color.RED);
 			g.drawString(String.format("Total render object : %d", entities.size()), 0, 10);
 		}

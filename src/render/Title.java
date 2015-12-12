@@ -78,7 +78,7 @@ public class Title extends JPanel{
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g.drawImage(dimg,0,0,null);
-		g.drawImage(earth,Config.screenWidth/2-200,Config.screenHeight/2-200,null);
+		g.drawImage(earth,Config.screenWidth/2-150,Config.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);
 		g2.setColor(new Color(192, 192, 192));
 		g2.fillRect(0, 0, Config.screenWidth, 27);

@@ -2,6 +2,8 @@ package Game;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import util.Config;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,8 +15,8 @@ import java.awt.event.MouseMotionListener;
 public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
-	public static int screenWidth = 1200;
-	public static int screenHeight = 800;
+	public static int screenWidth = Config.screenWidth;
+	public static int screenHeight = Config.screenHeight;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
 		this.setDoubleBuffered(true);
@@ -100,8 +102,9 @@ public class GameScreen extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
-		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
+		g2d.drawImage(util.DrawingUtility.dimg, 0, 0, null);
+		//g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
+		//g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
 		// requestFocus();
 		RenderableHolder.draw(g2d);
 		InputUtility.update();

@@ -4,13 +4,14 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import render.IRenderable;
+import util.Config;
 
 public class Player implements IRenderable, Hitable {
 
 	private Color PLAYER_COLOR = Color.GREEN;
 	private int x = GameScreen.screenWidth / 2;
 	private int y = GameScreen.screenHeight / 2;
-	public static int RADIUS = 200;
+	public static int RADIUS = 150;
 	private long score = 0;
 	private static final Player instance = new Player();
 	private double hitPoint = 100;
@@ -39,7 +40,8 @@ public class Player implements IRenderable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, 0, Player.RADIUS, Color.BLACK, PLAYER_COLOR);
+		//DrawingUtility.drawCircle(g2, x, y, 0, Player.RADIUS, Color.BLACK, PLAYER_COLOR);
+		g2.drawImage(util.DrawingUtility.earth, Config.screenWidth/2-150, Config.screenHeight/2-150, null);
 		drawHealthBar(g2);
 		// System.out.println(x-RADIUS);
 		// DrawingUtility.drawCenteredString(g2, this.getPercentHitPoint()+"%",
