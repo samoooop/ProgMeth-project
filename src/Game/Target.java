@@ -216,6 +216,11 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	public void destroy() {
 		this.setDestroyed(true);
+		if(canScore){
+			RenderableHolder.addFront(new ScoreAnimation(x,y));
+			Player.getInstance().addScore(Configuration.TARGET_HIT_SCORE);
+		}
 		RenderableHolder.addFront(new HitAnimation(x, y, 1));
+		
 	}
 }

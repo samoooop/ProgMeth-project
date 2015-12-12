@@ -35,7 +35,7 @@ public class DrawingUtility {
 	        Image.SCALE_SMOOTH);
 	public static Image myframe =  DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,Image.SCALE_SMOOTH);
     
-	public static final Font drawFont = loadFont("res/font/","digital-7.ttf");
+	public static final Font drawFont = loadFont("res/font/",Configuration.FONT_NAME);
 	
 	
 	
@@ -60,8 +60,10 @@ public class DrawingUtility {
 		         GraphicsEnvironment.getLocalGraphicsEnvironment();
 		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)));
 		     f = Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)).deriveFont(Configuration.FONT_SIZE);
+		     System.out.println("This should happened");
 		} catch (IOException|FontFormatException e) {
-		     f = new Font(Font.SANS_SERIF,0,Configuration.FONT_SIZE);
+		     f = new Font(Font.SANS_SERIF,0,(int) Configuration.FONT_SIZE);
+		     System.out.println("This shouldn't happened");
 		}
 		return f;
 	}
@@ -107,5 +109,12 @@ public class DrawingUtility {
 	    g.drawString(text, x, y);
 	    // Dispose the Graphics
 	    //g.dispose();
+	}
+	
+	public static void drawHit(Graphics2D g){
+		g.setComposite(Configuration.transcluentWhite);
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, Configuration.screenWidth, Configuration.screenHeight);
+		g.setComposite(Configuration.opaque);
 	}
 }

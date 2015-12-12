@@ -1,6 +1,5 @@
 package Game;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import util.Configuration;
@@ -13,6 +12,7 @@ public class Main {
 		GameScreen gameScreen = new GameScreen();
 		frame.getContentPane().add(gameScreen);
 		frame.setVisible(true);
+		//gameScreen.requestFocus();
 		frame.pack();
 		GameLogic gameLogic = new GameLogic();
 		Thread logicThread = new Thread() {

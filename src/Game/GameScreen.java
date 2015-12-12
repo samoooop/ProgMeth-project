@@ -19,6 +19,7 @@ public class GameScreen extends JPanel{
 	public static int screenHeight = Configuration.screenHeight;
 	public GameScreen() {
 		//this.createBufferStrategy(2);
+		this.requestFocus();
 		this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
@@ -105,7 +106,7 @@ public class GameScreen extends JPanel{
 		g2d.drawImage(util.DrawingUtility.dimg, 0, 0, null);
 		//g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
 		//g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
-		// requestFocus();
+		requestFocus();
 		RenderableHolder.draw(g2d);
 		InputUtility.update();
 		// System.out.println(RenderableHolder.totalLine());
