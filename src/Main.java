@@ -21,10 +21,6 @@ public class Main {
 		Thread drawThread = new Thread() {
 			public void run() {
 				while (true) {
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException e) {
-					}
 					gameScreen.repaint();
 
 				}

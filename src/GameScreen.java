@@ -1,4 +1,5 @@
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -8,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 @SuppressWarnings("serial")
-public class GameScreen extends JComponent {
+public class GameScreen extends Canvas{
 	public boolean checkboundary = false;
 	public MovingObject now;
 	public static int screenWidth = 1200;
@@ -94,8 +95,8 @@ public class GameScreen extends JComponent {
 	}
 
 	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	public void paint(Graphics g) {
+		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(DrawingUtility.BACKGROUND_COLOR);
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear Screen
