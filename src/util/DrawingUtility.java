@@ -6,14 +6,11 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 import Game.GameScreen;
 import Game.Player;
-import Game.RandomUtility;
 
 public class DrawingUtility {
 
@@ -157,11 +154,12 @@ public class DrawingUtility {
 				g.setColor(Color.RED);
 				g.fillRect(0, 0, Configuration.screenWidth, Configuration.screenHeight);
 				g.setComposite(Configuration.opaque);
-			}
-			else{
+			} else {
 				g.setComposite(Configuration.transcluentWhite);
 				g.setColor(Color.RED);
-				g.fillOval(Configuration.screenWidth/2 - Player.RADIUS, Configuration.screenHeight/2 - Player.RADIUS, Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2);
+				g.fillOval(Configuration.screenWidth / 2 - Player.RADIUS,
+						Configuration.screenHeight / 2 - Player.RADIUS, Configuration.PLAYER_RADIUS * 2,
+						Configuration.PLAYER_RADIUS * 2);
 				g.setComposite(Configuration.opaque);
 			}
 		}
