@@ -17,6 +17,7 @@ public class ScoreAnimation implements IRenderable,Destroyable {
 	public ScoreAnimation(int x,int y){
 		this.x = x;
 		this.y = y;
+		RenderableHolder.addBack(this);
 	}
 	
 	@Override

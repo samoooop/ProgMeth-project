@@ -11,11 +11,12 @@ import util.DrawingUtility;
 import render.IRenderable;
 
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
-	private int x, y;
-	private double vel_x, vel_y;
-	private double SPEED = Configuration.SPEED;
-	private double SELECTED_SPEED = Configuration.SELECTED_SPEED;
-	private int RADIUS = Configuration.TARGET_RADIUS;
+	protected int x, y;
+	protected double vel_x, vel_y;
+	protected double SPEED = Configuration.SPEED;
+	protected double SELECTED_SPEED = Configuration.SELECTED_SPEED;
+	protected int RADIUS = Configuration.TARGET_RADIUS;
+	protected boolean canHitPlayer = true;
 	private boolean destroyed;
 	private boolean canScore;
 	private boolean isSelected;
@@ -42,6 +43,10 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	public boolean isCanScore() {
 		return canScore;
 	}
+	
+	public void setCanScore(boolean b){
+		canScore = b;
+	}
 
 	public Target() {
 		this.randomSpawn();
@@ -56,6 +61,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		// this.SPEED = Math.random() * 10;
 		this.isSelected = false;
 		this.canScore = false;
+		this.canHitPlayer = true;
 	}
 
 	@Override
@@ -153,8 +159,6 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 			if (dy < 0)
 				vel_y = -vel_y;
 		}
-		// System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x,
-		// vel_y, ds, mouseX, mouseY, x, y));
 	}
 
 	private void changeSpeed(int xf, int yf) {
@@ -169,8 +173,6 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 			if (dy < 0)
 				vel_y = -vel_y;
 		}
-		// System.out.println(String.format("%f %f %f %d,%d %d,%d", vel_x,
-		// vel_y, ds, mouseX, mouseY, x, y));
 	}
 
 	private void changePosition() {
@@ -235,7 +237,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		AudioUtility.playSound(AudioUtility.flipSound);
 		if (canScore) {
 			AudioUtility.playSound(AudioUtility.clickSound);
-			RenderableHolder.addFront(new ScoreAnimation(x, y));
+			new ScoreAnimation(x,y);
 			Player.getInstance().addScore(Configuration.TARGET_HIT_SCORE);
 		}
 		RenderableHolder.addFront(new HitAnimation(x, y, 1));

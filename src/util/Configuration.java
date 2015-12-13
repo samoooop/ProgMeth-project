@@ -35,7 +35,7 @@ public class Configuration {
 	public static final int PLAYER_RADIUS = 150;
 	
 	//ScoreAnimation
-	public static final int MAX_LIFE = 50;
+	public static final int MAX_LIFE = 100;
 	
 	//Tail Animation
 	public static final int TAIL_MAX_RADIUS = TARGET_RADIUS;

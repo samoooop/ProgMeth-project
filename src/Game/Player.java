@@ -32,9 +32,11 @@ public class Player implements IRenderable, Hitable {
 	private int HEALTH_BAR_THICK = 10;
 
 	private boolean hit = false;
-	public static void reset(){
+
+	public static void reset() {
 		instance = new Player();
 	}
+
 	public static Player getInstance() {
 
 		return instance;
@@ -123,11 +125,9 @@ public class Player implements IRenderable, Hitable {
 		g2.setColor(Color.GRAY);
 		Rectangle r = new Rectangle(0, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
 				HEALTH_BAR_MAX_WIDTH + HEALTH_BAR_THICK * 2, HEALTH_BAR_MAX_HEIGHT + HEALTH_BAR_THICK * 2);
-		Paint redtowhite = new GradientPaint(0,0,Color.DARK_GRAY,HEALTH_BAR_MAX_WIDTH/2, 0,Color.gray);
+		Paint redtowhite = new GradientPaint(0, 0, Color.DARK_GRAY, HEALTH_BAR_MAX_WIDTH / 2, 0, Color.gray);
 		g2.setPaint(redtowhite);
-		g2.fill (r);
-//		g2.fillRect(0, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
-//				HEALTH_BAR_MAX_WIDTH + HEALTH_BAR_THICK * 2, HEALTH_BAR_MAX_HEIGHT + HEALTH_BAR_THICK * 2);
+		g2.fill(r);
 		g2.draw(r);
 		g2.setColor(Color.BLACK);
 		g2.fillRect(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
@@ -135,12 +135,10 @@ public class Player implements IRenderable, Hitable {
 
 		r = new Rectangle(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
 				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
-		Paint redToGreen = new GradientPaint(0,0,Color.ORANGE,HEALTH_BAR_MAX_WIDTH/2, 0,Color.RED);
+		Paint redToGreen = new GradientPaint(0, 0, Color.ORANGE, HEALTH_BAR_MAX_WIDTH / 2, 0, Color.RED);
 		g2.setPaint(redToGreen);
-		g2.fill (r);
+		g2.fill(r);
 		g2.setColor(Color.RED);
-//		g2.fillRect(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
-//				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
 
 		if (!dead) {
 			g2.setColor(Color.YELLOW);

@@ -1,8 +1,10 @@
 package Game;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import util.AudioUtility;
+import util.TimeUtility;
 
 public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
@@ -18,14 +20,14 @@ public class GameLogic {
 	}
 
 	public void init() {
-		if(!AudioUtility.isMuted()){
-		AudioUtility.soundtrackBG.play();
-		
+		if (!AudioUtility.isMuted()) {
+			AudioUtility.soundtrackBG.play();
+
 		}
 	}
 
 	public void logicUpdate() {
-		if(Player.getInstance().useSkill){
+		if (Player.getInstance().useSkill) {
 			addSkill();
 		}
 		Player.getInstance().update();
@@ -58,8 +60,7 @@ public class GameLogic {
 						break;
 					}
 				}
-			}
-			else if(selected.isDestroyed()){
+			} else if (selected.isDestroyed()) {
 				selected = null;
 			}
 		} else {
@@ -69,29 +70,30 @@ public class GameLogic {
 			}
 		}
 	}
-	
-	public void checkHit(){
+
+	public void checkHit() {
 		// check if something hit player
-		for(int i=0;i<targets.size();i++){
-			Target  t = targets.get(i);
-			if(Player.getInstance().hit(t.getX(), t.getY(), t.getRadius())){
+		for (int i = 0; i < targets.size(); i++) {
+			Target t = targets.get(i);
+			if (t.canHitPlayer && Player.getInstance().hit(t.getX(), t.getY(), t.getRadius())) {
+				t.setCanScore(false);
 				t.destroy();
 			}
 		}
 		// check if target hit each other
-		for(int i=0;i<targets.size();i++){
+		for (int i = 0; i < targets.size(); i++) {
 			Target t = targets.get(i);
-			for(int j=i+1;j<targets.size();j++){
+			for (int j = i + 1; j < targets.size(); j++) {
 				Target t2 = targets.get(j);
-				if(t.hit(t2.getX(), t2.getY(), t2.getRadius())){
+				if (t.hit(t2.getX(), t2.getY(), t2.getRadius())) {
 					t.destroy();
 					t2.destroy();
 				}
 			}
 		}
 	}
-	
-	private void addSkill(){
+
+	private void addSkill() {
 		Target t = new PlayerSkill();
 		targets.add(t);
 		RenderableHolder.addFront(t);
