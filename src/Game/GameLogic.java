@@ -21,6 +21,7 @@ public class GameLogic {
 	public void init() {
 		if(!AudioUtility.isMuted()){
 		AudioUtility.soundtrackBG.play();
+		
 		}
 	}
 

@@ -12,7 +12,7 @@ import IRenderable.IRenderable2;
 //import control.Game;
 //import control.ScreenState;
 //import ui.Clickable;
-
+import control.ScreenState;
 import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
@@ -44,6 +44,6 @@ public class PlayButton extends Clickable implements IRenderable2 {
 	@Override
 	public void onClickAction() {
 //		ScreenState.presentScreen = ScreenState.LEVEL_SELECT;
-//		ScreenState.presentScreen = ScreenState.GAME;
+	ScreenState.presentScreen = ScreenState.GAME;
 	}
 }
