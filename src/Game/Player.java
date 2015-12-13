@@ -1,7 +1,10 @@
 package Game;
 
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.Rectangle;
 
 import render.IRenderable;
 import util.Configuration;
@@ -24,9 +27,9 @@ public class Player implements IRenderable, Hitable {
 	private double hitPointRegenRate = Configuration.REGEN_SPEED;
 
 	private int HEALTH_BAR_MAX_WIDTH = 500;
-	private int HEALTH_BAR_MAX_HEIGHT = 40;
-	private int HEALTH_BAR_THICK = 5;
-	
+	private int HEALTH_BAR_MAX_HEIGHT = 50;
+	private int HEALTH_BAR_THICK = 10;
+
 	private boolean hit = false;
 
 	public static Player getInstance() {
@@ -46,11 +49,11 @@ public class Player implements IRenderable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - 150, Configuration.screenHeight / 2 - 150, null);
+		g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - 150,
+				Configuration.screenHeight / 2 - 150, null);
 		drawHealthBar(g2);
 		drawScore(g2);
-		if(hit && Configuration.SHOW_HIT_EFFECT){
-			System.out.println("im hit");
+		if (hit && Configuration.SHOW_HIT_EFFECT) {
 			DrawingUtility.drawHit(g2);
 		}
 	}
@@ -114,26 +117,37 @@ public class Player implements IRenderable, Hitable {
 
 	private void drawHealthBar(Graphics2D g2) {
 		g2.setColor(Color.GRAY);
-		g2.fillRect(0, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
+		Rectangle r = new Rectangle(0, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
 				HEALTH_BAR_MAX_WIDTH + HEALTH_BAR_THICK * 2, HEALTH_BAR_MAX_HEIGHT + HEALTH_BAR_THICK * 2);
+		Paint redtowhite = new GradientPaint(0,0,Color.DARK_GRAY,HEALTH_BAR_MAX_WIDTH/2, 0,Color.gray);
+		g2.setPaint(redtowhite);
+		g2.fill (r);
+//		g2.fillRect(0, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK * 2,
+//				HEALTH_BAR_MAX_WIDTH + HEALTH_BAR_THICK * 2, HEALTH_BAR_MAX_HEIGHT + HEALTH_BAR_THICK * 2);
+		g2.draw(r);
 		g2.setColor(Color.BLACK);
 		g2.fillRect(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
 				HEALTH_BAR_MAX_WIDTH, HEALTH_BAR_MAX_HEIGHT);
 
-		g2.setColor(Color.RED);
-		g2.fillRect(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
+		r = new Rectangle(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
 				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
+		Paint redToGreen = new GradientPaint(0,0,Color.ORANGE,HEALTH_BAR_MAX_WIDTH/2, 0,Color.RED);
+		g2.setPaint(redToGreen);
+		g2.fill (r);
+		g2.setColor(Color.RED);
+//		g2.fillRect(0 + HEALTH_BAR_THICK, Configuration.screenHeight - HEALTH_BAR_MAX_HEIGHT - HEALTH_BAR_THICK,
+//				(int) (getPercentHitPoint() * HEALTH_BAR_MAX_WIDTH / 100.0), HEALTH_BAR_MAX_HEIGHT);
 
 		if (!dead) {
 			g2.setColor(Color.YELLOW);
 			g2.setFont(DrawingUtility.drawFont);
-			g2.drawString(String.format("%.2f ", getPercentHitPoint())+"%", 0 + HEALTH_BAR_THICK,
-					Configuration.screenHeight - HEALTH_BAR_THICK*2);
+			g2.drawString(String.format("%.2f ", getPercentHitPoint()) + "%", 0 + HEALTH_BAR_THICK,
+					Configuration.screenHeight - HEALTH_BAR_THICK * 2);
 		} else {
 			g2.setColor(Color.RED);
 			g2.setFont(DrawingUtility.drawFont);
 			g2.drawString(String.format("	YOU ARE DEAD"), 0 + HEALTH_BAR_THICK,
-					Configuration.screenHeight - HEALTH_BAR_THICK*2);
+					Configuration.screenHeight - HEALTH_BAR_THICK * 2);
 		}
 
 	}
@@ -142,7 +156,8 @@ public class Player implements IRenderable, Hitable {
 		String s = String.format("SCORE : %010d", getScore());
 		g.setFont(DrawingUtility.drawFont);
 		g.setColor(Color.WHITE);
-		g.drawString(s, Configuration.screenWidth - g.getFontMetrics().stringWidth(s), Configuration.screenHeight - HEALTH_BAR_THICK);
+		g.drawString(s, Configuration.screenWidth - g.getFontMetrics().stringWidth(s),
+				Configuration.screenHeight - HEALTH_BAR_THICK);
 
 	}
 

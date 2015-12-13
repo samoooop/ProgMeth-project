@@ -13,7 +13,9 @@ public class Main {
 		frame.getContentPane().add(gameScreen);
 		frame.setVisible(true);
 		//gameScreen.requestFocus();
+		
 		frame.pack();
+		
 		GameLogic gameLogic = new GameLogic();
 		Thread logicThread = new Thread() {
 			public void run() {
@@ -34,19 +36,21 @@ public class Main {
 		};
 		Thread drawThread = new Thread() {
 			public void run() {
-				while (true) {
+				while (logicThread.isAlive()) {
 					gameScreen.repaint();
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
-					//System.out.println(logicThread.isAlive());
+					System.out.println(logicThread.isAlive());
 				}
-				
+				frame.removeAll();
+				frame.validate();
+				frame.repaint();
 			}
-
 		};
 		logicThread.start();
 		drawThread.start();
+		frame.setResizable(false);
 	}
 }

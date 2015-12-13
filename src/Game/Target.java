@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.AlphaComposite;
+
+import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
 import render.IRenderable;
@@ -216,7 +218,9 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	public void destroy() {
 		this.setDestroyed(true);
+		AudioUtility.playSound(AudioUtility.flipSound);
 		if(canScore){
+			AudioUtility.playSound(AudioUtility.clickSound);
 			RenderableHolder.addFront(new ScoreAnimation(x,y));
 			Player.getInstance().addScore(Configuration.TARGET_HIT_SCORE);
 		}

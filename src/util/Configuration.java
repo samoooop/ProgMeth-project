@@ -11,18 +11,18 @@ public class Configuration {
 	public static int animationFrameCount = 10;
 	
 	//Drawing Util
-	public static final float FONT_SIZE = 40f;
+	public static final float FONT_SIZE = 60f;
 	public static final String FONT_NAME = "ROCKETMAN.ttf"; //best is "digital-7.ttf"
 	public static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
 	//GameLogic Configuration
-	public static final int SPAWN_DELAY = 50;
+	public static final int SPAWN_DELAY = 5;
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
 	//Target Configuration
 	public static double SPEED = 5; // per tick
-	public static double SELECTED_SPEED = 10;
+	public static double SELECTED_SPEED = 30;
 	public static int TARGET_RADIUS = 20;
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
 	

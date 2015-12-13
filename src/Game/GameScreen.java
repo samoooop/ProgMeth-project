@@ -2,7 +2,6 @@ package Game;
 import javax.swing.JPanel;
 
 import util.Configuration;
-import util.DrawingUtility;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -18,12 +17,10 @@ public class GameScreen extends JPanel{
 	public static int screenWidth = Configuration.screenWidth;
 	public static int screenHeight = Configuration.screenHeight;
 	public GameScreen() {
-		//this.createBufferStrategy(2);
 		this.requestFocus();
 		this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setVisible(true);
-		DrawingUtility.setGameScreen(this);
 		this.addKeyListener(new KeyListener(){
 
 			@Override

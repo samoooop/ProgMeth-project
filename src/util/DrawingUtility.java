@@ -60,10 +60,10 @@ public class DrawingUtility {
 		         GraphicsEnvironment.getLocalGraphicsEnvironment();
 		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)));
 		     f = Font.createFont(Font.TRUETYPE_FONT, new File(directory+name)).deriveFont(Configuration.FONT_SIZE);
-		     System.out.println("This should happened");
+		     //System.out.println("This should happened");
 		} catch (IOException|FontFormatException e) {
 		     f = new Font(Font.SANS_SERIF,0,(int) Configuration.FONT_SIZE);
-		     System.out.println("This shouldn't happened");
+		     //System.out.println("This shouldn't happened");
 		}
 		return f;
 	}
