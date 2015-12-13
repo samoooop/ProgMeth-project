@@ -88,7 +88,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS + 2, Color.ORANGE, Color.RED);
+		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS+5, Color.ORANGE, Color.RED);
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
 			g2.setColor(Color.YELLOW);

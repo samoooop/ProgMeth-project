@@ -17,15 +17,15 @@ public class Configuration {
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
 	//GameLogic Configuration
-	public static final int SPAWN_DELAY = 5;
+	public static final int SPAWN_DELAY = 50;
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
 	//Target Configuration
 	public static double SPEED = 5; // per tick
 	public static double SELECTED_SPEED = 30;
-	public static int TARGET_RADIUS = 20;
+	public static int TARGET_RADIUS = 40;
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
-	public static int TAIL_ANIMATION_DELAY = 2;
+	public static int TAIL_ANIMATION_DELAY = 5;
 	
 	//Player Config
 	public static final double REGEN_SPEED = 0.005*1000;

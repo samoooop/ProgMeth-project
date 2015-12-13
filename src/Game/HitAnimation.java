@@ -3,18 +3,19 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import render.IRenderable;
+import util.Configuration;
 import util.DrawingUtility;
 
 public class HitAnimation implements IRenderable, Destroyable {
 
 	private static Color ANIMATION_COLOR = Color.ORANGE;
 	private int x, y;
-	private static int MAX_RADIUS = 40;
+	private static int MAX_RADIUS = Configuration.TARGET_RADIUS * 2;
 	private static int CIRCLE_THICK = 2;
 	private static int MAX_CHAIN_TIME = 3;
 	private static int CHAIN_DELAY_TIME = 10;
 	private static boolean CAN_CHAIN = false; // still buggy(concurrent)
-	private static int ANIMATE_SPEED = 5;
+	private static int ANIMATE_SPEED = 2;
 	private int time;
 	private int radius;
 	private boolean destroyed;
