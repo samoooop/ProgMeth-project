@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 @SuppressWarnings("serial")
-public class GameScreen extends Canvas{
+public class GameScreen extends JPanel{
 	public boolean checkboundary = false;
 	public MovingObject now;
 	public static int screenWidth = Configuration.screenWidth;
