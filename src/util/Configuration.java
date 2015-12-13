@@ -27,10 +27,15 @@ public class Configuration {
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
 	
 	//Player Config
-	public static final double REGEN_SPEED = 0.005;
+	public static final double REGEN_SPEED = 0.005*1000;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int TARGET_HIT_SCORE = 10000;
 	
 	//ScoreAnimation
 	public static final int MAX_LIFE = 50;
+	
+	//Tail Animation
+	public static final int TAIL_MAX_RADIUS = TARGET_RADIUS;
+	public static final int TAIL_MIN_RADIUS = 0;
+	public static final int TAIL_RADIUS_REDUCE_RATE = 1;
 }

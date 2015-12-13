@@ -8,6 +8,7 @@ import java.awt.AlphaComposite;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
+import util.TargetTailAnimation;
 import render.IRenderable;
 
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
@@ -58,6 +59,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	@Override
 	public void update() {
 		if (movingDelayCounter >= movingDelay) {
+			new TargetTailAnimation(x,y);
 			changePosition();
 			movingDelayCounter = 0;
 		}

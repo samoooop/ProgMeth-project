@@ -42,11 +42,11 @@ public class Main {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
-					System.out.println(logicThread.isAlive());
+					//System.out.println(logicThread.isAlive());
 				}
-				frame.removeAll();
-				frame.validate();
-				frame.repaint();
+				//frame.removeAll();
+				//frame.validate();
+				//frame.repaint();
 			}
 		};
 		logicThread.start();
