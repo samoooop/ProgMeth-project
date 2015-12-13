@@ -1,4 +1,4 @@
-package Game;
+/*package Game;
 
 import javax.swing.JFrame;
 
@@ -55,3 +55,4 @@ public class Main {
 		frame.setResizable(false);
 	}
 }
+*/

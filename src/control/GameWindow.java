@@ -19,16 +19,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
+import Game.GameLogic;
+import Game.GameScreen;
+import Game.Player;
 import util.Configuration;
 import util.InputUtility;
+import util.TimeUtility;
 
 
 
 public class GameWindow extends JFrame {
 	
 	private Title gameTitle;
-	//private Game game;
+	private GameScreen game = null;
 	//private LevelSelectScreen levelSelect;
 	//public static GameBackground gameBackground;
 	
@@ -40,7 +43,9 @@ public class GameWindow extends JFrame {
 		}
 		this.setLocationByPlatform(true);
 		Container pane = this.getContentPane();
-		addListener(pane);
+		
+		if(ScreenState.presentScreen != ScreenState.GAME)
+		{addListener(pane);}
 		
 		setFrame();
 		
@@ -79,19 +84,52 @@ public class GameWindow extends JFrame {
 			}
 			
 			//	BUG: packing doesn't get the right size
-			else if(ScreenState.presentScreen == ScreenState.GAME){
-				try {
-					game = new Game(this, ScreenState.nextLevel);
-					this.remove((JPanel) (game.getGameScreen()));
-				} catch (LevelFormatException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-					ScreenState.presentScreen = ScreenState.LEVEL_SELECT;
-				} catch (IOException e){
-					JOptionPane.showMessageDialog(null, "Level file not found.", "Error", JOptionPane.ERROR_MESSAGE);
-					ScreenState.presentScreen = ScreenState.LEVEL_SELECT;
-				}
+			 * 
+			 */
+			else if(ScreenState.presentScreen == ScreenState.GAME && game == null){
+				//this.remove(gameTitle);
+				   			     	
+				
+				
+				game = new GameScreen(this);
+					//this.remove((game));
+				GameLogic gameLogic = new GameLogic();
+				Thread logicThread = new Thread() {
+					public void run() {
+						while (!Player.getInstance().isDead()) {
+							if (!Player.getInstance().isPause()) {
+								gameLogic.logicUpdate();
+								TimeUtility.inceaseTick();
+							}
+							try {
+								Thread.sleep(Configuration.TIME_PER_TICK);
+							} catch (InterruptedException e) {
+							}
+							
+						}
+						
+					}
+
+				};
+				Thread drawThread = new Thread() {
+					public void run() {
+						while (logicThread.isAlive()) {
+							repaint();
+							try {
+								Thread.sleep(10);
+							} catch (InterruptedException e) {
+							}
+							//System.out.println(logicThread.isAlive());
+						}
+						//frame.removeAll();
+						//frame.validate();
+						//frame.repaint();
+					}
+				};
+				logicThread.start();
+				drawThread.start();				
 			}
-			*/
+			
 			
 		}
 	}
@@ -143,7 +181,7 @@ public class GameWindow extends JFrame {
 			}
 			
 		});
-		
+		if(ScreenState.presentScreen != ScreenState.GAME){
 		pane.addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
@@ -155,10 +193,10 @@ public class GameWindow extends JFrame {
 			public void mouseDragged(MouseEvent e) {
 				InputUtility.setPickedPoint(e.getX(), e.getY());
 			}
-		});
+		});}
 		
 		///////////////////////key///////////////////////////
-		
+		if(ScreenState.presentScreen != ScreenState.GAME){
 		pane.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -175,7 +213,7 @@ public class GameWindow extends JFrame {
 				InputUtility.setKeyTriggered(e.getKeyCode(), true);
 				InputUtility.setKeyPressed(e.getKeyCode(), true);
 			}
-		});
+		});}
 	}
 	
 	

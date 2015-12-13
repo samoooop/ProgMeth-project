@@ -2,7 +2,10 @@ package Game;
 
 import javax.swing.JPanel;
 
+import control.GameWindow;
+import control.ScreenState;
 import util.Configuration;
+import util.TimeUtility;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -18,11 +21,23 @@ public class GameScreen extends JPanel {
 	public static int screenWidth = Configuration.screenWidth;
 	public static int screenHeight = Configuration.screenHeight;
 
-	public GameScreen() {
-		this.requestFocus();
-		this.setDoubleBuffered(true);
+	public GameScreen(GameWindow window) {
+   super();
+		
+		ScreenState.presentScreen = ScreenState.GAME;
+		
+		window.addPanel(this);
+		//window.setFrame();
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+		this.requestFocus();
+		
+		this.setFocusable(true);
+		this.setDoubleBuffered(true);
 		this.setVisible(true);
+		
+
+		this.setDoubleBuffered(true);
+		window.pack();		
 		this.addKeyListener(new KeyListener() {
 
 			@Override

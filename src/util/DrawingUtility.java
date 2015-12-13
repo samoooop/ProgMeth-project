@@ -192,7 +192,7 @@ public class DrawingUtility {
 		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
-		g.drawImage(op.filter(meteo, null), x, y, null);
+		g.drawImage(op.filter(meteo1, null), x, y, null);
 
 	}
 
