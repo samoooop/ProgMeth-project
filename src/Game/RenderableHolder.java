@@ -1,4 +1,5 @@
 package Game;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -16,12 +17,16 @@ public class RenderableHolder {
 	 * = entities; }
 	 */
 
-	private static final RenderableHolder instance = new RenderableHolder();
+	private static RenderableHolder instance = new RenderableHolder();
 	private static ArrayList<IRenderable> entities = new ArrayList<IRenderable>();
 
 	public static RenderableHolder getInstance() {
 
 		return instance;
+	}
+
+	public static void reset() {
+		instance = new RenderableHolder();
 	}
 
 	private static Line currentLine;

@@ -22,22 +22,23 @@ public class GameScreen extends JPanel {
 	public static int screenHeight = Configuration.screenHeight;
 
 	public GameScreen(GameWindow window) {
-   super();
-		
+		super();
+
 		ScreenState.presentScreen = ScreenState.GAME;
-		
+
 		window.addPanel(this);
-		//window.setFrame();
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.requestFocus();
-		
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.setVisible(true);
-		
-
 		this.setDoubleBuffered(true);
-		window.pack();		
+		window.pack();
+
+		Player.reset();
+		RenderableHolder.reset();
+		TimeUtility.reset();
+
 		this.addKeyListener(new KeyListener() {
 
 			@Override
@@ -53,13 +54,10 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				System.out.println("HELOOOOO " + arg0.getKeyCode() + " " + KeyEvent.VK_ENTER);
-				if(arg0.getKeyCode() == 0){
-					System.out.println("HELOOOOO");
+				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
 					Player.getInstance().setPause(!Player.getInstance().isPause());
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
-					System.out.println("using skill");
 					Player.getInstance().useSkill = true;
 				}
 

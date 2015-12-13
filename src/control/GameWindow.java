@@ -80,11 +80,9 @@ public class GameWindow extends JFrame {
 			 * 
 			 */
 			else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
-				// this.remove(gameTitle);
-
+				this.remove(gameTitle);
 				Player.reset();
 				game = new GameScreen(this);
-				// this.remove((game));
 				GameLogic gameLogic = new GameLogic();
 				logicThread = new Thread() {
 					public void run() {
@@ -115,20 +113,13 @@ public class GameWindow extends JFrame {
 						self.remove((game));
 						ScreenState.presentScreen = ScreenState.TITLE;
 						System.out.println("Hey");
-						game  = null;
+						game = null;
 					}
 				};
 				logicThread.start();
 				drawThread.start();
 			}
 			this.validate();
-			//System.out.println(ScreenState.presentScreen + " " + Player.getInstance().getPercentHitPoint());
-//			if (logicThread != null) {
-//				System.out.print("	Logic is " + logicThread.isAlive());
-//			}
-//			if (drawThread != null) {
-//				System.out.println("	Draw is " + drawThread.isAlive());
-//			}
 		}
 	}
 
