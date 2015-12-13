@@ -11,11 +11,11 @@ public class TargetSpawner {
 	private static double SPAWN_DELAY_REDUCE_RATE_PER_TICK = 0.002;
 
 	private static int getSpawnMultiplyer() {
-		if (TimeUtility.getEscalatedTime() >= 55000 && TimeUtility.getEscalatedTime() <= 60000) {
+		if (TimeUtility.getEscalatedTime() >= 52000 && TimeUtility.getEscalatedTime() <= 57000) {
 			return 0;
 		}
-		if (TimeUtility.getEscalatedTime() >= 60000 && TimeUtility.getEscalatedTime() <= 65000) {
-			return 3;
+		if (TimeUtility.getEscalatedTime() >= 57000 && TimeUtility.getEscalatedTime() <= 58000) {
+			return 30;
 		}
 		return 1;
 	}

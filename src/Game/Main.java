@@ -51,6 +51,7 @@ public class Main {
 		};
 		logicThread.start();
 		drawThread.start();
+		
 		frame.setResizable(false);
 	}
 }

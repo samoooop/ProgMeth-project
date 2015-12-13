@@ -2,6 +2,7 @@ package Game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import util.AudioUtility;
 import util.Configuration;
 
 public class GameLogic {
@@ -18,8 +19,9 @@ public class GameLogic {
 	}
 
 	public void init() {
-		
-
+		if(!AudioUtility.isMuted()){
+		AudioUtility.soundtrackBG.play();
+		}
 	}
 
 	public void logicUpdate() {
