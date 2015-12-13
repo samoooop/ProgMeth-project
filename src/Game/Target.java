@@ -23,7 +23,9 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int movingDelayCounter = 0;
 	private int movingDelay = Configuration.TARGET_MOVING_DELAY;
 	private int addTailAnimationCounter = 0;
-
+    private int ran = RandomUtility.random(1, 5);
+    public int rotatecount = 1;
+    public int rotatespeed = 4;
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
@@ -88,7 +90,10 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS+5, Color.ORANGE, Color.RED);
+		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS, Color.ORANGE, Color.RED);
+		DrawingUtility.drawMeteo(g2, x-DrawingUtility.meteo1.getWidth()/2, y-DrawingUtility.meteo1.getWidth()/2,this.ran,rotatecount);
+		rotatecount += rotatespeed;
+		if(rotatecount >= 360){rotatecount =0;}
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
 			g2.setColor(Color.YELLOW);
@@ -103,6 +108,15 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public boolean isOutOfScreen(int screenWidth, int screenHeight) {
 		if (x < 0 || x > screenWidth || y < 0 || y > screenHeight) {
 			return true;

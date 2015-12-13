@@ -22,7 +22,7 @@ public class Configuration {
 	
 	//Target Configuration
 	public static double SPEED = 5; // per tick
-	public static double SELECTED_SPEED = 30;
+	public static double SELECTED_SPEED = 5;
 	public static int TARGET_RADIUS = 40;
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
 	public static int TAIL_ANIMATION_DELAY = 5;
