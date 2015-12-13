@@ -1,8 +1,4 @@
-/**
- * JSpinner: 2110215 PROG METH PROJECT
- * @author Thanawit Prasongpongchai 5631045321
- * @author Phatrasek Jirabovonvisut 5630469621
- */
+
 
 package button;
 
@@ -23,8 +19,8 @@ import util.InputUtility;
 
 public class AboutButton extends Clickable  {
 	public AboutButton(){
-		type = Clickable.CIRCLE;
-		updatePosition();
+		
+		initialize();
 	}
 
 	@Override
@@ -39,7 +35,7 @@ public class AboutButton extends Clickable  {
 	}
 
 	@Override
-	public void updatePosition() {
+	public void initialize() {
 		width = 50;
 		height = 50;
 		x = Configuration.screenWidth - width - 15;

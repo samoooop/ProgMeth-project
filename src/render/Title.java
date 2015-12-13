@@ -81,30 +81,31 @@ public class Title extends JPanel{
 		//g.drawImage(DrawingUtility.myframe,0,0,null);
 		g.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);
-		/*
-		g2.setColor(new Color(192, 192, 192));
-		g2.fillRect(0, 0, Config.screenWidth, 27);
-		g2.fillRect(0, Config.screenHeight-27, Config.screenWidth, 27);
-		g2.setColor(new Color(160, 160,160));
-		g2.fillRect(0, 27, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-30, Config.screenWidth, 3);
-		g2.setColor(new Color(128, 128,128));
-		g2.fillRect(0, 30, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-33, Config.screenWidth, 3);
-		g2.setColor(new Color(96, 96,96));
-		g2.fillRect(0, 33, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-36, Config.screenWidth, 3);
-		g2.setColor(new Color(64, 64,64));
-		g2.fillRect(0, 36, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-39, Config.screenWidth, 3);
-		g2.setColor(new Color(32, 32,32));
-		g2.fillRect(0, 39, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-42, Config.screenWidth, 3);
-		g2.setColor(new Color(0, 0,0));
-		g2.fillRect(0, 42, Config.screenWidth, 3);
-		g2.fillRect(0, Config.screenHeight-45, Config.screenWidth, 3);
 		
-		*/
+		g2.setColor(new Color(192, 192, 192));
+		g2.fillRect(0, 0, Configuration.screenWidth, 27);
+		g2.fillRect(0, Configuration.screenHeight-27, Configuration.screenWidth, 27);
+		g2.setColor(new Color(160, 160,160));
+		g2.fillRect(0, 27, Configuration.screenWidth, 3);
+		g2.fillRect(0, Configuration.screenHeight-30, Configuration.screenWidth, 3);
+		g2.setColor(new Color(128, 128,128));
+		g2.fillRect(0, 30, Configuration.screenWidth, 3);
+		g2.fillRect(0, Configuration.screenHeight-33, Configuration.screenWidth, 3);
+		g2.setColor(new Color(96, 96,96));
+		g2.fillRect(0, 33, Configuration.screenWidth, 3);
+		g2.fillRect(0, Configuration.screenHeight-36, Configuration.screenWidth, 3);
+		g2.setColor(new Color(64, 64,64));
+		g2.fillRect(0, 36, Configuration.screenWidth, 3);
+		g2.fillRect(0, Configuration.screenHeight-39, Configuration.screenWidth, 3);
+		g2.setColor(new Color(32, 32,32));
+		g2.fillRect(0, 39, Configuration.screenWidth, 3);
+		
+		g2.fillRect(0, Configuration.screenHeight-42, Configuration.screenWidth, 3);
+		g2.setColor(new Color(0, 0,0));
+		g2.fillRect(0, 42, Configuration.screenWidth, 3);
+		g2.fillRect(0, Configuration.screenHeight-45, Configuration.screenWidth, 3);
+		
+		
 		
 		
 		

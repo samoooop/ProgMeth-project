@@ -29,7 +29,7 @@ public class DrawingUtility {
 	public static final BufferedImage soundOff = loadImage("res/img/soundOffButton.png");
 	public static final BufferedImage soundOn = loadImage("res/img/soundOnButton.png");
 	public static final BufferedImage aboutButton = loadImage("res/img/aboutButton.png");
-	public static final BufferedImage undoButton = loadImage("res/img/undoButton.png");
+	public static final BufferedImage backButton = loadImage("res/img/undoButton.png");
 	public static final BufferedImage settingsButtonImg = loadImage("res/img/settingsButton.png");
 	public static final BufferedImage playButtonImg = loadImage("res/img/playButton.png");
 	public static final BufferedImage earth2 = loadImage("res/img/earth.png");

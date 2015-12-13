@@ -1,8 +1,4 @@
-/**
- * JSpinner: 2110215 PROG METH PROJECT
- * @author Thanawit Prasongpongchai 5631045321
- * @author Phatrasek Jirabovonvisut 5630469621
- */
+
 
 package button;
 
@@ -24,7 +20,7 @@ import util.InputUtility;
 
 public class PlayButton extends Clickable implements IRenderable2 {
 	public PlayButton(){
-		type = Clickable.CIRCLE;
+		
 		width = 100;
 		height = 100;
 		x = (Configuration.screenWidth - width) / 2;
@@ -42,7 +38,7 @@ public class PlayButton extends Clickable implements IRenderable2 {
 	}
 
 	@Override
-	public void updatePosition() {	
+	public void initialize() {	
 	}
 
 	@Override

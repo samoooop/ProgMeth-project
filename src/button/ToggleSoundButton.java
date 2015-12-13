@@ -1,9 +1,4 @@
-/**
- * JSpinner: 2110215 PROG METH PROJECT
- * @author Thanawit Prasongpongchai 5631045321
- * @author Phatrasek Jirabovonvisut 5630469621
- */
-
+ 
 package button;
 
 import java.awt.Color;
@@ -18,12 +13,12 @@ import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
-//import logic.Board;
+
 
 public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	public ToggleSoundButton(){
-		type = Clickable.CIRCLE;
-		updatePosition();
+		
+		initialize();
 		isMuted = true;
 	}
 
@@ -41,7 +36,7 @@ public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	}
 	
 	@Override
-	public void updatePosition() {
+	public void initialize() {
 		width = 50;
 		height = 50;
 		x = Configuration.screenWidth - width -15;

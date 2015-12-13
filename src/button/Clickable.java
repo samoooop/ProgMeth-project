@@ -1,8 +1,4 @@
-/**
- * JSpinner: 2110215 PROG METH PROJECT
- * @author Thanawit Prasongpongchai 5631045321
- * @author Phatrasek Jirabovonvisut 5630469621
- */
+
 
 package button;
 import render.*;
@@ -30,9 +26,8 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	protected int type;
 	protected boolean isVisible = true;
 	protected boolean isMuted = false;
-	public static int RECTANGLE = 0;
-	public static int CIRCLE = 1;
-	public static List<Clickable> buttons = new ArrayList<Clickable>();
+	
+	//public static List<Clickable> buttons = new ArrayList<Clickable>();
 	
 	//public static ClockWiseButton cwButton = new ClockWiseButton();
 	//public static CounterClockWiseButton ccwButton = new CounterClockWiseButton();
@@ -55,26 +50,20 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	}
 	
 	public boolean isMouseOn(){
-		if(type == RECTANGLE){
-			boolean validX = InputUtility.getPickedPoint().getX() >= x && InputUtility.getPickedPoint().getX() <= x + width;
-			boolean validY = InputUtility.getPickedPoint().getY() >= y && InputUtility.getPickedPoint().getY() <= y + height;
-			return validX && validY;
-		} else if(type == CIRCLE){
+		
 			int mx = (int) InputUtility.getPickedPoint().getX();
 			int my = (int) InputUtility.getPickedPoint().getY();
-//			System.out.println(InputUtility.getPickedPoint());
+
 			int r = Math.min(width, height) / 2; 
 			return (mx - (x + r)) * (mx - (x + r)) + (my - (y + r)) * (my - (y + r)) <= r * r;
-		} else {
-			return false;
-		}
+		
 	}
 	//ubdate here ahahahahaahahaa
 	public void update(){
-//		System.out.println(isMouseOn());
+
 		if(isMouseOn() && isVisible){
 			mouseOnAction();
-			//TODO should i use mousepicking or mousereleased?
+			
 			if(InputUtility.isMouseReleased()){
 				if(!isMuted){
 					AudioUtility.playSound(AudioUtility.clickSound);
@@ -82,7 +71,7 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 				onClickAction();
 			}
 		}
-		updatePosition();
+		initialize();
 	}
 	
 	public void onClickAction(){
@@ -95,7 +84,7 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	
 	public abstract int getZ();
 	public abstract void draw(Graphics g);
-	public abstract void updatePosition();
+	public abstract void initialize();
 	
 	protected void drawButton(Graphics g, BufferedImage buttonSprite){
 		Graphics2D g2 = (Graphics2D) g;

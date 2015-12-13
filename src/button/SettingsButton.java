@@ -1,8 +1,3 @@
-/**
- * JSpinner: 2110215 PROG METH PROJECT
- * @author Thanawit Prasongpongchai 5631045321
- * @author Phatrasek Jirabovonvisut 5630469621
- */
 
 package button;
 
@@ -18,12 +13,12 @@ import ui.*;
 import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
-//import logic.Board;
+
 
 public class SettingsButton extends Clickable {
 	public SettingsButton(){
-		type = Clickable.CIRCLE;
-		updatePosition();
+		
+		initialize();
 	}
 
 	@Override
@@ -37,7 +32,7 @@ public class SettingsButton extends Clickable {
 	}
 
 	@Override
-	public void updatePosition() {
+	public void initialize() {
 		width = 50;   // 50 naja
 		height = 50;
 		x = 25;
