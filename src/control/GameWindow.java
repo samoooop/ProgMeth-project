@@ -2,21 +2,13 @@
 package control;
 
 import render.*;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.IOException;
-
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Game.GameLogic;
@@ -26,6 +18,7 @@ import util.Configuration;
 import util.InputUtility;
 import util.TimeUtility;
 
+@SuppressWarnings("serial")
 public class GameWindow extends JFrame {
 
 	private JFrame self;
@@ -89,7 +82,7 @@ public class GameWindow extends JFrame {
 			else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
 				// this.remove(gameTitle);
 
-				Player.getInstance().reset();
+				Player.reset();
 				game = new GameScreen(this);
 				// this.remove((game));
 				GameLogic gameLogic = new GameLogic();
@@ -120,7 +113,7 @@ public class GameWindow extends JFrame {
 							}
 						}
 						self.remove((game));
-						ScreenState.presentScreen = ScreenState.REFRESH_TITLE;
+						ScreenState.presentScreen = ScreenState.TITLE;
 						System.out.println("Hey");
 						game  = null;
 					}
@@ -128,6 +121,14 @@ public class GameWindow extends JFrame {
 				logicThread.start();
 				drawThread.start();
 			}
+			this.validate();
+			//System.out.println(ScreenState.presentScreen + " " + Player.getInstance().getPercentHitPoint());
+//			if (logicThread != null) {
+//				System.out.print("	Logic is " + logicThread.isAlive());
+//			}
+//			if (drawThread != null) {
+//				System.out.println("	Draw is " + drawThread.isAlive());
+//			}
 		}
 	}
 
