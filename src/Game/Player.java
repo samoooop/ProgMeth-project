@@ -19,7 +19,7 @@ public class Player implements IRenderable, Hitable {
 	private int y = Configuration.screenHeight / 2;
 	public static int RADIUS = Configuration.PLAYER_RADIUS;
 	private long score = 0;
-	private static final Player instance = new Player();
+	private static Player instance = new Player();
 	private double hitPoint = 100;
 	private double MAX_HIT_POINT = 100;
 	private boolean dead = false;
@@ -32,7 +32,9 @@ public class Player implements IRenderable, Hitable {
 	private int HEALTH_BAR_THICK = 10;
 
 	private boolean hit = false;
-
+	public static void reset(){
+		instance = new Player();
+	}
 	public static Player getInstance() {
 
 		return instance;
