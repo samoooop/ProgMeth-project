@@ -8,15 +8,11 @@ public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
-	private static final int SPAWN_DELAY = Configuration.SPAWN_DELAY;
-	private int spawnDelayCounter;
-	private boolean canSpawnNewTarget = true;
 	private Target selected;
 
 	public GameLogic() {
 		movingObjects = new ArrayList<MovingObject>();
 		targets = new ArrayList<Target>();
-		spawnDelayCounter = 0;
 		selected = null;
 		init();
 	}
@@ -39,12 +35,13 @@ public class GameLogic {
 				t.update();
 			}
 		}
-		spawnDelayCounter++;
-		if (spawnDelayCounter >= SPAWN_DELAY && canSpawnNewTarget) {
-			spawnDelayCounter = 0;
-			spawnNewTarget();
-
-		}
+		TargetSpawner.spawnNewTarget(targets);
+//		spawnDelayCounter++;
+//		if (spawnDelayCounter >= SPAWN_DELAY && canSpawnNewTarget) {
+//			spawnDelayCounter = 0;
+//			spawnNewTarget();
+//
+//		}
 
 	}
 

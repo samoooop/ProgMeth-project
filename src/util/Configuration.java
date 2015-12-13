@@ -5,8 +5,8 @@ import java.awt.AlphaComposite;
 
 public class Configuration {
 	
-	public static int screenWidth = 1600;
-	public static int screenHeight = 900;
+	public static int screenWidth = 1200;
+	public static int screenHeight = 800;
 	
 	public static int animationFrameCount = 10;
 	
