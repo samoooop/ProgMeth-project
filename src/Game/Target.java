@@ -22,6 +22,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private boolean isSelected;
 	private int movingDelayCounter = 0;
 	private int movingDelay = Configuration.TARGET_MOVING_DELAY;
+	private int addTailAnimationCounter = 0;
 
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
@@ -59,7 +60,11 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	@Override
 	public void update() {
 		if (movingDelayCounter >= movingDelay) {
-			new TargetTailAnimation(x,y);
+			if(addTailAnimationCounter >= Configuration.TAIL_ANIMATION_DELAY){
+				new TargetTailAnimation(x,y);
+				addTailAnimationCounter = 0;
+			}
+			addTailAnimationCounter ++;
 			changePosition();
 			movingDelayCounter = 0;
 		}

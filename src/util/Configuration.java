@@ -25,6 +25,7 @@ public class Configuration {
 	public static double SELECTED_SPEED = 30;
 	public static int TARGET_RADIUS = 20;
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
+	public static int TAIL_ANIMATION_DELAY = 2;
 	
 	//Player Config
 	public static final double REGEN_SPEED = 0.005*1000;
@@ -37,5 +38,5 @@ public class Configuration {
 	//Tail Animation
 	public static final int TAIL_MAX_RADIUS = TARGET_RADIUS;
 	public static final int TAIL_MIN_RADIUS = 0;
-	public static final int TAIL_RADIUS_REDUCE_RATE = 1;
+	public static final double TAIL_RADIUS_REDUCE_RATE = 0.5;
 }
