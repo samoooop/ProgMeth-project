@@ -17,7 +17,7 @@ public class Player implements IRenderable, Hitable {
 	private Color PLAYER_COLOR = Color.GREEN;
 	private int x = Configuration.screenWidth / 2;
 	private int y = Configuration.screenHeight / 2;
-	public static int RADIUS = 150;
+	public static int RADIUS = Configuration.PLAYER_RADIUS;
 	private long score = 0;
 	private static final Player instance = new Player();
 	private double hitPoint = 100;

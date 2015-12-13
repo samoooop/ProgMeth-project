@@ -30,7 +30,9 @@ public class Configuration {
 	//Player Config
 	public static final double REGEN_SPEED = 0.005*1000;
 	public static final boolean SHOW_HIT_EFFECT = true;
+	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;
+	public static final int PLAYER_RADIUS = 150;
 	
 	//ScoreAnimation
 	public static final int MAX_LIFE = 50;
@@ -39,4 +41,5 @@ public class Configuration {
 	public static final int TAIL_MAX_RADIUS = TARGET_RADIUS;
 	public static final int TAIL_MIN_RADIUS = 0;
 	public static final double TAIL_RADIUS_REDUCE_RATE = 0.5;
+	
 }

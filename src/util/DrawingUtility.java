@@ -12,6 +12,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import Game.GameScreen;
+import Game.Player;
 import Game.RandomUtility;
 
 public class DrawingUtility {
@@ -34,28 +35,32 @@ public class DrawingUtility {
 	public static final BufferedImage earth2 = loadImage("res/img/earth.png");
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
-	
-	
+
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
-	public static BufferedImage meteo1 = resize(meteo1load,(int)(Configuration.TARGET_RADIUS*1.5),(int)(Configuration.TARGET_RADIUS*1.5));
-	
+	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
+			(int) (Configuration.TARGET_RADIUS * 1.5));
+
 	public static final BufferedImage meteo2load = loadImage("res/img/meteo2.png");
-	public static BufferedImage meteo2 = resize(meteo2load,(int)(Configuration.TARGET_RADIUS*1.5),(int)(Configuration.TARGET_RADIUS*1.5));
-	
+	public static BufferedImage meteo2 = resize(meteo2load, (int) (Configuration.TARGET_RADIUS * 1.5),
+			(int) (Configuration.TARGET_RADIUS * 1.5));
+
 	public static final BufferedImage meteo3load = loadImage("res/img/meteo3.png");
-	public static BufferedImage meteo3 = resize(meteo3load,(int)(Configuration.TARGET_RADIUS*1.5),(int)(Configuration.TARGET_RADIUS*1.5));
+	public static BufferedImage meteo3 = resize(meteo3load, (int) (Configuration.TARGET_RADIUS * 1.5),
+			(int) (Configuration.TARGET_RADIUS * 1.5));
 	public static final BufferedImage meteo4load = loadImage("res/img/meteo4.png");
-	public static BufferedImage meteo4 = resize(meteo4load,(int)(Configuration.TARGET_RADIUS*1.5),(int)(Configuration.TARGET_RADIUS*1.5));
+	public static BufferedImage meteo4 = resize(meteo4load, (int) (Configuration.TARGET_RADIUS * 1.5),
+			(int) (Configuration.TARGET_RADIUS * 1.5));
 	public static final BufferedImage meteo5load = loadImage("res/img/meteo5.png");
-	public static BufferedImage meteo5 = resize(meteo5load,(int)(Configuration.TARGET_RADIUS*1.5),(int)(Configuration.TARGET_RADIUS*1.5));
-	
+	public static BufferedImage meteo5 = resize(meteo5load, (int) (Configuration.TARGET_RADIUS * 1.5),
+			(int) (Configuration.TARGET_RADIUS * 1.5));
+
 	public static Image dimg = DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
 	public static Image earth = DrawingUtility.earth2.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
 	public static Image fireball = DrawingUtility.fireball2.getScaledInstance(115, 80, Image.SCALE_SMOOTH);
 	public static Image myframe = DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
-	
+
 	public static final Font drawFont = loadFont("res/font/", Configuration.FONT_NAME);
 
 	private static BufferedImage loadImage(String directory) {
@@ -122,12 +127,13 @@ public class DrawingUtility {
 	public static void drawCircle_2(Graphics2D g2, int x, int y, int stroke) {
 
 	}
-    public static void drawTarget(Graphics2D g2, int x, int y){
-    	g2.drawImage(DrawingUtility.meteo1, x-(int)(Configuration.TARGET_RADIUS*1.5)/2, y-(int)(Configuration.TARGET_RADIUS*1.5)/2, null);
-    	
-    	
-    	
-    }
+
+	public static void drawTarget(Graphics2D g2, int x, int y) {
+		g2.drawImage(DrawingUtility.meteo1, x - (int) (Configuration.TARGET_RADIUS * 1.5) / 2,
+				y - (int) (Configuration.TARGET_RADIUS * 1.5) / 2, null);
+
+	}
+
 	public static void drawCenteredString(Graphics2D g, String text, Rectangle rect, Font font) {
 		g.setColor(Color.BLACK);
 		// Get the FontMetrics
@@ -145,53 +151,62 @@ public class DrawingUtility {
 	}
 
 	public static void drawHit(Graphics2D g) {
-		g.setComposite(Configuration.transcluentWhite);
-		g.setColor(Color.RED);
-		g.fillRect(0, 0, Configuration.screenWidth, Configuration.screenHeight);
-		g.setComposite(Configuration.opaque);
+		if (Configuration.SHOW_HIT_EFFECT) {
+			if (Configuration.HIT_EFFECT_TYPE == 1) {
+				g.setComposite(Configuration.transcluentWhite);
+				g.setColor(Color.RED);
+				g.fillRect(0, 0, Configuration.screenWidth, Configuration.screenHeight);
+				g.setComposite(Configuration.opaque);
+			}
+			else{
+				g.setComposite(Configuration.transcluentWhite);
+				g.setColor(Color.RED);
+				g.fillOval(Configuration.screenWidth/2 - Player.RADIUS, Configuration.screenHeight/2 - Player.RADIUS, Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2);
+				g.setComposite(Configuration.opaque);
+			}
+		}
 	}
 
-   public static void drawMeteo(Graphics2D g,int x , int y,int ran,int count ){
-	   
-	   BufferedImage meteo = null;
-	   if(ran == 1){
-		   meteo = DrawingUtility.meteo1;
-	   }
-	   if(ran == 2){
-		   meteo = DrawingUtility.meteo2;
-	   }
-	   if(ran == 3){
-		   meteo = DrawingUtility.meteo3;
-	   }
-	   if(ran == 4){
-		   meteo = DrawingUtility.meteo4;
-	   }
-   
-	   if(ran ==5){
-		   meteo = DrawingUtility.meteo5;
-	   }
-	   //g.drawImage(meteo, x, y, null);
-	  
-	   double rotationRequired = Math.toRadians (count);
-	   double locationX = Configuration.TARGET_RADIUS*1.5/2;
-	   double locationY = Configuration.TARGET_RADIUS *1.5/2;
-	   AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-	   AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-   
-	   g.drawImage(op.filter(meteo, null), x, y, null);
-   
-   }
+	public static void drawMeteo(Graphics2D g, int x, int y, int ran, int count) {
 
-   public static BufferedImage resize(BufferedImage img, int newW, int newH) { 
-	    Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
-	    BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage meteo = null;
+		if (ran == 1) {
+			meteo = DrawingUtility.meteo1;
+		}
+		if (ran == 2) {
+			meteo = DrawingUtility.meteo2;
+		}
+		if (ran == 3) {
+			meteo = DrawingUtility.meteo3;
+		}
+		if (ran == 4) {
+			meteo = DrawingUtility.meteo4;
+		}
 
-	    Graphics2D g2d = dimg.createGraphics();
-	    g2d.drawImage(tmp, 0, 0, null);
-	    g2d.dispose();
+		if (ran == 5) {
+			meteo = DrawingUtility.meteo5;
+		}
+		// g.drawImage(meteo, x, y, null);
 
-	    return dimg;
-	}  
+		double rotationRequired = Math.toRadians(count);
+		double locationX = Configuration.TARGET_RADIUS * 1.5 / 2;
+		double locationY = Configuration.TARGET_RADIUS * 1.5 / 2;
+		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
+		g.drawImage(op.filter(meteo, null), x, y, null);
+
+	}
+
+	public static BufferedImage resize(BufferedImage img, int newW, int newH) {
+		Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+		BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = dimg.createGraphics();
+		g2d.drawImage(tmp, 0, 0, null);
+		g2d.dispose();
+
+		return dimg;
+	}
 
 }
