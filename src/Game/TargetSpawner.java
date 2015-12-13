@@ -23,16 +23,16 @@ public class TargetSpawner {
 		if (TimeUtility.getEscalatedTime() >= 189000 && TimeUtility.getEscalatedTime() <= 190000) {
 			return 30;
 		}
-		
+
 		return 1;
 	}
 
-	private static int getSpawnDelay(){
-		return Configuration.SPAWN_DELAY - (int)(TimeUtility.getTick()*SPAWN_DELAY_REDUCE_RATE_PER_TICK);
+	private static int getSpawnDelay() {
+		return Configuration.SPAWN_DELAY - (int) (TimeUtility.getTick() * SPAWN_DELAY_REDUCE_RATE_PER_TICK);
 	}
 
 	public static void spawnNewTarget(ArrayList<Target> targets) {
-		if(!canSpawnNewTarget){
+		if (!canSpawnNewTarget) {
 			return;
 		}
 		if (spawnDelayCounter >= getSpawnDelay()) {
@@ -42,21 +42,18 @@ public class TargetSpawner {
 			return;
 		}
 		int n = getSpawnMultiplyer();
-		//System.out.println(n + " " +TimeUtility.getTick() +" "+ TimeUtility.getEscalatedTime() + " " +getSpawnDelay() + " " + (int)(TimeUtility.getTick()*SPAWN_DELAY_REDUCE_RATE_PER_TICK));
-		while(n>0){
+		// System.out.println(n + " " +TimeUtility.getTick() +" "+
+		// TimeUtility.getEscalatedTime() + " " +getSpawnDelay() + " " +
+		// (int)(TimeUtility.getTick()*SPAWN_DELAY_REDUCE_RATE_PER_TICK));
+		while (n > 0) {
 			Target t = new Target();
 			targets.add(t);
 			RenderableHolder.addBack(t);
 			n--;
 		}
 	}
-public static boolean baseDrop(int millisec){
-	
-	
-	
-	
-}
 
-
+	public static void baseDrop(int millisec) {
+	}
 
 }
