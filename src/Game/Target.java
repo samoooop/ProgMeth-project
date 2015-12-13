@@ -8,7 +8,6 @@ import java.awt.AlphaComposite;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.TargetTailAnimation;
 import render.IRenderable;
 
 public class Target implements Updatable, IRenderable, Destroyable, Hitable {
@@ -23,9 +22,9 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	private int movingDelayCounter = 0;
 	private int movingDelay = Configuration.TARGET_MOVING_DELAY;
 	private int addTailAnimationCounter = 0;
-    private int ran = RandomUtility.random(1, 5);
-    public int rotatecount = 1;
-    public int rotatespeed = 4;
+	private int ran = RandomUtility.random(1, 5);
+	public int rotatecount = 1;
+	public int rotatespeed = 4;
 	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
@@ -62,11 +61,11 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	@Override
 	public void update() {
 		if (movingDelayCounter >= movingDelay) {
-			if(addTailAnimationCounter >= Configuration.TAIL_ANIMATION_DELAY){
-				new TargetTailAnimation(x,y);
+			if (addTailAnimationCounter >= Configuration.TAIL_ANIMATION_DELAY) {
+				new TargetTailAnimation(x, y);
 				addTailAnimationCounter = 0;
 			}
-			addTailAnimationCounter ++;
+			addTailAnimationCounter++;
 			changePosition();
 			movingDelayCounter = 0;
 		}
@@ -90,10 +89,13 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS, Color.ORANGE, Color.RED);
-		DrawingUtility.drawMeteo(g2, x-DrawingUtility.meteo1.getWidth()/2, y-DrawingUtility.meteo1.getWidth()/2,this.ran,rotatecount);
+		DrawingUtility.drawCircle(g2, x, y, RADIUS, RADIUS, Color.YELLOW, Color.ORANGE);
+		DrawingUtility.drawMeteo(g2, x - DrawingUtility.meteo1.getWidth() / 2, y - DrawingUtility.meteo1.getWidth() / 2,
+				this.ran, rotatecount);
 		rotatecount += rotatespeed;
-		if(rotatecount >= 360){rotatecount =0;}
+		if (rotatecount >= 360) {
+			rotatecount = 0;
+		}
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
 			g2.setColor(Color.RED);
@@ -108,15 +110,6 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public boolean isOutOfScreen(int screenWidth, int screenHeight) {
 		if (x < 0 || x > screenWidth || y < 0 || y > screenHeight) {
 			return true;
@@ -240,12 +233,12 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 	public void destroy() {
 		this.setDestroyed(true);
 		AudioUtility.playSound(AudioUtility.flipSound);
-		if(canScore){
+		if (canScore) {
 			AudioUtility.playSound(AudioUtility.clickSound);
-			RenderableHolder.addFront(new ScoreAnimation(x,y));
+			RenderableHolder.addFront(new ScoreAnimation(x, y));
 			Player.getInstance().addScore(Configuration.TARGET_HIT_SCORE);
 		}
 		RenderableHolder.addFront(new HitAnimation(x, y, 1));
-		
+
 	}
 }

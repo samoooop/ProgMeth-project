@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import util.AudioUtility;
-import util.Configuration;
 
 public class GameLogic {
 	// private static GameLogic instance = new GameLogic();
@@ -25,26 +24,21 @@ public class GameLogic {
 	}
 
 	public void logicUpdate() {
+		if(Player.getInstance().useSkill){
+			addSkill();
+		}
 		Player.getInstance().update();
 		selectionHandler(); // a function handle mouse Target selection
 		checkHit();
 		for (Iterator<Target> itr = targets.iterator(); itr.hasNext();) {
 			Target t = itr.next();
 			if (t.isDestroyed()) {
-				//System.out.println(String.format("Remove(%d,%d) Total : %d %d", t.getX(), t.getY(), targets.size(),RenderableHolder.getInstance().getEntities().size()));
 				itr.remove();
 			} else {
 				t.update();
 			}
 		}
 		TargetSpawner.spawnNewTarget(targets);
-//		spawnDelayCounter++;
-//		if (spawnDelayCounter >= SPAWN_DELAY && canSpawnNewTarget) {
-//			spawnDelayCounter = 0;
-//			spawnNewTarget();
-//
-//		}
-
 	}
 
 	public void spawnNewTarget() {
@@ -94,5 +88,11 @@ public class GameLogic {
 				}
 			}
 		}
+	}
+	
+	private void addSkill(){
+		Target t = new PlayerSkill();
+		targets.add(t);
+		RenderableHolder.addFront(t);
 	}
 }

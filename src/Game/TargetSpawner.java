@@ -42,7 +42,7 @@ public class TargetSpawner {
 			return;
 		}
 		int n = getSpawnMultiplyer();
-		System.out.println(n + " " +TimeUtility.getTick() +" "+ TimeUtility.getEscalatedTime() + " " +getSpawnDelay() + " " + (int)(TimeUtility.getTick()*SPAWN_DELAY_REDUCE_RATE_PER_TICK));
+		//System.out.println(n + " " +TimeUtility.getTick() +" "+ TimeUtility.getEscalatedTime() + " " +getSpawnDelay() + " " + (int)(TimeUtility.getTick()*SPAWN_DELAY_REDUCE_RATE_PER_TICK));
 		while(n>0){
 			Target t = new Target();
 			targets.add(t);

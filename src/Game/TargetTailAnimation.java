@@ -1,11 +1,11 @@
-package util;
+package Game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import Game.Destroyable;
-import Game.RenderableHolder;
 import render.IRenderable;
+import util.Configuration;
+import util.DrawingUtility;
 
 public class TargetTailAnimation implements IRenderable,Destroyable {
 	private int x;
@@ -29,7 +29,7 @@ public class TargetTailAnimation implements IRenderable,Destroyable {
 	}
 	@Override
 	public void draw(Graphics2D g2) {
-		DrawingUtility.drawCircle(g2, x, y, 0, (int)radius, Color.WHITE, Color.ORANGE);
+		DrawingUtility.drawCircle(g2, x, y, (int)radius - 5, (int)radius, Color.YELLOW, Color.ORANGE);
 		radius -= Configuration.TAIL_RADIUS_REDUCE_RATE;
 	}
 	

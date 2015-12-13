@@ -12,7 +12,7 @@ public class Configuration {
 	
 	//Drawing Util
 	public static final float FONT_SIZE = 60f;
-	public static final String FONT_NAME = "ROCKETMAN.ttf"; //best is "digital-7.ttf"
+	public static final String FONT_NAME = "HUMANOID.ttf"; //best is "digital-7.ttf"
 	public static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
@@ -41,5 +41,6 @@ public class Configuration {
 	public static final int TAIL_MAX_RADIUS = TARGET_RADIUS;
 	public static final int TAIL_MIN_RADIUS = 0;
 	public static final double TAIL_RADIUS_REDUCE_RATE = 0.5;
+	public static final boolean ENABLE_ANTIALLIASING = false;
 	
 }

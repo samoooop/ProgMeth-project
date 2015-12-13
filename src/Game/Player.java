@@ -25,6 +25,7 @@ public class Player implements IRenderable, Hitable {
 	private boolean dead = false;
 	public static int hitDamage = 5;
 	private double hitPointRegenRate = Configuration.REGEN_SPEED;
+	public boolean useSkill = false;
 
 	private int HEALTH_BAR_MAX_WIDTH = 500;
 	private int HEALTH_BAR_MAX_HEIGHT = 50;
@@ -63,6 +64,7 @@ public class Player implements IRenderable, Hitable {
 			regen();
 		}
 		hit = false;
+		useSkill = false;
 	}
 
 	@Override
