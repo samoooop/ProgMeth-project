@@ -30,6 +30,7 @@ import util.TimeUtility;
 
 public class GameWindow extends JFrame {
 	
+	private JFrame self ; 
 	private Title gameTitle;
 	private GameScreen game = null;
 	//private LevelSelectScreen levelSelect;
@@ -37,6 +38,7 @@ public class GameWindow extends JFrame {
 	
 	public GameWindow(){
 		super("myProject");
+		self = this;
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e1) {
@@ -119,17 +121,16 @@ public class GameWindow extends JFrame {
 								Thread.sleep(10);
 							} catch (InterruptedException e) {
 							}
-							//System.out.println(logicThread.isAlive());
 						}
-						//frame.removeAll();
-						//frame.validate();
-						//frame.repaint();
+						self.remove((game));
+						ScreenState.presentScreen = ScreenState.REFRESH_TITLE;
+						System.out.println("Hey");
 					}
 				};
 				logicThread.start();
 				drawThread.start();				
 			}
-			
+			System.out.println(ScreenState.presentScreen);
 			
 		}
 	}
