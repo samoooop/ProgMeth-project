@@ -17,6 +17,13 @@ public class TargetSpawner {
 		if (TimeUtility.getEscalatedTime() >= 57000 && TimeUtility.getEscalatedTime() <= 58000) {
 			return 30;
 		}
+		if (TimeUtility.getEscalatedTime() >= 110000 && TimeUtility.getEscalatedTime() <= 120000) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 189000 && TimeUtility.getEscalatedTime() <= 190000) {
+			return 30;
+		}
+		
 		return 1;
 	}
 
