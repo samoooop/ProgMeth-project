@@ -22,13 +22,13 @@ public class Configuration {
 	
 	//Target Configuration
 	public static double SPEED = 5; // per tick
-	public static double SELECTED_SPEED = 5;
+	public static double SELECTED_SPEED = 7;
 	public static int TARGET_RADIUS = 40;
 	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
 	public static int TAIL_ANIMATION_DELAY = 5;
 	
 	//Player Config
-	public static final double REGEN_SPEED = 0.005*1000;
+	public static final double REGEN_SPEED = 0.005;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;

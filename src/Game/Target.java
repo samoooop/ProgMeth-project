@@ -96,7 +96,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		if(rotatecount >= 360){rotatecount =0;}
 		if (isSelected) {
 			g2.setComposite(transcluentWhite);
-			g2.setColor(Color.YELLOW);
+			g2.setColor(Color.RED);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 			g2.setComposite(opaque);
 		} else if (isMouseOver()) {
