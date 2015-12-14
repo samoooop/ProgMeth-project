@@ -1,8 +1,6 @@
 package Game;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-
 import render.IRenderable;
 import util.Configuration;
 import util.DrawingUtility;
@@ -10,21 +8,14 @@ import util.TimeUtility;
 
 public class Player implements IRenderable, Hitable {
 
-	@SuppressWarnings("unused")
-	private Color PLAYER_COLOR = Color.GREEN;
 	private int x = Configuration.screenWidth / 2;
 	private int y = Configuration.screenHeight / 2;
 	public static int RADIUS = Configuration.PLAYER_RADIUS;
 	private long score = 0;
 	private static Player instance = new Player();
-	private double hitPoint = 100;
-	private double MAX_HIT_POINT = 100;
+	private double hitPoint = Configuration.MAX_HIT_POINT;
 	private boolean dead = false;
-	public static int hitDamage = 5;
-	private double hitPointRegenRate = Configuration.REGEN_SPEED;
 	public boolean useSkill = false;
-
-
 
 	private boolean hit = false;
 
@@ -49,6 +40,7 @@ public class Player implements IRenderable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
+		DrawingUtility.drawPlayer(g2);
 		DrawingUtility.drawHealthBar(g2);
 		DrawingUtility.drawScore(g2);
 		if (hit && Configuration.SHOW_HIT_EFFECT) {
@@ -69,7 +61,7 @@ public class Player implements IRenderable, Hitable {
 		double dist = Target.calculateDistance(this.x, this.y, x, y);
 		if (Player.RADIUS + r > dist) {
 			hit = true;
-			reduceHitPoint(hitDamage);
+			reduceHitPoint(Configuration.HIT_DAMAGE);
 			return true;
 		}
 		return false;
@@ -88,7 +80,7 @@ public class Player implements IRenderable, Hitable {
 	}
 
 	public double getPercentHitPoint() {
-		return 1.0 * hitPoint * 100 / MAX_HIT_POINT;
+		return 1.0 * hitPoint * 100 / Configuration.MAX_HIT_POINT;
 	}
 
 	public void reduceHitPoint(int d) {
@@ -101,9 +93,9 @@ public class Player implements IRenderable, Hitable {
 	}
 
 	public void regen() {
-		hitPoint += hitPointRegenRate;
-		if (hitPoint > MAX_HIT_POINT)
-			hitPoint = MAX_HIT_POINT;
+		hitPoint += Configuration.REGEN_SPEED;
+		if (hitPoint > Configuration.MAX_HIT_POINT)
+			hitPoint = Configuration.MAX_HIT_POINT;
 	}
 
 	public int getX() {

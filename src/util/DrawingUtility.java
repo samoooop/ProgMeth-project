@@ -252,10 +252,13 @@ public class DrawingUtility {
 		if (util.DrawingUtility.earth != null) {
 			g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
-		} else {
+		}
+		if (util.DrawingUtility.thugglasses != null && Configuration.DRAW_GLASS) {
 			g2.drawImage(DrawingUtility.thugglasses, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 6,
 					null);
+		}
+		if (util.DrawingUtility.hat != null && Configuration.DRAW_HAT) {
 			g2.drawImage(DrawingUtility.hat, Configuration.screenWidth / 2 - (int) (Configuration.PLAYER_RADIUS * 1.2),
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS
 							- (int) (Configuration.PLAYER_RADIUS / 1.5),

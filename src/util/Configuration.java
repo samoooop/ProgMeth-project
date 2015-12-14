@@ -2,6 +2,7 @@
 package util;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 
 public class Configuration {
 
@@ -31,6 +32,7 @@ public class Configuration {
 	public static int TAIL_ANIMATION_DELAY = 5;
 
 	// Player Config
+	public static Color PLAYER_COLOR = Color.GREEN;
 	public static final double REGEN_SPEED = 0.005;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
@@ -39,6 +41,11 @@ public class Configuration {
 	public static int HEALTH_BAR_MAX_WIDTH = 500;
 	public static int HEALTH_BAR_MAX_HEIGHT = 50;
 	public static int HEALTH_BAR_THICK = 10;
+	public static double MAX_HIT_POINT = 100;
+	public static int HIT_DAMAGE = 5;
+	public static boolean canUseSkill = true;
+	public static boolean DRAW_HAT = false;
+	public static boolean DRAW_GLASS = false;
 
 	// ScoreAnimation
 	public static final int MAX_LIFE = 100;
