@@ -3,17 +3,12 @@ package button;
 
 import Game.*;
 import render.*;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 import IRenderable.IRenderable2;
 
-import java.util.ArrayList;
-
-import button.*;
 //import ui.winpanel.*;
 import util.AudioUtility;
 import util.DrawingUtility;

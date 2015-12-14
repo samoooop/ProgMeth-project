@@ -1,23 +1,18 @@
 
 package button;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
-import IRenderable.IRenderable2;
 import control.ScreenState;
 import render.IRenderable;
-import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility3;
-
 
 public class BackButton extends Clickable implements IRenderable {
-	public BackButton(){
-		
+	public BackButton() {
+
 		initialize();
 	}
 
@@ -32,27 +27,28 @@ public class BackButton extends Clickable implements IRenderable {
 	}
 
 	@Override
-	public void initialize(){
+	public void initialize() {
 		x = 10;
 		y = 10;
 		width = 50;
 		height = 50;
 	}
-	
+
 	@Override
 	public void onClickAction() {
-//		JOptionPane.showMessageDialog(null, "BACK");
-		
-		if(ScreenState.presentScreen == ScreenState.GAME)
-			if(JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame score will not be saved.", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+		// JOptionPane.showMessageDialog(null, "BACK");
+
+		if (ScreenState.presentScreen == ScreenState.GAME)
+			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame score will not be saved.",
+					"Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 				ScreenState.presentScreen = ScreenState.TITLE;
-		//WinPanel.setVisible(false);
-		//HelpPanel.setVisible(false);
+		// WinPanel.setVisible(false);
+		// HelpPanel.setVisible(false);
 	}
 
 	@Override
 	public void draw(Graphics2D a) {
 		drawButton(a, DrawingUtility.backButton);
-		
+
 	}
 }
