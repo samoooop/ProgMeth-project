@@ -4,7 +4,7 @@ import java.awt.Point;
 public class InputUtility {
 	static private boolean mouseLeftPressed;
 	static private boolean mouseLeftTriggered;
-	static private Point mouseLocation;
+	static private Point mouseLocation = new Point(0,0);
 	static private boolean mouseMoved;
 	
 	public static boolean isMouseLeftTriggered() {
