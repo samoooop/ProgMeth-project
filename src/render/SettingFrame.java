@@ -109,7 +109,11 @@ public class SettingFrame extends JFrame {
 				Configuration.screenHeight = Integer.parseInt(ht.getText());
 				String text = "Apply\n";
 				text += "screenWidth = "+ wt.getText() +"\n"+"screenHeight = "+ ht.getText() ;
-                JOptionPane.showMessageDialog(null, text);}
+                JOptionPane.showMessageDialog(null, text);
+                
+                Title.wind.setSizeImidiate();
+			     
+			}
 			
 			        catch(NumberFormatException e1){
 				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

@@ -70,7 +70,12 @@ public class GameWindow extends JFrame {
 	public void addPanel(JPanel jp) {
 		this.getContentPane().add(jp);
 	}
-
+ public void setSizeImidiate(){
+	 setSize(Configuration.screenWidth + 16, Configuration.screenHeight + 24);
+	 validate();
+ }
+	
+	
 	public void setFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Configuration.screenWidth + 16, Configuration.screenHeight + 24);

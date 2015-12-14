@@ -21,10 +21,10 @@ import util.InputUtility3;
 
 public class PlayButton extends Clickable implements IRenderable2 {
 	public PlayButton(){
-		
+		x = Configuration.screenWidth/2 - width/ 2;
 		width = 100;
 		height = 100;
-		x = (Configuration.screenWidth - width) / 2;
+		
 		y = (Configuration.screenHeight) / 2+(int)((Configuration.screenHeight)*0.25);
 	}
 

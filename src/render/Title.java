@@ -35,9 +35,13 @@ public class Title extends JPanel{
 	        Image.SCALE_SMOOTH);
 	public Image earth =  DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2,
 	        Image.SCALE_SMOOTH);
+	
+	public static GameWindow wind;
+	
+	
 	public Title(GameWindow window){
           super();
-		
+		this.wind = window;
 		ScreenState.presentScreen = ScreenState.TITLE;
 		AudioUtility.bgm.loop();
 		window.addPanel(this);
