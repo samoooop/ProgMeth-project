@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -33,12 +32,12 @@ public class DrawingUtility {
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
-	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS*2,Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/2, Image.SCALE_SMOOTH);
+	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 2, Image.SCALE_SMOOTH);
 	public static final BufferedImage hatb = loadImage("res/img/obey.png");
-	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS*2,(int)(Configuration.PLAYER_RADIUS*1.8), Image.SCALE_SMOOTH);
-	
-	
-	
+	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			(int) (Configuration.PLAYER_RADIUS * 1.8), Image.SCALE_SMOOTH);
+
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
 			(int) (Configuration.TARGET_RADIUS * 1.5));
@@ -59,7 +58,8 @@ public class DrawingUtility {
 
 	public static Image dimg = DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
-	public static Image earth = DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2, Image.SCALE_SMOOTH);
+	public static Image earth = DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			Configuration.PLAYER_RADIUS * 2, Image.SCALE_SMOOTH);
 	public static Image fireball = DrawingUtility.fireball2.getScaledInstance(115, 80, Image.SCALE_SMOOTH);
 	public static Image myframe = DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
@@ -89,13 +89,11 @@ public class DrawingUtility {
 	private static Font loadFont(String directory, String name) {
 		Font f;
 		try {
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(directory + name)));
-			f = Font.createFont(Font.TRUETYPE_FONT, new File(directory + name)).deriveFont(Configuration.FONT_SIZE);
-			// System.out.println("This should happened");
+			ClassLoader load = DrawingUtility.class.getClassLoader();
+			f = Font.createFont(Font.TRUETYPE_FONT, load.getResourceAsStream(directory + name))
+					.deriveFont(Configuration.FONT_SIZE);
 		} catch (IOException | FontFormatException e) {
 			f = new Font(Font.SANS_SERIF, 0, (int) Configuration.FONT_SIZE);
-			// System.out.println("This shouldn't happened");
 		}
 		return f;
 	}
@@ -138,22 +136,6 @@ public class DrawingUtility {
 
 	}
 
-	public static void drawCenteredString(Graphics2D g, String text, Rectangle rect, Font font) {
-		g.setColor(Color.BLACK);
-		// Get the FontMetrics
-		FontMetrics metrics = g.getFontMetrics(font);
-		// Determine the X coordinate for the text
-		int x = (rect.width - metrics.stringWidth(text)) / 2;
-		// Determine the Y coordinate for the text
-		int y = ((rect.height - metrics.getHeight()) / 2) - metrics.getAscent();
-		// Set the font
-		g.setFont(font);
-		// Draw the String
-		g.drawString(text, x, y);
-		// Dispose the Graphics
-		// g.dispose();
-	}
-
 	public static void drawHit(Graphics2D g) {
 		if (Configuration.SHOW_HIT_EFFECT) {
 			if (Configuration.HIT_EFFECT_TYPE == 1) {
@@ -174,23 +156,23 @@ public class DrawingUtility {
 
 	public static void drawMeteo(Graphics2D g, int x, int y, int ran, int count) {
 
-		BufferedImage meteo = null;
-		if (ran == 1) {
-			meteo = DrawingUtility.meteo1;
-		}
-		if (ran == 2) {
-			meteo = DrawingUtility.meteo2;
-		}
-		if (ran == 3) {
-			meteo = DrawingUtility.meteo3;
-		}
-		if (ran == 4) {
-			meteo = DrawingUtility.meteo4;
-		}
-
-		if (ran == 5) {
-			meteo = DrawingUtility.meteo5;
-		}
+		// BufferedImage meteo = null;
+		// if (ran == 1) {
+		// meteo = DrawingUtility.meteo1;
+		// }
+		// if (ran == 2) {
+		// meteo = DrawingUtility.meteo2;
+		// }
+		// if (ran == 3) {
+		// meteo = DrawingUtility.meteo3;
+		// }
+		// if (ran == 4) {
+		// meteo = DrawingUtility.meteo4;
+		// }
+		//
+		// if (ran == 5) {
+		// meteo = DrawingUtility.meteo5;
+		// }
 		// g.drawImage(meteo, x, y, null);
 
 		double rotationRequired = Math.toRadians(count);
