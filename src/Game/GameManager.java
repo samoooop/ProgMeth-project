@@ -64,6 +64,7 @@ public class GameManager {
 	}
 
 	public void endGame() {
+		util.AudioUtility.pauseBG();
 		this.end = true;
 		frame.remove(gs);
 		ScreenState.presentScreen = ScreenState.TITLE;
