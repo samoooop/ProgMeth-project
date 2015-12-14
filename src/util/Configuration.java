@@ -18,7 +18,6 @@ public class Configuration {
 	
 	//GameLogic Configuration
 	public static final int SPAWN_DELAY = 50 ;
-	public static final int SPAWN_DELAY =50 ;
 	
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
