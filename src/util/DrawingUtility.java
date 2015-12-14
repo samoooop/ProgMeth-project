@@ -33,12 +33,12 @@ public class DrawingUtility {
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
-	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS*2,Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/2, Image.SCALE_SMOOTH);
+	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 2, Image.SCALE_SMOOTH);
 	public static final BufferedImage hatb = loadImage("res/img/ScumbagSteveHat.png");
-	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS*2,(int)(Configuration.PLAYER_RADIUS*1.8), Image.SCALE_SMOOTH);
-	
-	
-	
+	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			(int) (Configuration.PLAYER_RADIUS * 1.8), Image.SCALE_SMOOTH);
+
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
 			(int) (Configuration.TARGET_RADIUS * 1.5));
@@ -59,7 +59,8 @@ public class DrawingUtility {
 
 	public static Image dimg = DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
-	public static Image earth = DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2, Image.SCALE_SMOOTH);
+	public static Image earth = DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
+			Configuration.PLAYER_RADIUS * 2, Image.SCALE_SMOOTH);
 	public static Image fireball = DrawingUtility.fireball2.getScaledInstance(115, 80, Image.SCALE_SMOOTH);
 	public static Image myframe = DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
@@ -89,13 +90,11 @@ public class DrawingUtility {
 	private static Font loadFont(String directory, String name) {
 		Font f;
 		try {
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(directory + name)));
-			f = Font.createFont(Font.TRUETYPE_FONT, new File(directory + name)).deriveFont(Configuration.FONT_SIZE);
-			// System.out.println("This should happened");
+			ClassLoader load = DrawingUtility.class.getClassLoader();
+			f = Font.createFont(Font.TRUETYPE_FONT, load.getResourceAsStream(directory + name))
+					.deriveFont(Configuration.FONT_SIZE);
 		} catch (IOException | FontFormatException e) {
 			f = new Font(Font.SANS_SERIF, 0, (int) Configuration.FONT_SIZE);
-			// System.out.println("This shouldn't happened");
 		}
 		return f;
 	}
