@@ -21,13 +21,9 @@ import util.InputUtility3;
 
 public class PlayButton extends Clickable implements IRenderable2 {
 	public PlayButton(){
-		x = Configuration.screenWidth/2 - width/ 2;
-		width = 100;
-		height = 100;
 		
-		y = (Configuration.screenHeight) / 2+(int)((Configuration.screenHeight)*0.25);
+		initialize();
 	}
-
 	@Override
 	public int getZ() {
 		return 10000;
@@ -36,10 +32,18 @@ public class PlayButton extends Clickable implements IRenderable2 {
 	@Override
 	public void draw(Graphics g) {
 		drawButton(g, DrawingUtility.playButtonImg);
+		//System.out.println(Configuration.screenWidth);
 	}
 
 	@Override
 	public void initialize() {	
+		width = 100;
+		height = 100;
+		x = (Configuration.screenWidth/2)-width/2;
+		
+		y = (Configuration.screenHeight) / 2+(int)((Configuration.screenHeight)*0.25);
+	
+	
 	}
 
 	@Override
