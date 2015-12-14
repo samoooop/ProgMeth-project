@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
+import control.ScreenState;
+
 //Fill import
 
 public class HighScoreUtility {
@@ -84,8 +86,16 @@ public class HighScoreUtility {
 				highScoreRecord[i] = highScoreRecord[i-1];
 			}
 			String a1 = JOptionPane.showInputDialog(null, "Congratulation, you are ranked " + (index + 1) + "\nPlease enter your name", "High score", JOptionPane.INFORMATION_MESSAGE);
-			   highScoreRecord[index] = new HighScoreRecord(a1, score);
-			try {
+			if(a1 == null){
+				return;
+			}   
+			
+			highScoreRecord[index] = new HighScoreRecord(a1, score);
+			
+			
+			   
+			   
+			   try {
 				
 				BufferedWriter out = new BufferedWriter(new FileWriter("highscore"));
 				String name = "";
