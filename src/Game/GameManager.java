@@ -9,6 +9,7 @@ public class GameManager {
 	public static GameManager instance;
 	private Thread logicThread;
 	private Thread drawingThread;
+	private Thread inputThread;
 	private GameWindow frame;
 	private GameScreen gs;
 	private boolean end;
@@ -26,9 +27,13 @@ public class GameManager {
 	}
 
 	public void newGame() {
+		this.end = false;
+		this.pause = false;
 		gs = new GameScreen(frame);
-
 		GameLogic gameLogic = new GameLogic();
+		Player.reset();
+		util.TimeUtility.reset();
+		RenderableHolder.reset();
 		logicThread = new Thread() {
 			public void run() {
 				while (!end) {
@@ -58,8 +63,15 @@ public class GameManager {
 
 			}
 		};
+		inputThread = new Thread() {
+			public void run() {
+
+			}
+		};
 		logicThread.start();
 		drawingThread.start();
+		inputThread.start();
+		System.out.println("Start!");
 		util.AudioUtility.playBG(0);
 	}
 
