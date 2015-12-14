@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import javax.swing.JOptionPane;
 import util.Configuration;
 import util.DrawingUtility;
+import util.HighScoreUtility;
 
 public class AboutButton extends Clickable {
 	public AboutButton() {
@@ -35,7 +36,10 @@ public class AboutButton extends Clickable {
 
 	@Override
 	public void onClickAction() {
-		JOptionPane.showMessageDialog(null, "Top 10 player", "About", JOptionPane.INFORMATION_MESSAGE);
+		
+		//JOptionPane.showMessageDialog(null, "Top 10 player", "About", JOptionPane.INFORMATION_MESSAGE);
+	    HighScoreUtility.displayTop10();
+	
 	}
 
 }
