@@ -11,18 +11,14 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Game.GameLogic;
 import Game.GameManager;
 import Game.GameScreen;
-import Game.Player;
 import util.Configuration;
 import util.InputUtility3;
-import util.TimeUtility;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
 
-	private JFrame self;
 	private Title gameTitle;
 	private GameScreen game = null;
 	Thread logicThread;
@@ -31,7 +27,6 @@ public class GameWindow extends JFrame {
 
 	public GameWindow() {
 		super("myProject");
-		self = this;
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e1) {
@@ -58,43 +53,6 @@ public class GameWindow extends JFrame {
 				this.remove(gameTitle);
 			} else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
 				this.remove(gameTitle);
-				// Player.reset();
-				// game = new GameScreen(this);
-				// GameLogic gameLogic = new GameLogic();
-				// logicThread = new Thread() {
-				// public void run() {
-				// while (!Player.getInstance().isDead()) {
-				// if (!Player.getInstance().isPause()) {
-				// gameLogic.logicUpdate();
-				// TimeUtility.inceaseTick();
-				// }
-				// try {
-				// Thread.sleep(Configuration.TIME_PER_TICK);
-				// } catch (InterruptedException e) {
-				// }
-				//
-				// }
-				//
-				// }
-				//
-				// };
-				// drawThread = new Thread() {
-				// public void run() {
-				// while (logicThread.isAlive()) {
-				// repaint();
-				// try {
-				// Thread.sleep(10);
-				// } catch (InterruptedException e) {
-				// }
-				// }
-				// self.remove((game));
-				// ScreenState.presentScreen = ScreenState.TITLE;
-				// //System.out.println("Hey");
-				// game = null;
-				// }
-				// };
-				// logicThread.start();
-				// drawThread.start();
 				gm.newGame();
 				try {
 					synchronized (gm) {
