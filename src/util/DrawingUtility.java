@@ -32,88 +32,37 @@ public class DrawingUtility {
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
-	
-	
-	 public static final BufferedImage logoText2 = loadImage("res/img/logotext.png");
-		public static BufferedImage logoText = resize(logoText2, (int) (Configuration.PLAYER_RADIUS * 3),
-				(int) (Configuration.PLAYER_RADIUS /2));
-		
-		
-		public static final BufferedImage logo2 = loadImage("res/img/mylogo.png");
-		public static BufferedImage logo = resize(logo2, (int) (Configuration.PLAYER_RADIUS * 1.5),
-				(int) (Configuration.PLAYER_RADIUS *1.5));
-		
-		
-		public static final BufferedImage cloud11 = loadImage("res/img/cloud1.png");
-		public static BufferedImage cloud1 = resize(cloud11, (int) (Configuration.PLAYER_RADIUS * 3),
-				(int) (Configuration.PLAYER_RADIUS *1));
-		
-		
-		public static final BufferedImage cloud22 = loadImage("res/img/cloud2.png");
-		public static BufferedImage cloud2 = resize(cloud22, (int) (Configuration.PLAYER_RADIUS * 2),
-				(int) (Configuration.PLAYER_RADIUS *1));
-		
-		
-		public static final BufferedImage cloud33 = loadImage("res/img/cloud3.png");
-		public static BufferedImage cloud3 = resize(cloud33, (int) (Configuration.PLAYER_RADIUS * 1.5),
-				(int) (Configuration.PLAYER_RADIUS *0.8));
-		
-		
-		public static final BufferedImage cloud44 = loadImage("res/img/cloud4.png");
-		public static BufferedImage cloud4 = resize(cloud44, (int) (Configuration.PLAYER_RADIUS * 2.7),
-				(int) (Configuration.PLAYER_RADIUS *0.8));
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public static final BufferedImage logoText2 = loadImage("res/img/logotext.png");
+	public static BufferedImage logoText = resize(logoText2, (int) (Configuration.PLAYER_RADIUS * 3),
+			(int) (Configuration.PLAYER_RADIUS / 2));
+
+	public static final BufferedImage logo2 = loadImage("res/img/mylogo.png");
+	public static BufferedImage logo = resize(logo2, (int) (Configuration.PLAYER_RADIUS * 1.5),
+			(int) (Configuration.PLAYER_RADIUS * 1.5));
+
+	public static final BufferedImage cloud11 = loadImage("res/img/cloud1.png");
+	public static BufferedImage cloud1 = resize(cloud11, (int) (Configuration.PLAYER_RADIUS * 3),
+			(int) (Configuration.PLAYER_RADIUS * 1));
+
+	public static final BufferedImage cloud22 = loadImage("res/img/cloud2.png");
+	public static BufferedImage cloud2 = resize(cloud22, (int) (Configuration.PLAYER_RADIUS * 2),
+			(int) (Configuration.PLAYER_RADIUS * 1));
+
+	public static final BufferedImage cloud33 = loadImage("res/img/cloud3.png");
+	public static BufferedImage cloud3 = resize(cloud33, (int) (Configuration.PLAYER_RADIUS * 1.5),
+			(int) (Configuration.PLAYER_RADIUS * 0.8));
+
+	public static final BufferedImage cloud44 = loadImage("res/img/cloud4.png");
+	public static BufferedImage cloud4 = resize(cloud44, (int) (Configuration.PLAYER_RADIUS * 2.7),
+			(int) (Configuration.PLAYER_RADIUS * 0.8));
+
 	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 2, Image.SCALE_SMOOTH);
 	public static final BufferedImage hatb = loadImage("res/img/ScumbagSteveHat.png");
 	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			(int) (Configuration.PLAYER_RADIUS * 1.8), Image.SCALE_SMOOTH);
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
 			(int) (Configuration.TARGET_RADIUS * 1.5));
@@ -252,4 +201,65 @@ public class DrawingUtility {
 		return dimg;
 	}
 
+	public static void drawScore(Graphics2D g) {
+		String s = String.format("SCORE : %010d", Player.getInstance().getScore());
+		g.setFont(DrawingUtility.drawFont);
+		g.setColor(Color.WHITE);
+		g.drawString(s, Configuration.screenWidth - g.getFontMetrics().stringWidth(s),
+				Configuration.screenHeight - Configuration.HEALTH_BAR_THICK);
+
+	}
+
+	public static void drawHealthBar(Graphics2D g2) {
+		g2.setColor(Color.GRAY);
+		Rectangle r = new Rectangle(0,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK * 2,
+				Configuration.HEALTH_BAR_MAX_WIDTH + Configuration.HEALTH_BAR_THICK * 2,
+				Configuration.HEALTH_BAR_MAX_HEIGHT + Configuration.HEALTH_BAR_THICK * 2);
+		Paint redtowhite = new GradientPaint(0, 0, Color.DARK_GRAY, Configuration.HEALTH_BAR_MAX_WIDTH / 2, 0,
+				Color.gray);
+		g2.setPaint(redtowhite);
+		g2.fill(r);
+		g2.draw(r);
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0 + Configuration.HEALTH_BAR_THICK,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK,
+				Configuration.HEALTH_BAR_MAX_WIDTH, Configuration.HEALTH_BAR_MAX_HEIGHT);
+
+		r = new Rectangle(0 + Configuration.HEALTH_BAR_THICK,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK,
+				(int) (Player.getInstance().getPercentHitPoint() * Configuration.HEALTH_BAR_MAX_WIDTH / 100.0),
+				Configuration.HEALTH_BAR_MAX_HEIGHT);
+		Paint redToGreen = new GradientPaint(0, 0, Color.ORANGE, Configuration.HEALTH_BAR_MAX_WIDTH / 2, 0, Color.RED);
+		g2.setPaint(redToGreen);
+		g2.fill(r);
+		g2.setColor(Color.RED);
+		if (!Player.getInstance().isDead()) {
+			g2.setColor(Color.YELLOW);
+			g2.setFont(DrawingUtility.drawFont);
+			g2.drawString(String.format("%.2f ", Player.getInstance().getPercentHitPoint()) + "%",
+					0 + Configuration.HEALTH_BAR_THICK,
+					Configuration.screenHeight - Configuration.HEALTH_BAR_THICK * 2);
+		} else {
+			g2.setColor(Color.RED);
+			g2.setFont(DrawingUtility.drawFont);
+			g2.drawString(String.format("	YOU ARE DEAD"), 0 + Configuration.HEALTH_BAR_THICK,
+					Configuration.screenHeight - Configuration.HEALTH_BAR_THICK * 2);
+		}
+	}
+
+	public static void drawPlayer(Graphics2D g2) {
+		if (util.DrawingUtility.earth != null) {
+			g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
+					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
+		} else {
+			g2.drawImage(DrawingUtility.thugglasses, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
+					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 6,
+					null);
+			g2.drawImage(DrawingUtility.hat, Configuration.screenWidth / 2 - (int) (Configuration.PLAYER_RADIUS * 1.2),
+					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS
+							- (int) (Configuration.PLAYER_RADIUS / 1.5),
+					null);
+		}
+	}
 }
