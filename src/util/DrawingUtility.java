@@ -32,12 +32,88 @@ public class DrawingUtility {
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
+	
+	
+	 public static final BufferedImage logoText2 = loadImage("res/img/logotext.png");
+		public static BufferedImage logoText = resize(logoText2, (int) (Configuration.PLAYER_RADIUS * 3),
+				(int) (Configuration.PLAYER_RADIUS /2));
+		
+		
+		public static final BufferedImage logo2 = loadImage("res/img/mylogo.png");
+		public static BufferedImage logo = resize(logo2, (int) (Configuration.PLAYER_RADIUS * 1.5),
+				(int) (Configuration.PLAYER_RADIUS *1.5));
+		
+		
+		public static final BufferedImage cloud11 = loadImage("res/img/cloud1.png");
+		public static BufferedImage cloud1 = resize(cloud11, (int) (Configuration.PLAYER_RADIUS * 3),
+				(int) (Configuration.PLAYER_RADIUS *1));
+		
+		
+		public static final BufferedImage cloud22 = loadImage("res/img/cloud2.png");
+		public static BufferedImage cloud2 = resize(cloud22, (int) (Configuration.PLAYER_RADIUS * 2),
+				(int) (Configuration.PLAYER_RADIUS *1));
+		
+		
+		public static final BufferedImage cloud33 = loadImage("res/img/cloud3.png");
+		public static BufferedImage cloud3 = resize(cloud33, (int) (Configuration.PLAYER_RADIUS * 1.5),
+				(int) (Configuration.PLAYER_RADIUS *0.8));
+		
+		
+		public static final BufferedImage cloud44 = loadImage("res/img/cloud4.png");
+		public static BufferedImage cloud4 = resize(cloud44, (int) (Configuration.PLAYER_RADIUS * 2.7),
+				(int) (Configuration.PLAYER_RADIUS *0.8));
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 2, Image.SCALE_SMOOTH);
 	public static final BufferedImage hatb = loadImage("res/img/ScumbagSteveHat.png");
 	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			(int) (Configuration.PLAYER_RADIUS * 1.8), Image.SCALE_SMOOTH);
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
 			(int) (Configuration.TARGET_RADIUS * 1.5));
