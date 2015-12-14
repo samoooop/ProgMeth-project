@@ -23,8 +23,9 @@ import util.DrawingUtility;
 
 public class SettingFrame extends JFrame {
 	public SettingFrame(){
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		 JPanel set = new JPanel();
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		 
+		JPanel set = new JPanel();
 		 set.setPreferredSize(new Dimension(600,200));
 		 set.setLayout(new BorderLayout());
 	  	
@@ -62,35 +63,7 @@ public class SettingFrame extends JFrame {
 	        sizepanel.add(a2);
 	
 	        sizepanel.add(apply);
-	         apply.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					//GameManager.resizeScreen();
-					try {
-						Configuration.screenWidth = Integer.parseInt(wt.getText());
-						Configuration.screenHeight = Integer.parseInt(ht.getText());
-						String text = "Apply\n";
-						text += "screenWidth = "+ wt.getText() +"\n"+"screenHeight = "+ ht.getText() ;
-	                    JOptionPane.showMessageDialog(null, text);}
-					
-					        catch(NumberFormatException e1){
-						JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-					                  }
-			 	             
-				
-				
-				
-				
-				
-				
-				}
-			             
 	         
-	         
-	         
-	         });
-	
 	        
 	        
 	        
@@ -117,9 +90,7 @@ public class SettingFrame extends JFrame {
      setdifficult.add(easy);
      setdifficult.add(normal);
      setdifficult.add(hard);
-    easy.setSelected(false);
-    normal.setSelected(false);
-    hard.setSelected(false);
+    
 	
 	set.add(setdifficult,BorderLayout.SOUTH);
 	
@@ -128,7 +99,44 @@ public class SettingFrame extends JFrame {
 	this.pack();
 	this.setVisible(true);
 	this.setResizable(false);
-	
+	apply.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			//GameManager.resizeScreen();
+			try {
+				Configuration.screenWidth = Integer.parseInt(wt.getText());
+				Configuration.screenHeight = Integer.parseInt(ht.getText());
+				String text = "Apply\n";
+				text += "screenWidth = "+ wt.getText() +"\n"+"screenHeight = "+ ht.getText() ;
+                JOptionPane.showMessageDialog(null, text);}
+			
+			        catch(NumberFormatException e1){
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			                  }
+	 	             
+		
+		if(easy.isSelected()){
+			
+			//for samooop 
+		}
+        if(normal.isSelected()){
+			
+			//for samooop 
+		}
+        if(hard.isSelected()){
+			
+			//for samooop 
+		}
+		
+		
+		}
+	             
+     
+     
+     
+     });
+
 	
 	}
 

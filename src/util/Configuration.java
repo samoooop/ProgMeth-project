@@ -17,7 +17,7 @@ public class Configuration {
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
 	//GameLogic Configuration
-	public static final int SPAWN_DELAY = 50/50 ;
+	public static final int SPAWN_DELAY =50 ;
 	
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
