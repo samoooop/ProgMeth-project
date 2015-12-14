@@ -54,8 +54,13 @@ public class Player implements IRenderable, Hitable {
 
 	@Override
 	public void draw(Graphics2D g2) {
-		g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - 150,
-				Configuration.screenHeight / 2 - 150, null);
+		g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
+				Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
+		if (TimeUtility.getEscalatedTime() >= 54600 && TimeUtility.getEscalatedTime() <= 57225){
+			g2.drawImage(DrawingUtility.thugglasses,Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/6,null);
+			
+			
+		}
 		drawHealthBar(g2);
 		drawScore(g2);
 		if (hit && Configuration.SHOW_HIT_EFFECT) {

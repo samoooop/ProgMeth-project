@@ -17,7 +17,8 @@ public class Configuration {
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
 	//GameLogic Configuration
-	public static final int SPAWN_DELAY = 50;
+	public static final int SPAWN_DELAY = 50 ;
+	
 	public static final int TIME_PER_TICK = 20; // mils per tick
 	
 	//Target Configuration
@@ -28,7 +29,7 @@ public class Configuration {
 	public static int TAIL_ANIMATION_DELAY = 5;
 	
 	//Player Config
-	public static final double REGEN_SPEED = 0.005;
+	public static final double REGEN_SPEED = 0.005*1000;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;

@@ -33,13 +33,13 @@ public class Title extends JPanel{
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
 	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
 	        Image.SCALE_SMOOTH);
-	public Image earth =  DrawingUtility.earth2.getScaledInstance(300, 300,
+	public Image earth =  DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2,
 	        Image.SCALE_SMOOTH);
 	public Title(GameWindow window){
           super();
 		
 		ScreenState.presentScreen = ScreenState.TITLE;
-		
+		AudioUtility.bgm.loop();
 		window.addPanel(this);
 		window.setFrame();
 		setPreferredSize(new Dimension(Configuration.screenWidth, Configuration.screenHeight));

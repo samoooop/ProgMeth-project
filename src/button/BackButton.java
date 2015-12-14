@@ -42,7 +42,7 @@ public class BackButton extends Clickable implements IRenderable2 {
 //		JOptionPane.showMessageDialog(null, "BACK");
 		
 		if(ScreenState.presentScreen == ScreenState.GAME)
-			if(JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame progress will not be saved.", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+			if(JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame score will not be saved.", "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 				ScreenState.presentScreen = ScreenState.TITLE;
 		//WinPanel.setVisible(false);
 		//HelpPanel.setVisible(false);

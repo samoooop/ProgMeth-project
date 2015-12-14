@@ -32,7 +32,9 @@ public class DrawingUtility {
 	public static final BufferedImage earth2 = loadImage("res/img/earth.png");
 	public static final BufferedImage fireball2 = loadImage("res/img/fireball.png");
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
-
+	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
+	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS*2,Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/2, Image.SCALE_SMOOTH);
+	
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),
 			(int) (Configuration.TARGET_RADIUS * 1.5));
@@ -53,7 +55,7 @@ public class DrawingUtility {
 
 	public static Image dimg = DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
-	public static Image earth = DrawingUtility.earth2.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+	public static Image earth = DrawingUtility.earth2.getScaledInstance(Configuration.PLAYER_RADIUS*2, Configuration.PLAYER_RADIUS*2, Image.SCALE_SMOOTH);
 	public static Image fireball = DrawingUtility.fireball2.getScaledInstance(115, 80, Image.SCALE_SMOOTH);
 	public static Image myframe = DrawingUtility.myframe2.getScaledInstance(Configuration.screenWidth,
 			Configuration.screenHeight, Image.SCALE_SMOOTH);
@@ -67,6 +69,7 @@ public class DrawingUtility {
 			a = ImageIO.read(load.getResource(directory));
 		} catch (Exception e) {
 			a = null;
+			e.printStackTrace();
 		}
 		return a;
 	}

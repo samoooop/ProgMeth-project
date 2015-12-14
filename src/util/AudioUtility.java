@@ -19,6 +19,7 @@ public class AudioUtility {
 			a = Applet.newAudioClip((load.getResource(directory)).toURI().toURL());
 		} catch (Exception e) {
 			a = null;
+			e.printStackTrace();
 		}
 		return a;
 	}

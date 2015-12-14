@@ -11,10 +11,28 @@ public class TargetSpawner {
 	private static double SPAWN_DELAY_REDUCE_RATE_PER_TICK = 0.002;
 
 	private static int getSpawnMultiplyer() {
-		if (TimeUtility.getEscalatedTime() >= 52000 && TimeUtility.getEscalatedTime() <= 57000) {
+		if (TimeUtility.getEscalatedTime() >= 52500 && TimeUtility.getEscalatedTime() <= 57225) {
 			return 0;
 		}
-		if (TimeUtility.getEscalatedTime() >= 57000 && TimeUtility.getEscalatedTime() <= 58000) {
+		if (TimeUtility.getEscalatedTime() >= 57225 && TimeUtility.getEscalatedTime() <= 58235) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 60235 && TimeUtility.getEscalatedTime() <= 61235) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 63735 && TimeUtility.getEscalatedTime() <= 64735) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 70235 && TimeUtility.getEscalatedTime() <= 71235) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 73735 && TimeUtility.getEscalatedTime() <=  74735) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >=76935 && TimeUtility.getEscalatedTime() <= 77935) {
+			return 30;
+		}
+		if (TimeUtility.getEscalatedTime() >= 80235 && TimeUtility.getEscalatedTime() <= 81235) {
 			return 30;
 		}
 		if (TimeUtility.getEscalatedTime() >= 110000 && TimeUtility.getEscalatedTime() <= 11000) {

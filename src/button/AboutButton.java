@@ -44,11 +44,7 @@ public class AboutButton extends Clickable  {
 	
 	@Override
 	public void onClickAction() {
-		JOptionPane.showMessageDialog(null, "JSpinner: a game by\n"
-								+ "Thanawit Prasongpongchai 5631045321\n"
-								+ "Phatrasek Jirabovonvisut 5630469621\n"
-								+ "for course 2110215 PROG METH (2014/1)\n"
-								+ "Computer Engineering Chulalongkorn University", "About", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Top 10 player", "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	
