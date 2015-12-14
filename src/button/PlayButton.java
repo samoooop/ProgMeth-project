@@ -15,13 +15,9 @@ import util.DrawingUtility;
 
 public class PlayButton extends Clickable {
 	public PlayButton(){
-		x = Configuration.screenWidth/2 - width/ 2;
-		width = 100;
-		height = 100;
 		
-		y = (Configuration.screenHeight) / 2+(int)((Configuration.screenHeight)*0.25);
+		initialize();
 	}
-
 	@Override
 	public int getZ() {
 		return 10000;
@@ -30,10 +26,18 @@ public class PlayButton extends Clickable {
 	@Override
 	public void draw(Graphics2D g) {
 		drawButton(g, DrawingUtility.playButtonImg);
+		//System.out.println(Configuration.screenWidth);
 	}
 
 	@Override
 	public void initialize() {	
+		width = 100;
+		height = 100;
+		x = (Configuration.screenWidth/2)-width/2;
+		
+		y = (Configuration.screenHeight) / 2+(int)((Configuration.screenHeight)*0.25);
+	
+	
 	}
 
 	@Override

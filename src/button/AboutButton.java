@@ -22,6 +22,7 @@ public class AboutButton extends Clickable {
 	public void draw(Graphics2D g) {
 
 		drawButton(g, DrawingUtility.aboutButton);
+		//System.out.println(Configuration.screenWidth);
 	}
 
 	@Override

@@ -17,10 +17,10 @@ public class TargetSpawner {
 		if (TimeUtility.getEscalatedTime() >= 57225 && TimeUtility.getEscalatedTime() <= 58235) {
 			return 30;
 		}
-		if (TimeUtility.getEscalatedTime() >= 60235 && TimeUtility.getEscalatedTime() <= 61235) {
+		if (TimeUtility.getEscalatedTime() >= 60035 && TimeUtility.getEscalatedTime() <= 61035) {
 			return 30;
 		}
-		if (TimeUtility.getEscalatedTime() >= 63735 && TimeUtility.getEscalatedTime() <= 64735) {
+		if (TimeUtility.getEscalatedTime() >= 63535 && TimeUtility.getEscalatedTime() <= 64535) {
 			return 30;
 		}
 		if (TimeUtility.getEscalatedTime() >= 70235 && TimeUtility.getEscalatedTime() <= 71235) {

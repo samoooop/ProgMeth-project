@@ -126,7 +126,7 @@ public class Title extends JPanel{
 			renderList.get(i).draw(g2);
 		}
 	
-		 g.drawImage(DrawingUtility.cloud1, (int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3.2), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null);  
+		    g.drawImage(DrawingUtility.cloud1, (int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3.2), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null);  
 			
 			g.drawImage(DrawingUtility.cloud4, (int) (Configuration.screenWidth/2+Configuration.PLAYER_RADIUS *0.0), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.9), null);
 			g.drawImage(DrawingUtility.cloud3, (int) (Configuration.screenWidth/2+Configuration.PLAYER_RADIUS *0.8), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null); 
