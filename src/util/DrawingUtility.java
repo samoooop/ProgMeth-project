@@ -137,22 +137,6 @@ public class DrawingUtility {
 
 	}
 
-	public static void drawCenteredString(Graphics2D g, String text, Rectangle rect, Font font) {
-		g.setColor(Color.BLACK);
-		// Get the FontMetrics
-		FontMetrics metrics = g.getFontMetrics(font);
-		// Determine the X coordinate for the text
-		int x = (rect.width - metrics.stringWidth(text)) / 2;
-		// Determine the Y coordinate for the text
-		int y = ((rect.height - metrics.getHeight()) / 2) - metrics.getAscent();
-		// Set the font
-		g.setFont(font);
-		// Draw the String
-		g.drawString(text, x, y);
-		// Dispose the Graphics
-		// g.dispose();
-	}
-
 	public static void drawHit(Graphics2D g) {
 		if (Configuration.SHOW_HIT_EFFECT) {
 			if (Configuration.HIT_EFFECT_TYPE == 1) {
@@ -172,26 +156,6 @@ public class DrawingUtility {
 	}
 
 	public static void drawMeteo(Graphics2D g, int x, int y, int ran, int count) {
-
-		BufferedImage meteo = null;
-		if (ran == 1) {
-			meteo = DrawingUtility.meteo1;
-		}
-		if (ran == 2) {
-			meteo = DrawingUtility.meteo2;
-		}
-		if (ran == 3) {
-			meteo = DrawingUtility.meteo3;
-		}
-		if (ran == 4) {
-			meteo = DrawingUtility.meteo4;
-		}
-
-		if (ran == 5) {
-			meteo = DrawingUtility.meteo5;
-		}
-		// g.drawImage(meteo, x, y, null);
-
 		double rotationRequired = Math.toRadians(count);
 		double locationX = Configuration.TARGET_RADIUS * 1.5 / 2;
 		double locationY = Configuration.TARGET_RADIUS * 1.5 / 2;
