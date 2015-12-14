@@ -2,7 +2,6 @@ package util;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
-import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -29,16 +28,16 @@ public class AudioUtility {
 		}
 		return a;
 	}
-	
+
 	private static Clip loadClip(String directory) {
 		Clip c;
 		try {
 			c = AudioSystem.getClip();
 			ClassLoader load = DrawingUtility.class.getClassLoader();
-			//a = Applet.newClip((load.getResource(directory)).getFile());
+			// a = Applet.newClip((load.getResource(directory)).getFile());
 			AudioInputStream ais = (AudioSystem.getAudioInputStream(load.getResource(directory)));
 			c.open(ais);
-			//c.loop(1);
+			// c.loop(1);
 		} catch (Exception e) {
 			c = null;
 		}
