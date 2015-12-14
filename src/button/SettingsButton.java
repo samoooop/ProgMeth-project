@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
+import render.SettingFrame;
 //import control.Game;
 //import control.ScreenState;
 import ui.*;
@@ -39,9 +40,9 @@ public class SettingsButton extends Clickable {
 		y = Configuration.screenHeight - width - 25;
 	}
 	
-	/*@Override
+	@Override
 	public void onClickAction() {
-		GameSettings.settingsFrame.setVisible(true);
+		SettingFrame a = new SettingFrame();
 	}
-	*/
+	
 }
