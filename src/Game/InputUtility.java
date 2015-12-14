@@ -15,8 +15,6 @@ public class InputUtility {
 		InputUtility.mouseLeftTriggered = mousLeftTriggered;
 	}
 
-	
-
 	public static void setMouseLeftDown(boolean pressed) {
 		InputUtility.mouseLeftPressed = pressed;
 	}

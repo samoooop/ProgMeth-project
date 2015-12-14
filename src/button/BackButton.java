@@ -1,7 +1,6 @@
 
 package button;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
@@ -19,11 +18,6 @@ public class BackButton extends Clickable implements IRenderable {
 	@Override
 	public int getZ() {
 		return 10000;
-	}
-
-	@Override
-	public void draw(Graphics g) {
-		drawButton(g, DrawingUtility.backButton);
 	}
 
 	@Override

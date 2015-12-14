@@ -16,7 +16,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import IRenderable.IRenderable2;
 import button.AboutButton;
 import button.PlayButton;
 import button.SettingsButton;
@@ -29,7 +28,7 @@ import util.DrawingUtility;
 import util.InputUtility3;
 
 public class Title extends JPanel{
-	private List<IRenderable2> renderList = new ArrayList<IRenderable2>();
+	private List<IRenderable> renderList = new ArrayList<IRenderable>();
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
 	public Image dimg =  DrawingUtility.gameBG.getScaledInstance(Configuration.screenWidth, Configuration.screenHeight,
 	        Image.SCALE_SMOOTH);
@@ -81,9 +80,9 @@ public class Title extends JPanel{
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		g.drawImage(dimg,0,0,null);
+		g2.drawImage(dimg,0,0,null);
 		//g.drawImage(DrawingUtility.myframe,0,0,null);
-		g.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
+		g2.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);
 		
 		g2.setColor(new Color(192, 192, 192));
@@ -124,7 +123,7 @@ public class Title extends JPanel{
 		
 		
 		for(int i = 0; i < renderList.size(); i++){
-			renderList.get(i).draw(g);
+			renderList.get(i).draw(g2);
 		}
 	
 		 g.drawImage(DrawingUtility.cloud1, (int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3.2), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null);  
@@ -153,7 +152,7 @@ public class Title extends JPanel{
 	}
 	
 	
-	private void addBoth(IRenderable2 a){
+	private void addBoth(IRenderable a){
 		if(a instanceof IUpdatable){
 			renderList.add(a);
 			updateList.add((IUpdatable)a);

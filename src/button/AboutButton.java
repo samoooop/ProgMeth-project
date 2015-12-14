@@ -1,25 +1,15 @@
 
-
 package button;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
-
-import IRenderable.IRenderable2;
-//import control.Game;
-//import control.ScreenState;
-import ui.*;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility3;
-//import logic.Board;
 
-public class AboutButton extends Clickable  {
-	public AboutButton(){
-		
+public class AboutButton extends Clickable {
+	public AboutButton() {
+
 		initialize();
 	}
 
@@ -29,8 +19,8 @@ public class AboutButton extends Clickable  {
 	}
 
 	@Override
-	public void draw(Graphics g) {
-		
+	public void draw(Graphics2D g) {
+
 		drawButton(g, DrawingUtility.aboutButton);
 	}
 
@@ -41,19 +31,10 @@ public class AboutButton extends Clickable  {
 		x = Configuration.screenWidth - width - 15;
 		y = Configuration.screenHeight - 75;
 	}
-	
+
 	@Override
 	public void onClickAction() {
 		JOptionPane.showMessageDialog(null, "Top 10 player", "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	
-	
-
-	
-
-	
-	
-
-	
 }

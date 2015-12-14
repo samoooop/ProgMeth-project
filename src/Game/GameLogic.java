@@ -83,6 +83,10 @@ public class GameLogic {
 			for (int j = i + 1; j < targets.size(); j++) {
 				Target t2 = targets.get(j);
 				if (t.hit(t2.getX(), t2.getY(), t2.getRadius())) {
+					if(t instanceof PlayerSkill || t2 instanceof PlayerSkill){
+						t.setCanScore(false);
+						t2.setCanScore(false);
+					}
 					t.destroy();
 					t2.destroy();
 				}

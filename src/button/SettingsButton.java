@@ -28,7 +28,7 @@ public class SettingsButton extends Clickable {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		drawButton(g, DrawingUtility.settingsButtonImg);
 	}
 

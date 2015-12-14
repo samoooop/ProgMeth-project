@@ -1,21 +1,16 @@
  
 package button;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-import javax.swing.JOptionPane;
-
-import IRenderable.IRenderable2;
 //import ui.Clickable;
 
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility3;
 
 
-public class ToggleSoundButton extends Clickable implements IRenderable2 {
+public class ToggleSoundButton extends Clickable {
 	public ToggleSoundButton(){
 		
 		initialize();
@@ -28,7 +23,7 @@ public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		if(AudioUtility.isMuted())
 			drawButton(g, DrawingUtility.soundOff);
 		else
@@ -51,4 +46,5 @@ public class ToggleSoundButton extends Clickable implements IRenderable2 {
 		else
 			AudioUtility.bgm.loop();
 	}
+
 }

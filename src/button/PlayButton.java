@@ -2,13 +2,8 @@
 
 package button;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JOptionPane;
-
-import IRenderable.IRenderable2;
 //import control.Game;
 //import control.ScreenState;
 //import ui.Clickable;
@@ -16,10 +11,9 @@ import control.ScreenState;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility3;
 //import logic.Board;
 
-public class PlayButton extends Clickable implements IRenderable2 {
+public class PlayButton extends Clickable {
 	public PlayButton(){
 		x = Configuration.screenWidth/2 - width/ 2;
 		width = 100;
@@ -34,7 +28,7 @@ public class PlayButton extends Clickable implements IRenderable2 {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		drawButton(g, DrawingUtility.playButtonImg);
 	}
 

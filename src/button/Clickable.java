@@ -6,16 +6,13 @@ import render.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
-import IRenderable.IRenderable2;
-
 //import ui.winpanel.*;
 import util.AudioUtility;
 import util.DrawingUtility;
 import util.InputUtility3;
 //import logic.*;
 
-public abstract class Clickable implements IRenderable2, IUpdatable {
+public abstract class Clickable implements IRenderable, IUpdatable {
 	protected int x, y;
 	protected int width, height;
 
@@ -89,7 +86,7 @@ public abstract class Clickable implements IRenderable2, IUpdatable {
 
 	public abstract int getZ();
 
-	public abstract void draw(Graphics g);
+	public abstract void draw(Graphics2D g);
 
 	public abstract void initialize();
 

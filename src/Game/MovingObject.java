@@ -21,11 +21,8 @@ public class MovingObject implements IRenderable {
 	protected int i;
 	protected int radius = 40;
 	private Line objectline;
-	private boolean isLeaded;
 	private Point startPoint;
 	private Point endPoint;
-	private Point nowPoint;
-	private Point nextPoint;
 	private double firstangle;
 	public int startside;
 	private static final int speed = 1;

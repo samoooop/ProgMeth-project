@@ -6,6 +6,7 @@ import util.Configuration;
 import util.TimeUtility;
 
 public class GameManager {
+	public static Object inputInterrupter = new Object();
 	public static GameManager instance;
 	private Thread logicThread;
 	private Thread drawingThread;
@@ -65,7 +66,15 @@ public class GameManager {
 		};
 		inputThread = new Thread() {
 			public void run() {
-
+				while (!end) {
+					try {
+						synchronized (inputInterrupter) {
+							inputInterrupter.wait();
+						}
+					} catch (InterruptedException e) {
+					}
+					System.out.println("HELOOOO");
+				}
 			}
 		};
 		logicThread.start();
