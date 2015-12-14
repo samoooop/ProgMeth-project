@@ -58,7 +58,7 @@ public class Player implements IRenderable, Hitable {
 				Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
 		if (TimeUtility.getEscalatedTime() >= 54600 && TimeUtility.getEscalatedTime() <= 57225){
 			g2.drawImage(DrawingUtility.thugglasses,Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/6,null);
-			
+			g2.drawImage(DrawingUtility.hat,Configuration.screenWidth / 2 - (int)(Configuration.PLAYER_RADIUS*1.2),Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS-(int)(Configuration.PLAYER_RADIUS/1.5),null);
 			
 		}
 		drawHealthBar(g2);
