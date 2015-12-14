@@ -3,6 +3,7 @@ package Game;
 import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
+import util.HighScoreUtility;
 import util.TimeUtility;
 
 public class GameManager {
@@ -88,6 +89,7 @@ public class GameManager {
 		util.AudioUtility.pauseBG();
 		this.end = true;
 		frame.remove(gs);
+		HighScoreUtility.recordHighScore((int) Player.getInstance().getScore());
 		ScreenState.presentScreen = ScreenState.TITLE;
 		synchronized (this) {
 			this.notifyAll();

@@ -178,7 +178,7 @@ public class HighScoreUtility {
 		}
 	}
 	
-	private static final byte[] key = "RmAAq2b5d8fjgu9dhher".getBytes();
+	private static final byte[] key = "METEOHERO".getBytes();
 	
 	//This method does both encryption and decryption 
 	private static String getXORed(String in){
