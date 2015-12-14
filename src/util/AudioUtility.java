@@ -38,7 +38,7 @@ public class AudioUtility {
 			//a = Applet.newClip((load.getResource(directory)).getFile());
 			AudioInputStream ais = (AudioSystem.getAudioInputStream(load.getResource(directory)));
 			c.open(ais);
-			c.loop(1);
+			//c.loop(1);
 		} catch (Exception e) {
 			c = null;
 		}
