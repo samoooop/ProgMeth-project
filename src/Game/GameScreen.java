@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.JPanel;
 
+import button.BackButton;
 import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
@@ -20,7 +21,7 @@ public class GameScreen extends JPanel {
 	public MovingObject now;
 	public static int screenWidth = Configuration.screenWidth;
 	public static int screenHeight = Configuration.screenHeight;
-
+    public static BackButton backButton;
 	public GameScreen(GameWindow window) {
 		super();
 
@@ -38,7 +39,8 @@ public class GameScreen extends JPanel {
 		Player.reset();
 		RenderableHolder.reset();
 		TimeUtility.reset();
-
+		backButton  = new BackButton();
+		RenderableHolder.add(backButton);
 		this.addKeyListener(new KeyListener() {
 
 			@Override
@@ -132,6 +134,7 @@ public class GameScreen extends JPanel {
 		}
 		requestFocus();
 		RenderableHolder.draw(g2d);
+		this.backButton.update();
 		InputUtility.update();
 	}
 

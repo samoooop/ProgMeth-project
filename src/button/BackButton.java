@@ -9,11 +9,13 @@ import javax.swing.JOptionPane;
 
 import IRenderable.IRenderable2;
 import control.ScreenState;
+import render.IRenderable;
+import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility;
 
 
-public class BackButton extends Clickable implements IRenderable2 {
+public class BackButton extends Clickable implements IRenderable {
 	public BackButton(){
 		
 		initialize();
@@ -31,8 +33,8 @@ public class BackButton extends Clickable implements IRenderable2 {
 
 	@Override
 	public void initialize(){
-		x = 5;
-		y =  10;
+		x = 10;
+		y = 10;
 		width = 50;
 		height = 50;
 	}
@@ -46,5 +48,11 @@ public class BackButton extends Clickable implements IRenderable2 {
 				ScreenState.presentScreen = ScreenState.TITLE;
 		//WinPanel.setVisible(false);
 		//HelpPanel.setVisible(false);
+	}
+
+	@Override
+	public void draw(Graphics2D a) {
+		drawButton(a, DrawingUtility.backButton);
+		
 	}
 }
