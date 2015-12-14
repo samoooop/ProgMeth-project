@@ -34,6 +34,10 @@ public class DrawingUtility {
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
 	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS*2,Configuration.PLAYER_RADIUS+Configuration.PLAYER_RADIUS/2, Image.SCALE_SMOOTH);
+	public static final BufferedImage hatb = loadImage("res/img/obey.png");
+	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS*2,(int)(Configuration.PLAYER_RADIUS*1.8), Image.SCALE_SMOOTH);
+	
+	
 	
 	public static final BufferedImage meteo1load = loadImage("res/img/meteo1.png");
 	public static BufferedImage meteo1 = resize(meteo1load, (int) (Configuration.TARGET_RADIUS * 1.5),

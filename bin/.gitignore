@@ -5,3 +5,5 @@
 /ui/
 /util/
 /render/
+*.class
+Thumb.db

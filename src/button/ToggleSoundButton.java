@@ -30,9 +30,9 @@ public class ToggleSoundButton extends Clickable implements IRenderable2 {
 	@Override
 	public void draw(Graphics g) {
 		if(AudioUtility.isMuted())
-			drawButton(g, DrawingUtility.soundOn);
-		else
 			drawButton(g, DrawingUtility.soundOff);
+		else
+			drawButton(g, DrawingUtility.soundOn);
 	}
 	
 	@Override
