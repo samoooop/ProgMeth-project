@@ -3,10 +3,8 @@ package Game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import util.AudioUtility;
 
 public class GameLogic {
-	// private static GameLogic instance = new GameLogic();
 	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
 	private Target selected;
@@ -19,11 +17,6 @@ public class GameLogic {
 	}
 
 	public void init() {
-		/*
-		if (!AudioUtility.isMuted()) {
-			AudioUtility.soundtrackBG.play();
-
-		}*/
 	}
 
 	public void logicUpdate() {
