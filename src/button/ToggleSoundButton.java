@@ -12,7 +12,7 @@ import IRenderable.IRenderable2;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility;
+import util.InputUtility3;
 
 
 public class ToggleSoundButton extends Clickable implements IRenderable2 {

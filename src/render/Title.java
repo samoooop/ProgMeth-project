@@ -26,7 +26,7 @@ import control.ScreenState;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility;
+import util.InputUtility3;
 
 public class Title extends JPanel{
 	private List<IRenderable2> renderList = new ArrayList<IRenderable2>();
@@ -64,11 +64,11 @@ public class Title extends JPanel{
 			update();
 			
 			//update
-			if(InputUtility.getKeyTriggered(KeyEvent.VK_SPACE)){
+			if(InputUtility3.getKeyTriggered(KeyEvent.VK_SPACE)){
 				AudioUtility.playSound(AudioUtility.clickSound);
 				ScreenState.presentScreen = ScreenState.GAME;
 			}
-			InputUtility.postUpdate();
+			InputUtility3.postUpdate();
 		}
 		
 	}

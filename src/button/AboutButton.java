@@ -14,7 +14,7 @@ import IRenderable.IRenderable2;
 import ui.*;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility;
+import util.InputUtility3;
 //import logic.Board;
 
 public class AboutButton extends Clickable  {

@@ -4,7 +4,7 @@ package util;
 
 import java.awt.Point;
 
-public class InputUtility {
+public class InputUtility3 {
 	private static boolean picking;
 	private static boolean mouseDown;
 	private static Point pickedPoint;
@@ -26,7 +26,7 @@ public class InputUtility {
 	}
 	
 	public static void setMouseDown(boolean mouseDown) {
-		InputUtility.mouseDown = mouseDown;
+		InputUtility3.mouseDown = mouseDown;
 	}
 	
 	public static boolean isMouseDown() {
@@ -43,7 +43,7 @@ public class InputUtility {
 	
 	public static synchronized void setKeyPressed(int key, boolean pressed) {
 		try{
-			InputUtility.keyPressed[key] = pressed;
+			InputUtility3.keyPressed[key] = pressed;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return;
 		}
@@ -60,7 +60,7 @@ public class InputUtility {
 	public static synchronized void setKeyTriggered(int key, boolean triggered) {
 		try{
 			if(!keyPressed[key])
-				InputUtility.keyTriggered[key] = triggered;
+				InputUtility3.keyTriggered[key] = triggered;
 		} catch (ArrayIndexOutOfBoundsException e) {
 		}			
 	}
@@ -74,7 +74,7 @@ public class InputUtility {
 	}
 	
 	public static synchronized void setMouseReleased(boolean mouseReleased) {
-		InputUtility.mouseReleased = mouseReleased;
+		InputUtility3.mouseReleased = mouseReleased;
 	}
 	
 	public static synchronized boolean isMouseReleased() {

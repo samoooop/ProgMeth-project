@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import ui.*;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility;
+import util.InputUtility3;
 
 
 public class SettingsButton extends Clickable {

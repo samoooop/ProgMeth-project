@@ -15,7 +15,7 @@ import Game.GameLogic;
 import Game.GameScreen;
 import Game.Player;
 import util.Configuration;
-import util.InputUtility;
+import util.InputUtility3;
 import util.TimeUtility;
 
 @SuppressWarnings("serial")
@@ -147,17 +147,17 @@ public class GameWindow extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				InputUtility.setPicking(true);
-				InputUtility.setMouseDown(true);
+				InputUtility3.setPicking(true);
+				InputUtility3.setMouseDown(true);
 				// InputUtility.setPickedPoint(e.getX(), e.getY());
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				InputUtility.setPicking(false);
-				InputUtility.setMouseDown(false);
-				InputUtility.setMouseReleased(true);
+				InputUtility3.setPicking(false);
+				InputUtility3.setMouseDown(false);
+				InputUtility3.setMouseReleased(true);
 				// InputUtility.setPickedPoint(InputUtility.NULL_POINT,
 				// InputUtility.NULL_POINT);
 			}
@@ -176,12 +176,12 @@ public class GameWindow extends JFrame {
 
 				@Override
 				public void mouseMoved(MouseEvent e) {
-					InputUtility.setPickedPoint(e.getX(), e.getY());
+					InputUtility3.setPickedPoint(e.getX(), e.getY());
 				}
 
 				@Override
 				public void mouseDragged(MouseEvent e) {
-					InputUtility.setPickedPoint(e.getX(), e.getY());
+					InputUtility3.setPickedPoint(e.getX(), e.getY());
 				}
 			});
 		}
@@ -196,13 +196,13 @@ public class GameWindow extends JFrame {
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					InputUtility.setKeyPressed(e.getKeyCode(), false);
+					InputUtility3.setKeyPressed(e.getKeyCode(), false);
 				}
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					InputUtility.setKeyTriggered(e.getKeyCode(), true);
-					InputUtility.setKeyPressed(e.getKeyCode(), true);
+					InputUtility3.setKeyTriggered(e.getKeyCode(), true);
+					InputUtility3.setKeyPressed(e.getKeyCode(), true);
 				}
 			});
 		}

@@ -18,13 +18,13 @@ import button.*;
 //import ui.winpanel.*;
 import util.AudioUtility;
 import util.DrawingUtility;
-import util.InputUtility;
+import util.InputUtility3;
 //import logic.*;
 
 public abstract class Clickable implements IRenderable2, IUpdatable{
 	protected int x, y;
 	protected int width, height;
-	protected int type;
+	
 	protected boolean isVisible = true;
 	protected boolean isMuted = false;
 	
@@ -52,14 +52,16 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	
 	public boolean isMouseOn(){
 		if(this instanceof BackButton){
-		
-			
+		int mx1 = (int)InputUtility.getMouseLocation().x;
+		int my1 = (int)InputUtility.getMouseLocation().y;
+		int r1 = Math.min(width, height) / 2; 
+		return (mx1 - (x + r1)) * (mx1 - (x + r1)) + (my1 - (y + r1)) * (my1 - (y + r1)) <= r1 * r1;
 			
 		
 		
 		}
-			int mx = (int) InputUtility.getPickedPoint().getX();
-			int my = (int) InputUtility.getPickedPoint().getY();
+			int mx = (int) InputUtility3.getPickedPoint().getX();
+			int my = (int) InputUtility3.getPickedPoint().getY();
 
 			int r = Math.min(width, height) / 2; 
 			return (mx - (x + r)) * (mx - (x + r)) + (my - (y + r)) * (my - (y + r)) <= r * r;
@@ -68,10 +70,26 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 	//ubdate here ahahahahaahahaa
 	public void update(){
 
+
 		if(isMouseOn() && isVisible){
 			mouseOnAction();
 			
-			if(InputUtility.isMouseReleased()){
+			if(this instanceof BackButton){
+			if(InputUtility.isMouseLeftTriggered()){
+				if(!isMuted){
+					AudioUtility.playSound(AudioUtility.clickSound);
+				}
+				onClickAction();
+				
+			}
+			
+			}
+			
+			
+			
+			
+			
+			if(InputUtility3.isMouseReleased()){
 				if(!isMuted){
 					AudioUtility.playSound(AudioUtility.clickSound);
 				}
@@ -99,7 +117,7 @@ public abstract class Clickable implements IRenderable2, IUpdatable{
 			{if(!(this instanceof PlayButton)){g2.drawImage(DrawingUtility.fireball, x-45,y-15, null);}
 			g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_NORMAL), null, x, y);}
 		else
-			if(InputUtility.isMouseDown())
+			if(InputUtility3.isMouseDown())
 				{
 				if(!(this instanceof PlayButton)){g2.drawImage(DrawingUtility.fireball, x-45,y-15, null);}
 				g2.drawImage(DrawingUtility.getClickableImg(buttonSprite, DrawingUtility.STATE_CLICK), null, x, y);}

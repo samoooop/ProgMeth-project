@@ -134,8 +134,9 @@ public class GameScreen extends JPanel {
 		}
 		requestFocus();
 		RenderableHolder.draw(g2d);
-		this.backButton.update();
+		
 		InputUtility.update();
+		this.backButton.update();
 	}
 
 }
