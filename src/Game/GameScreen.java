@@ -33,7 +33,7 @@ public class GameScreen extends JPanel {
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.setVisible(true);
-		this.setDoubleBuffered(true);
+		//this.setDoubleBuffered(true);
 		window.pack();
 
 		Player.reset();
