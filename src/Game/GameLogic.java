@@ -19,13 +19,17 @@ public class GameLogic {
 	}
 
 	public void init() {
+		/*
 		if (!AudioUtility.isMuted()) {
 			AudioUtility.soundtrackBG.play();
 
-		}
+		}*/
 	}
 
 	public void logicUpdate() {
+		if (Player.getInstance().isDead()){
+			GameManager.getInstance().endGame();
+		}
 		if (Player.getInstance().useSkill) {
 			addSkill();
 		}
@@ -41,6 +45,7 @@ public class GameLogic {
 			}
 		}
 		TargetSpawner.spawnNewTarget(targets);
+		InputUtility.update();
 	}
 
 	public void spawnNewTarget() {

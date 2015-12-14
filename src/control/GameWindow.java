@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Game.GameLogic;
+import Game.GameManager;
 import Game.GameScreen;
 import Game.Player;
 import util.Configuration;
@@ -26,8 +27,7 @@ public class GameWindow extends JFrame {
 	private GameScreen game = null;
 	Thread logicThread;
 	Thread drawThread;
-	// private LevelSelectScreen levelSelect;
-	// public static GameBackground gameBackground;
+	GameManager gm = new GameManager(this);
 
 	public GameWindow() {
 		super("myProject");
@@ -45,21 +45,8 @@ public class GameWindow extends JFrame {
 
 		setFrame();
 
-		// setSize(Config.screenWidth + 16, Config.screenHeight + 24);
 		setResizable(false);
-
-		// gameBackground = new GameBackground();
-		// (new Thread(gameBackground)).start();
-
 		ScreenState.presentScreen = ScreenState.TITLE;
-
-		/*
-		 * this.addWindowListener(new WindowAdapter() {
-		 * 
-		 * @Override public void windowClosing(WindowEvent e) {
-		 * HighScoreUtility.writeBestScoreRecord(); super.windowClosing(e); }
-		 * });
-		 */
 
 		while (true) {
 			if (ScreenState.presentScreen == ScreenState.REFRESH_TITLE) {
@@ -69,55 +56,54 @@ public class GameWindow extends JFrame {
 			else if (ScreenState.presentScreen == ScreenState.TITLE) {
 				gameTitle = new Title(this);
 				this.remove(gameTitle);
-			}
-
-			/*
-			 * else if(ScreenState.presentScreen == ScreenState.NEXT_LEVEL){
-			 * ScreenState.presentScreen = ScreenState.GAME;
-			 * ScreenState.nextLevel = getNextLevelDirectory(); }
-			 * 
-			 * // BUG: packing doesn't get the right size
-			 * 
-			 */
-			else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
+			} else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
 				this.remove(gameTitle);
-				Player.reset();
-				game = new GameScreen(this);
-				GameLogic gameLogic = new GameLogic();
-				logicThread = new Thread() {
-					public void run() {
-						while (!Player.getInstance().isDead()) {
-							if (!Player.getInstance().isPause()) {
-								gameLogic.logicUpdate();
-								TimeUtility.inceaseTick();
-							}
-							try {
-								Thread.sleep(Configuration.TIME_PER_TICK);
-							} catch (InterruptedException e) {
-							}
-
-						}
-
+				// Player.reset();
+				// game = new GameScreen(this);
+				// GameLogic gameLogic = new GameLogic();
+				// logicThread = new Thread() {
+				// public void run() {
+				// while (!Player.getInstance().isDead()) {
+				// if (!Player.getInstance().isPause()) {
+				// gameLogic.logicUpdate();
+				// TimeUtility.inceaseTick();
+				// }
+				// try {
+				// Thread.sleep(Configuration.TIME_PER_TICK);
+				// } catch (InterruptedException e) {
+				// }
+				//
+				// }
+				//
+				// }
+				//
+				// };
+				// drawThread = new Thread() {
+				// public void run() {
+				// while (logicThread.isAlive()) {
+				// repaint();
+				// try {
+				// Thread.sleep(10);
+				// } catch (InterruptedException e) {
+				// }
+				// }
+				// self.remove((game));
+				// ScreenState.presentScreen = ScreenState.TITLE;
+				// //System.out.println("Hey");
+				// game = null;
+				// }
+				// };
+				// logicThread.start();
+				// drawThread.start();
+				gm.newGame();
+				try {
+					synchronized (gm) {
+						gm.wait();
 					}
-
-				};
-				drawThread = new Thread() {
-					public void run() {
-						while (logicThread.isAlive()) {
-							repaint();
-							try {
-								Thread.sleep(10);
-							} catch (InterruptedException e) {
-							}
-						}
-						self.remove((game));
-						ScreenState.presentScreen = ScreenState.TITLE;
-						System.out.println("Hey");
-						game = null;
-					}
-				};
-				logicThread.start();
-				drawThread.start();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			this.validate();
 		}

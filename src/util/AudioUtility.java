@@ -57,4 +57,13 @@ public class AudioUtility {
 			au.play();
 		}
 	}
+
+	public static void playBG(long mili) {
+		soundTrackBG.setMicrosecondPosition(mili * 1000);
+		soundTrackBG.start();
+	}
+
+	public static void pauseBG() {
+		soundTrackBG.stop();
+	}
 }

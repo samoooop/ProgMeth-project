@@ -6,13 +6,13 @@ import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
+import Game.GameManager;
 import control.ScreenState;
 import render.IRenderable;
 import util.DrawingUtility;
 
 public class BackButton extends Clickable implements IRenderable {
 	public BackButton() {
-
 		initialize();
 	}
 
@@ -36,14 +36,11 @@ public class BackButton extends Clickable implements IRenderable {
 
 	@Override
 	public void onClickAction() {
-		// JOptionPane.showMessageDialog(null, "BACK");
-
+		GameManager.getInstance().setPause(true);
 		if (ScreenState.presentScreen == ScreenState.GAME)
 			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame score will not be saved.",
 					"Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 				ScreenState.presentScreen = ScreenState.TITLE;
-		// WinPanel.setVisible(false);
-		// HelpPanel.setVisible(false);
 	}
 
 	@Override

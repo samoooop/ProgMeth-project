@@ -21,46 +21,43 @@ public class GameScreen extends JPanel {
 	public MovingObject now;
 	public static int screenWidth = Configuration.screenWidth;
 	public static int screenHeight = Configuration.screenHeight;
-    public static BackButton backButton;
+	public BackButton backButton;
+
 	public GameScreen(GameWindow window) {
 		super();
-
 		ScreenState.presentScreen = ScreenState.GAME;
-
 		window.addPanel(this);
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.requestFocus();
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.setVisible(true);
-		//this.setDoubleBuffered(true);
+		// this.setDoubleBuffered(true);
 		window.pack();
 
 		Player.reset();
 		RenderableHolder.reset();
 		TimeUtility.reset();
-		backButton  = new BackButton();
+		backButton = new BackButton();
 		RenderableHolder.add(backButton);
 		this.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
 			}
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
-					Player.getInstance().setPause(!Player.getInstance().isPause());
+					//Player.getInstance().setPause(!Player.getInstance().isPause());
+					Game.GameManager.getInstance().setPause(!Game.GameManager.getInstance().isPause());
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
-					Player.getInstance().useSkill = true;
+					//Player.getInstance().useSkill = true;
 				}
 
 			}
@@ -134,8 +131,6 @@ public class GameScreen extends JPanel {
 		}
 		requestFocus();
 		RenderableHolder.draw(g2d);
-		
-		InputUtility.update();
 		this.backButton.update();
 	}
 
