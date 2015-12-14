@@ -122,6 +122,24 @@ public class Title extends JPanel{
 		for(int i = 0; i < renderList.size(); i++){
 			renderList.get(i).draw(g);
 		}
+	
+		 g.drawImage(DrawingUtility.cloud1, (int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3.2), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null);  
+			
+			g.drawImage(DrawingUtility.cloud4, (int) (Configuration.screenWidth/2+Configuration.PLAYER_RADIUS *0.0), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.9), null);
+			g.drawImage(DrawingUtility.cloud3, (int) (Configuration.screenWidth/2+Configuration.PLAYER_RADIUS *0.8), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null); 
+			
+			
+			g.drawImage(DrawingUtility.cloud2, (int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 2.0), (int) (Configuration.screenHeight/2-Configuration.screenHeight/2.8), null); 
+			
+			
+			
+			g.drawImage(DrawingUtility.logo,(int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 1.5/2),
+					(int) (Configuration.screenHeight/2-Configuration.screenHeight/2.3),null);
+		
+			g.drawImage(DrawingUtility.logoText,(int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3/2),
+					(int) (Configuration.screenHeight/2-Configuration.screenHeight/3.6),null);
+		
+	
 	}
 	
 	public void update(){
