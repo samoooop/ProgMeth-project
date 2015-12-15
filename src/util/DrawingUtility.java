@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import Game.GameScreen;
 import Game.Player;
+import Game.TargetSpawner;
 
 public class DrawingUtility {
 
@@ -59,7 +60,7 @@ public class DrawingUtility {
 
 	public static Image thugglasses = DrawingUtility.glasses.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 2, Image.SCALE_SMOOTH);
-	public static final BufferedImage hatb = loadImage("res/img/ScumbagSteveHat.png");
+	public static final BufferedImage hatb = loadImage("res/img/obey.png");
 	public static Image hat = DrawingUtility.hatb.getScaledInstance(Configuration.PLAYER_RADIUS * 2,
 			(int) (Configuration.PLAYER_RADIUS * 1.8), Image.SCALE_SMOOTH);
 
@@ -253,12 +254,12 @@ public class DrawingUtility {
 			g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
 		}
-		if (util.DrawingUtility.thugglasses != null && Configuration.DRAW_GLASS) {
+		if (util.DrawingUtility.thugglasses != null && Configuration.DRAW_GLASS && TargetSpawner.getSpawnMultiplyer()==0) {
 			g2.drawImage(DrawingUtility.thugglasses, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 6,
 					null);
 		}
-		if (util.DrawingUtility.hat != null && Configuration.DRAW_HAT) {
+		if (util.DrawingUtility.hat != null && Configuration.DRAW_HAT&& TargetSpawner.getSpawnMultiplyer()==0) {
 			g2.drawImage(DrawingUtility.hat, Configuration.screenWidth / 2 - (int) (Configuration.PLAYER_RADIUS * 1.2),
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS
 							- (int) (Configuration.PLAYER_RADIUS / 1.5),

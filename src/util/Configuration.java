@@ -32,7 +32,7 @@ public class Configuration {
 
 	// Player Config
 	public static Color PLAYER_COLOR = Color.GREEN;
-	public static final double REGEN_SPEED = 0.005*1000;
+	public static final double REGEN_SPEED = 0.005;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;
@@ -43,8 +43,8 @@ public class Configuration {
 	public static double MAX_HIT_POINT = 100;
 	public static int HIT_DAMAGE = 5;
 	public static boolean canUseSkill = true;
-	public static boolean DRAW_HAT = false;
-	public static boolean DRAW_GLASS = false;
+	public static boolean DRAW_HAT = true;
+	public static boolean DRAW_GLASS = true;
 
 	// ScoreAnimation
 	public static final int MAX_LIFE = 100;

@@ -10,7 +10,7 @@ public class TargetSpawner {
 	private static boolean canSpawnNewTarget = true;
 	private static double SPAWN_DELAY_REDUCE_RATE_PER_TICK = 0.002;
 
-	private static int getSpawnMultiplyer() {
+	public static int getSpawnMultiplyer() {
 		if (TimeUtility.getEscalatedTime()%350000 >= 52500 && TimeUtility.getEscalatedTime()%350000 <= 57225) {
 			return 0;
 		}
