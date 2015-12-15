@@ -19,8 +19,7 @@ import util.InputUtility_UI;
 public class GameWindow extends JFrame {
 
 	private Title gameTitle;
-	Thread logicThread;
-	Thread drawThread;
+	
 	GameManager gm = new GameManager(this);
 
 	public GameWindow() {

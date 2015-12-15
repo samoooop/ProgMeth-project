@@ -123,6 +123,9 @@ public class DrawingUtility {
 		gameScreen = gs;
 	}
 
+<<<<<<< HEAD
+	
+=======
 	public static double getWidthResizeFactor() {
 		if (gameScreen == null) {
 			return 1;
@@ -130,6 +133,7 @@ public class DrawingUtility {
 			return gameScreen.getWidth() * 1.0 / Configuration.screenWidth;
 		}
 	}
+>>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
 
 	public static double getHeightResizeFactor() {
 		if (gameScreen == null) {
