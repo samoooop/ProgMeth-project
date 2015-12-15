@@ -77,7 +77,7 @@ public class SettingFrame extends JFrame {
 	
 	JPanel setdifficult = new JPanel();
 	sizepanel.setPreferredSize(new Dimension(600, 50));
-	setdifficult.setLayout(new FlowLayout (FlowLayout.CENTER, 15, 20));
+	setdifficult.setLayout(new FlowLayout (FlowLayout.CENTER, 15,20));
 	
 	 JRadioButton easy = new JRadioButton("easy");
      JRadioButton normal = new JRadioButton("normal");
