@@ -32,10 +32,10 @@ public class GameManager {
 		this.end = false;
 		this.pause = false;
 		gs = new GameScreen(frame);
-		GameLogic gameLogic = new GameLogic();
 		Player.reset();
-		util.TimeUtility.reset();
 		RenderableHolder.reset();
+		TimeUtility.reset();
+		GameLogic gameLogic = new GameLogic();
 		logicThread = new Thread() {
 			public void run() {
 				while (!end) {

@@ -72,6 +72,15 @@ public class RenderableHolder {
 						// System.out.println("HelloW"+ (r instanceof
 						// Target) +
 						// ((Target)r).getX());
+						
+						
+						
+						
+						
+						
+						
+						
+						
 						r.draw(g);
 					}
 				}

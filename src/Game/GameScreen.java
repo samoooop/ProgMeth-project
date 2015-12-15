@@ -6,7 +6,6 @@ import button.BackButton;
 import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
-import util.TimeUtility;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -33,10 +32,6 @@ public class GameScreen extends JPanel {
 		this.setVisible(true);
 		// this.setDoubleBuffered(true);
 		window.pack();
-
-		Player.reset();
-		RenderableHolder.reset();
-		TimeUtility.reset();
 		backButton = new BackButton();
 		RenderableHolder.add(backButton);
 		this.addKeyListener(new KeyListener() {
@@ -135,14 +130,6 @@ public class GameScreen extends JPanel {
 		}
 		requestFocus();
 		RenderableHolder.draw(g2d);
-		this.backButton.update();
-	
-	   
-	
-	
-	
-	
-	
 	
 	}
 
