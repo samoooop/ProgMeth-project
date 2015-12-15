@@ -16,9 +16,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import Game.GameLogic;
-import Game.GameManager;
-import Game.RenderableHolder;
 import Interface.IRenderable;
 import Interface.IUpdatable;
 import button.AboutButton;
@@ -27,6 +24,9 @@ import button.SettingsButton;
 import button.ToggleSoundButton;
 import control.GameWindow;
 import control.ScreenState;
+import game.GameLogic;
+import game.GameManager;
+import game.RenderableHolder;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;

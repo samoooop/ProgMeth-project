@@ -5,9 +5,9 @@ import java.awt.Graphics2D;
 
 import javax.swing.JOptionPane;
 
-import Game.GameManager;
 import Interface.IRenderable;
 import control.ScreenState;
+import game.GameManager;
 import util.DrawingUtility;
 import util.InputUtility_Game;
 

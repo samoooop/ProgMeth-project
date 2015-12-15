@@ -8,9 +8,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Game.GameScreen;
-import Game.Player;
-import Game.TargetSpawner;
+import game.GameScreen;
+import game.Player;
+import game.TargetSpawner;
 
 public class DrawingUtility {
 

@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import control.GameWindow;
 import control.ScreenState;

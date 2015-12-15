@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Game.GameManager;
+import game.GameManager;
 import util.Configuration;
 import util.InputUtility_UI;
 

@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import javax.swing.JPanel;
 
@@ -48,7 +48,7 @@ public class GameScreen extends JPanel {
 					GameManager.inputInterrupter.notifyAll();
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
-					Game.GameManager.getInstance().setPause(!Game.GameManager.getInstance().isPause());
+					game.GameManager.getInstance().setPause(!game.GameManager.getInstance().isPause());
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
 					Player.getInstance().useSkill();
