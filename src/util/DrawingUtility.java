@@ -93,15 +93,12 @@ public class DrawingUtility {
 	public static final Font drawFont = loadFont("res/font/", Configuration.FONT_NAME);
 
 	private static BufferedImage loadImage(String directory) {
-		BufferedImage a;
 		try {
 			ClassLoader load = DrawingUtility.class.getClassLoader();
-			a = ImageIO.read(load.getResource(directory));
+			return ImageIO.read(load.getResource(directory));
 		} catch (Exception e) {
-			a = null;
-			e.printStackTrace();
+			return null;
 		}
-		return a;
 	}
 
 	public static BufferedImage getClickableImg(BufferedImage imagerow, int state) {
@@ -113,15 +110,13 @@ public class DrawingUtility {
 	}
 
 	private static Font loadFont(String directory, String name) {
-		Font f;
 		try {
 			ClassLoader load = DrawingUtility.class.getClassLoader();
-			f = Font.createFont(Font.TRUETYPE_FONT, load.getResourceAsStream(directory + name))
+			return Font.createFont(Font.TRUETYPE_FONT, load.getResourceAsStream(directory + name))
 					.deriveFont(Configuration.FONT_SIZE);
 		} catch (IOException | FontFormatException e) {
-			f = new Font(Font.SANS_SERIF, 0, (int) Configuration.FONT_SIZE);
+			return new Font(Font.SANS_SERIF, 0, (int) Configuration.FONT_SIZE);
 		}
-		return f;
 	}
 
 	public static void setGameScreen(GameScreen gs) {

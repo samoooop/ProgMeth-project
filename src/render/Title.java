@@ -29,6 +29,7 @@ import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility3;
 
+@SuppressWarnings({ "serial", "unused" })
 public class Title extends JPanel{
 	private List<IRenderable> renderList = new ArrayList<IRenderable>();
 	private List<IUpdatable> updateList = new ArrayList<IUpdatable>();
@@ -40,6 +41,7 @@ public class Title extends JPanel{
 	public static GameWindow wind;
 	
 	
+	@SuppressWarnings("static-access")
 	public Title(GameWindow window){
           super();
 		this.wind = window;
