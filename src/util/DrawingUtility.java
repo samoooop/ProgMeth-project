@@ -126,30 +126,6 @@ public class DrawingUtility {
 	public static void setGameScreen(GameScreen gs) {
 		gameScreen = gs;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
-	
-<<<<<<< HEAD
-	public static double getWidthResizeFactor() {
-		if (gameScreen == null) {
-			return 1;
-		} else {
-			return gameScreen.getWidth() * 1.0 / Configuration.screenWidth;
-		}
-	}
-
-	public static double getHeightResizeFactor() {
-		if (gameScreen == null) {
-			return 1;
-		} else {
-			return gameScreen.getHeight() * 1.0 / Configuration.screenHeight;
-		}
-	}
-
-=======
->>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
 	public static void drawCircle(Graphics2D g2, int x, int y, int innerRadius, int outterRadius, Color innerColor,
 			Color outterColor) {
 		g2.setColor(outterColor);
