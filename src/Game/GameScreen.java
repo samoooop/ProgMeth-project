@@ -48,11 +48,6 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
 				synchronized (GameManager.inputInterrupter) {
 					GameManager.inputInterrupter.notifyAll();
 				}
@@ -63,6 +58,11 @@ public class GameScreen extends JPanel {
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
 					// Player.getInstance().useSkill = true;
 				}
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				
 
 			}
 
