@@ -62,6 +62,7 @@ public class Target implements Updatable, IRenderable, Destroyable, Hitable {
 		this.isSelected = false;
 		this.canScore = false;
 		this.canHitPlayer = true;
+		
 	}
 
 	@Override

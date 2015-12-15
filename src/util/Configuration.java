@@ -20,7 +20,6 @@ public class Configuration {
 
 	// GameLogic Configuration
 	public static final int SPAWN_DELAY = 50;
-
 	public static final int TIME_PER_TICK = 20; // mils per tick
 
 	// Target Configuration
@@ -55,5 +54,10 @@ public class Configuration {
 	public static final int TAIL_MIN_RADIUS = 0;
 	public static final double TAIL_RADIUS_REDUCE_RATE = 0.5;
 	public static final boolean ENABLE_ANTIALLIASING = false;
+	
+	//UI configuration
+	public static final int HEALTH_BAR_SCREEN_OFFSET =10;
+	public static final int SCORE_SCREEN_OFFSET = 10;
+	public static final float HEALTH_BAR_FONT_SIZE = FONT_SIZE - 10f;
 
 }
