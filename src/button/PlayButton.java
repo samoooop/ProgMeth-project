@@ -26,7 +26,7 @@ public class PlayButton extends Clickable {
 	@Override
 	public void draw(Graphics2D g) {
 		drawButton(g, DrawingUtility.playButtonImg);
-		//System.out.println(Configuration.screenWidth);
+		
 	}
 
 	@Override

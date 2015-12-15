@@ -22,7 +22,7 @@ public class AboutButton extends Clickable {
 	public void draw(Graphics2D g) {
 
 		drawButton(g, DrawingUtility.aboutButton);
-		//System.out.println(Configuration.screenWidth);
+		
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class AboutButton extends Clickable {
 	@Override
 	public void onClickAction() {
 		
-		//JOptionPane.showMessageDialog(null, "Top 10 player", "About", JOptionPane.INFORMATION_MESSAGE);
+		
 	    HighScoreUtility.displayTop10();
 	
 	}
