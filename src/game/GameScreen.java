@@ -2,7 +2,6 @@ package game;
 
 import javax.swing.JPanel;
 
-import button.BackButton;
 import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
@@ -17,24 +16,17 @@ import java.awt.event.MouseMotionListener;
 
 @SuppressWarnings("serial")
 public class GameScreen extends JPanel {
-	public boolean checkboundary = false;
-	public static int screenWidth = Configuration.screenWidth;
-	public static int screenHeight = Configuration.screenHeight;
-	public BackButton backButton;
-
 	public GameScreen(GameWindow window) {
 		super();
 		ScreenState.presentScreen = ScreenState.GAME;
 		window.addPanel(this);
-		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+		this.setPreferredSize(new Dimension(Configuration.screenWidth, Configuration.screenHeight));
 		this.requestFocus();
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.setVisible(true);
 		this.setDoubleBuffered(true);
 		window.pack();
-		backButton = new BackButton();
-		RenderableHolder.add(backButton);
 		this.addKeyListener(new KeyListener() {
 
 			@Override

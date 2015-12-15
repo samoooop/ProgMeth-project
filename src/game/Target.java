@@ -15,6 +15,7 @@ import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
 import util.InputUtility_Game;
+import util.RandomUtility;
 
 public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	protected int x, y;

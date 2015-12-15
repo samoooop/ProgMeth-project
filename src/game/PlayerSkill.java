@@ -7,7 +7,7 @@ import util.Configuration;
 
 public class PlayerSkill extends Target {
 	// private int RADIUS = Configuration.PLAYER_RADIUS;
-	private int MAX_RADIUS = Configuration.screenWidth/2;
+	private int MAX_RADIUS = Math.max(Configuration.screenWidth/2,Configuration.screenHeight/2);
 	private int RADIUS_INCREASE_RATE = 50;
 
 	public PlayerSkill() {

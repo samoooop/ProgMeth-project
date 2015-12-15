@@ -14,12 +14,7 @@ public class GameLogic {
 	public GameLogic() {
 		targets = new ArrayList<Target>();
 		selected = null;
-		init();
-		
-	}
-
-	public void init() {
-		backButton  = new BackButton();
+		backButton = new BackButton();
 		RenderableHolder.add(backButton);
 	}
 
@@ -45,12 +40,6 @@ public class GameLogic {
 		TargetSpawner.spawnNewTarget(targets);
 		InputUtility_Game.update();
 
-	}
-
-	public void spawnNewTarget() {
-		Target t = new Target();
-		targets.add(t);
-		RenderableHolder.addBack(t);
 	}
 
 	public void selectionHandler() {

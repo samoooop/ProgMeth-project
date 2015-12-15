@@ -127,7 +127,7 @@ public class DrawingUtility {
 		if (gameScreen == null) {
 			return 1;
 		} else {
-			return gameScreen.getWidth() * 1.0 / GameScreen.screenWidth;
+			return gameScreen.getWidth() * 1.0 / Configuration.screenWidth;
 		}
 	}
 
@@ -135,7 +135,7 @@ public class DrawingUtility {
 		if (gameScreen == null) {
 			return 1;
 		} else {
-			return gameScreen.getHeight() * 1.0 / GameScreen.screenHeight;
+			return gameScreen.getHeight() * 1.0 / Configuration.screenHeight;
 		}
 	}
 
