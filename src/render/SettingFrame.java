@@ -23,7 +23,7 @@ import util.DrawingUtility;
 public class SettingFrame extends JFrame {
 	public SettingFrame(){
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		 
+		this.setTitle("Setting"); 
 		JPanel set = new JPanel();
 		 set.setPreferredSize(new Dimension(600,200));
 		 set.setLayout(new BorderLayout());
@@ -77,7 +77,7 @@ public class SettingFrame extends JFrame {
 	JPanel setdifficult = new JPanel();
 	sizepanel.setPreferredSize(new Dimension(600, 50));
 	setdifficult.setLayout(new FlowLayout (FlowLayout.CENTER, 15,20));
-	
+	/*
 	 JRadioButton easy = new JRadioButton("easy");
      JRadioButton normal = new JRadioButton("normal");
      JRadioButton hard = new JRadioButton("hard");
@@ -89,7 +89,7 @@ public class SettingFrame extends JFrame {
      setdifficult.add(easy);
      setdifficult.add(normal);
      setdifficult.add(hard);
-    
+    */
 	
 	set.add(setdifficult,BorderLayout.SOUTH);
 	
@@ -119,18 +119,7 @@ public class SettingFrame extends JFrame {
 			                  }
 	 	             
 		
-		if(easy.isSelected()){
-			
-			//for samooop 
-		}
-        if(normal.isSelected()){
-			
-			//for samooop 
-		}
-        if(hard.isSelected()){
-			
-			//for samooop 
-		}
+		
 		
 		
 		}
