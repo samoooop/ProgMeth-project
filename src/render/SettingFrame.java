@@ -4,11 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +19,7 @@ import javax.swing.JTextField;
 import util.Configuration;
 import util.DrawingUtility;
 
+@SuppressWarnings("serial")
 public class SettingFrame extends JFrame {
 	public SettingFrame(){
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
