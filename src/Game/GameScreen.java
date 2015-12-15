@@ -6,6 +6,7 @@ import button.BackButton;
 import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
+import util.InputUtility_Game;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -30,7 +31,7 @@ public class GameScreen extends JPanel {
 		this.setFocusable(true);
 		this.setDoubleBuffered(true);
 		this.setVisible(true);
-		// this.setDoubleBuffered(true);
+		this.setDoubleBuffered(true);
 		window.pack();
 		backButton = new BackButton();
 		RenderableHolder.add(backButton);
@@ -38,7 +39,7 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				
+
 			}
 
 			@Override
@@ -47,17 +48,15 @@ public class GameScreen extends JPanel {
 					GameManager.inputInterrupter.notifyAll();
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
-					// Player.getInstance().setPause(!Player.getInstance().isPause());
 					Game.GameManager.getInstance().setPause(!Game.GameManager.getInstance().isPause());
 				}
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
-					// Player.getInstance().useSkill = true;
+					Player.getInstance().useSkill();
 				}
 			}
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				
 
 			}
 
@@ -84,13 +83,17 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				InputUtility.setMouseLeftDown(true);
-				InputUtility.setMouseLeftTriggered(true);
+				if (arg0.getButton() == MouseEvent.BUTTON1) {
+					InputUtility_Game.setMouseLeftDown(true);
+					InputUtility_Game.setMouseLeftTriggered(true);
+				}
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				InputUtility.setMouseLeftDown(false);
+				if (arg0.getButton() == MouseEvent.BUTTON1) {
+					InputUtility_Game.setMouseLeftDown(false);
+				}
 			}
 
 		});
@@ -98,15 +101,15 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				InputUtility.setMouseMoved(true);
-				InputUtility.setMouseLocation(e.getPoint());
+				InputUtility_Game.setMouseMoved(true);
+				InputUtility_Game.setMouseLocation(e.getPoint());
 
 			}
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				InputUtility.setMouseMoved(true);
-				InputUtility.setMouseLocation(e.getPoint());
+				InputUtility_Game.setMouseMoved(true);
+				InputUtility_Game.setMouseLocation(e.getPoint());
 			}
 
 		});
@@ -130,7 +133,7 @@ public class GameScreen extends JPanel {
 		}
 		requestFocus();
 		RenderableHolder.draw(g2d);
-	
+
 	}
 
 }

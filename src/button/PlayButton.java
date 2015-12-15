@@ -4,14 +4,11 @@ package button;
 
 import java.awt.Graphics2D;
 
-//import control.Game;
-//import control.ScreenState;
-//import ui.Clickable;
 import control.ScreenState;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-//import logic.Board;
+
 
 public class PlayButton extends Clickable {
 	public PlayButton(){
@@ -42,7 +39,6 @@ public class PlayButton extends Clickable {
 
 	@Override
 	public void onClickAction() {
-//		ScreenState.presentScreen = ScreenState.LEVEL_SELECT;
 	ScreenState.presentScreen = ScreenState.GAME;
 	AudioUtility.bgm.stop();
 	}

@@ -59,8 +59,10 @@ public class AudioUtility {
 	}
 
 	public static void playBG(long mili) {
-		soundTrackBG.setMicrosecondPosition(mili * 1000);
-		soundTrackBG.loop(Clip.LOOP_CONTINUOUSLY);;
+		if (!isMuted) {
+			soundTrackBG.setMicrosecondPosition(mili * 1000);
+			soundTrackBG.loop(Clip.LOOP_CONTINUOUSLY);
+		}
 	}
 
 	public static void pauseBG() {

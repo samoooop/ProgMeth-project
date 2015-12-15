@@ -16,6 +16,9 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import Game.GameLogic;
+import Game.GameManager;
+import Game.RenderableHolder;
 import Interface.IRenderable;
 import Interface.IUpdatable;
 import button.AboutButton;
@@ -27,7 +30,7 @@ import control.ScreenState;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import util.InputUtility3;
+import util.InputUtility_UI;
 
 @SuppressWarnings({ "serial", "unused" })
 public class Title extends JPanel{
@@ -39,7 +42,7 @@ public class Title extends JPanel{
 	        Image.SCALE_SMOOTH);
 	
 	public static GameWindow wind;
-	
+	private GameLogic gl;
 	
 	@SuppressWarnings("static-access")
 	public Title(GameWindow window){
@@ -51,13 +54,14 @@ public class Title extends JPanel{
 		window.setFrame();
 		setPreferredSize(new Dimension(Configuration.screenWidth, Configuration.screenHeight));
 		window.pack();
-		
 		addBoth(new PlayButton());
-		
 		addBoth(new SettingsButton());
 		addBoth(new AboutButton());
 		addBoth(new ToggleSoundButton());
        
+		gl = new GameLogic();
+		GameManager.resetAll();
+		GameManager.setConfigForTitle();
        
         while(ScreenState.presentScreen == ScreenState.TITLE){
 			
@@ -71,26 +75,28 @@ public class Title extends JPanel{
 			update();
 			
 			//update
-			if(InputUtility3.getKeyTriggered(KeyEvent.VK_SPACE)){
+			if(InputUtility_UI.getKeyTriggered(KeyEvent.VK_SPACE)){
 				AudioUtility.playSound(AudioUtility.clickSound);
 				ScreenState.presentScreen = ScreenState.GAME;
 			    AudioUtility.bgm.stop();
 			
 			}
-			InputUtility3.postUpdate();
+			InputUtility_UI.postUpdate();
 		}
 		
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		Graphics2D g2 = (Graphics2D) g;
+		
+		
 		g2.drawImage(dimg,0,0,null);
 		//g.drawImage(DrawingUtility.myframe,0,0,null);
 		g2.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);
 		
+		RenderableHolder.draw(g2);
 		g2.setColor(new Color(192, 192, 192));
 		g2.fillRect(0, 0, Configuration.screenWidth, 27);
 		g2.fillRect(0, Configuration.screenHeight-27, Configuration.screenWidth, 27);
@@ -126,8 +132,6 @@ public class Title extends JPanel{
 		
 		
 		
-		
-		
 		for(int i = 0; i < renderList.size(); i++){
 			renderList.get(i).draw(g2);
 		}
@@ -148,13 +152,14 @@ public class Title extends JPanel{
 			g.drawImage(DrawingUtility.logoText,(int) (Configuration.screenWidth/2-Configuration.PLAYER_RADIUS * 3/2),
 					(int) (Configuration.screenHeight/2-Configuration.screenHeight/3.6),null);
 		
-	
+			
 	}
 	
 	public void update(){
 		for(int i = 0; i < updateList.size(); i++){
 			updateList.get(i).update();
 		}
+		gl.logicUpdate();
 	}
 	
 	
@@ -163,5 +168,6 @@ public class Title extends JPanel{
 			renderList.add(a);
 			updateList.add((IUpdatable)a);
 		}
+		
 	}
 }

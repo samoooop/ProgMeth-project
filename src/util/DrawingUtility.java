@@ -198,18 +198,24 @@ public class DrawingUtility {
 	}
 
 	public static void drawScore(Graphics2D g) {
+		if (!Configuration.DRAW_SCORE)
+			return;
 		String s = String.format("SCORE : %010d", Player.getInstance().getScore());
 		g.setFont(DrawingUtility.drawFont);
 		g.setColor(Color.WHITE);
-		g.drawString(s, Configuration.screenWidth - g.getFontMetrics().stringWidth(s) - Configuration.SCORE_SCREEN_OFFSET,
+		g.drawString(s,
+				Configuration.screenWidth - g.getFontMetrics().stringWidth(s) - Configuration.SCORE_SCREEN_OFFSET,
 				Configuration.screenHeight - Configuration.HEALTH_BAR_THICK - Configuration.SCORE_SCREEN_OFFSET);
 
 	}
 
 	public static void drawHealthBar(Graphics2D g2) {
+		if (!Configuration.DRAW_HEALTH_BAR)
+			return;
 		g2.setColor(Color.GRAY);
 		Rectangle r = new Rectangle(Configuration.HEALTH_BAR_SCREEN_OFFSET,
-				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK * 2 - Configuration.HEALTH_BAR_SCREEN_OFFSET,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK * 2
+						- Configuration.HEALTH_BAR_SCREEN_OFFSET,
 				Configuration.HEALTH_BAR_MAX_WIDTH + Configuration.HEALTH_BAR_THICK * 2,
 				Configuration.HEALTH_BAR_MAX_HEIGHT + Configuration.HEALTH_BAR_THICK * 2);
 		Paint redtowhite = new GradientPaint(0, 0, Color.DARK_GRAY, Configuration.HEALTH_BAR_MAX_WIDTH / 2, 0,
@@ -219,28 +225,31 @@ public class DrawingUtility {
 		g2.draw(r);
 		g2.setColor(Color.BLACK);
 		g2.fillRect(Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK,
-				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK - Configuration.HEALTH_BAR_SCREEN_OFFSET,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK
+						- Configuration.HEALTH_BAR_SCREEN_OFFSET,
 				Configuration.HEALTH_BAR_MAX_WIDTH, Configuration.HEALTH_BAR_MAX_HEIGHT);
 
 		r = new Rectangle(Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK,
-				Configuration.screenHeight - Configuration.HEALTH_BAR_SCREEN_OFFSET - Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK,
+				Configuration.screenHeight - Configuration.HEALTH_BAR_SCREEN_OFFSET
+						- Configuration.HEALTH_BAR_MAX_HEIGHT - Configuration.HEALTH_BAR_THICK,
 				(int) (Player.getInstance().getPercentHitPoint() * Configuration.HEALTH_BAR_MAX_WIDTH / 100.0),
 				Configuration.HEALTH_BAR_MAX_HEIGHT);
-		Paint redToGreen = new GradientPaint(0, 0, Color.ORANGE, Configuration.HEALTH_BAR_MAX_WIDTH / 2, 0, Color.RED);
+		Paint redToGreen = new GradientPaint(0, 0, Color.BLACK, Configuration.HEALTH_BAR_MAX_WIDTH / 2, 0, Color.GREEN);
 		g2.setPaint(redToGreen);
 		g2.fill(r);
 		g2.setColor(Color.RED);
 		if (!Player.getInstance().isDead()) {
-			g2.setColor(Color.BLACK);
+			g2.setColor(Color.WHITE);
 			g2.setFont(DrawingUtility.drawFont.deriveFont(Configuration.HEALTH_BAR_FONT_SIZE));
 			g2.drawString(String.format("%.2f ", Player.getInstance().getPercentHitPoint()) + "%",
-					Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK,
-					Configuration.screenHeight - Configuration.HEALTH_BAR_THICK - Configuration.HEALTH_BAR_SCREEN_OFFSET);
+					Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK, Configuration.screenHeight
+							- Configuration.HEALTH_BAR_THICK*2 - Configuration.HEALTH_BAR_SCREEN_OFFSET);
 		} else {
 			g2.setColor(Color.RED);
 			g2.setFont(DrawingUtility.drawFont.deriveFont(Configuration.HEALTH_BAR_FONT_SIZE));
-			g2.drawString(String.format("	YOU ARE DEAD"), Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK,
-					Configuration.screenHeight - Configuration.HEALTH_BAR_THICK - Configuration.HEALTH_BAR_SCREEN_OFFSET);
+			g2.drawString(String.format("	YOU ARE DEAD"),
+					Configuration.HEALTH_BAR_SCREEN_OFFSET + Configuration.HEALTH_BAR_THICK, Configuration.screenHeight
+							- Configuration.HEALTH_BAR_THICK - Configuration.HEALTH_BAR_SCREEN_OFFSET);
 		}
 	}
 
@@ -249,12 +258,13 @@ public class DrawingUtility {
 			g2.drawImage(util.DrawingUtility.earth, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS, null);
 		}
-		if (util.DrawingUtility.thugglasses != null && Configuration.DRAW_GLASS && TargetSpawner.getSpawnMultiplyer()==0) {
+		if (util.DrawingUtility.thugglasses != null && Configuration.DRAW_GLASS
+				&& TargetSpawner.getSpawnMultiplyer() == 0) {
 			g2.drawImage(DrawingUtility.thugglasses, Configuration.screenWidth / 2 - Configuration.PLAYER_RADIUS,
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS + Configuration.PLAYER_RADIUS / 6,
 					null);
 		}
-		if (util.DrawingUtility.hat != null && Configuration.DRAW_HAT&& TargetSpawner.getSpawnMultiplyer()==0) {
+		if (util.DrawingUtility.hat != null && Configuration.DRAW_HAT && TargetSpawner.getSpawnMultiplyer() == 0) {
 			g2.drawImage(DrawingUtility.hat, Configuration.screenWidth / 2 - (int) (Configuration.PLAYER_RADIUS * 1.2),
 					Configuration.screenHeight / 2 - Configuration.PLAYER_RADIUS
 							- (int) (Configuration.PLAYER_RADIUS / 1.5),

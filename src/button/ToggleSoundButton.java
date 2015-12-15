@@ -3,7 +3,6 @@ package button;
 
 import java.awt.Graphics2D;
 
-//import ui.Clickable;
 
 import util.AudioUtility;
 import util.Configuration;

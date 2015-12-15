@@ -111,5 +111,12 @@ public class Player implements IRenderable, IHitable {
 	public boolean isDead() {
 		return dead;
 	}
+	
+	public void useSkill(){
+		if(this.hitPoint - Configuration.MAX_HIT_POINT*Configuration.SKILL_HEALTH_PERCENT_USAGE/100 > 0 && !GameManager.getInstance().isPause()){
+			this.hitPoint -= Configuration.MAX_HIT_POINT*Configuration.SKILL_HEALTH_PERCENT_USAGE/100;
+			useSkill = true;
+		}
+	}
 
 }

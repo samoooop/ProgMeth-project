@@ -4,6 +4,7 @@ import control.GameWindow;
 import control.ScreenState;
 import util.Configuration;
 import util.HighScoreUtility;
+import util.InputUtility_Game;
 import util.TimeUtility;
 
 public class GameManager {
@@ -32,9 +33,8 @@ public class GameManager {
 		this.end = false;
 		this.pause = false;
 		gs = new GameScreen(frame);
-		Player.reset();
-		RenderableHolder.reset();
-		TimeUtility.reset();
+		resetAll();
+		setConfigForGame();
 		GameLogic gameLogic = new GameLogic();
 		logicThread = new Thread() {
 			public void run() {
@@ -42,7 +42,6 @@ public class GameManager {
 					if (!pause) {
 						gameLogic.logicUpdate();
 						TimeUtility.inceaseTick();
-						Game.InputUtility.update();
 					}
 					try {
 						Thread.sleep(Configuration.TIME_PER_TICK);
@@ -57,7 +56,9 @@ public class GameManager {
 		drawingThread = new Thread() {
 			public void run() {
 				while (!end) {
-					frame.repaint();
+					if (!pause) {
+						frame.repaint();
+					}
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
@@ -75,23 +76,23 @@ public class GameManager {
 						}
 					} catch (InterruptedException e) {
 					}
-					System.out.println("HELOOOO");
+					util.InputUtility_Game.update();
 				}
 			}
 		};
 		logicThread.start();
 		drawingThread.start();
 		inputThread.start();
-		System.out.println("Start!");
 		util.AudioUtility.playBG(0);
 	}
 
 	public void endGame() {
-		util.AudioUtility.pauseBG();
+
 		this.end = true;
 		frame.remove(gs);
 		HighScoreUtility.recordHighScore((int) Player.getInstance().getScore());
-		ScreenState.presentScreen = ScreenState.TITLE;
+		ScreenState.presentScreen = ScreenState.REFRESH_TITLE;
+		util.AudioUtility.pauseBG();
 		synchronized (this) {
 			this.notifyAll();
 		}
@@ -103,6 +104,7 @@ public class GameManager {
 		} else {
 			util.AudioUtility.pauseBG();
 		}
+		InputUtility_Game.update();
 		this.pause = b;
 	}
 
@@ -110,4 +112,31 @@ public class GameManager {
 		return pause;
 	}
 
+	public static void resetAll() {
+		Player.reset();
+		RenderableHolder.reset();
+		TimeUtility.reset();
+		TargetSpawner.reset();
+	}
+
+	public static void setConfigForGame() {
+		Configuration.DRAW_HEALTH_BAR = true;
+		Configuration.DRAW_SCORE = true;
+		Configuration.SHOW_HIT_EFFECT = true;
+		Configuration.REGEN_SPEED = Configuration.REGEN_SPEED_DEFAULT;
+		Configuration.SPAWN_DELAY = Configuration.SPAWN_DELAY_GAME;
+		Configuration.TARGET_RADIUS = Configuration.TARGET_RADIUS_GAME;
+		Configuration.TARGET_HIT_SOUND_EFFECT = true;
+	}
+
+	public static void setConfigForTitle() {
+		Configuration.DRAW_HEALTH_BAR = false;
+		Configuration.DRAW_SCORE = false;
+		Configuration.SHOW_HIT_EFFECT = false;
+		Configuration.REGEN_SPEED = 1000;
+		Configuration.SPAWN_DELAY = Configuration.SPAWN_DELAY_TITLE;
+		Configuration.TARGET_RADIUS = Configuration.TARGET_RADIUS_TITLE;
+		Configuration.TARGET_HIT_SOUND_EFFECT = false;
+
+	}
 }

@@ -1,7 +1,7 @@
-package Game;
+package util;
 import java.awt.Point;
 
-public class InputUtility {
+public class InputUtility_Game {
 	static private boolean mouseLeftPressed;
 	static private boolean mouseLeftTriggered;
 	static private Point mouseLocation = new Point(0,0);
@@ -12,11 +12,11 @@ public class InputUtility {
 	}
 
 	public static void setMouseLeftTriggered(boolean mousLeftTriggered) {
-		InputUtility.mouseLeftTriggered = mousLeftTriggered;
+		InputUtility_Game.mouseLeftTriggered = mousLeftTriggered;
 	}
 
 	public static void setMouseLeftDown(boolean pressed) {
-		InputUtility.mouseLeftPressed = pressed;
+		InputUtility_Game.mouseLeftPressed = pressed;
 	}
 
 	public static boolean getMouseLeftDown() {

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import Game.GameManager;
 import util.Configuration;
-import util.InputUtility3;
+import util.InputUtility_UI;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -24,7 +24,7 @@ public class GameWindow extends JFrame {
 	GameManager gm = new GameManager(this);
 
 	public GameWindow() {
-		super("myProject");
+		super("MeteoHero");
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e1) {
@@ -94,17 +94,17 @@ public class GameWindow extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
-				InputUtility3.setPicking(true);
-				InputUtility3.setMouseDown(true);
+				InputUtility_UI.setPicking(true);
+				InputUtility_UI.setMouseDown(true);
 				
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				
-				InputUtility3.setPicking(false);
-				InputUtility3.setMouseDown(false);
-				InputUtility3.setMouseReleased(true);
+				InputUtility_UI.setPicking(false);
+				InputUtility_UI.setMouseDown(false);
+				InputUtility_UI.setMouseReleased(true);
 				
 			}
 
@@ -122,12 +122,12 @@ public class GameWindow extends JFrame {
 
 				@Override
 				public void mouseMoved(MouseEvent e) {
-					InputUtility3.setPickedPoint(e.getX(), e.getY());
+					InputUtility_UI.setPickedPoint(e.getX(), e.getY());
 				}
 
 				@Override
 				public void mouseDragged(MouseEvent e) {
-					InputUtility3.setPickedPoint(e.getX(), e.getY());
+					InputUtility_UI.setPickedPoint(e.getX(), e.getY());
 				}
 			});
 		}
@@ -142,13 +142,13 @@ public class GameWindow extends JFrame {
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					InputUtility3.setKeyPressed(e.getKeyCode(), false);
+					InputUtility_UI.setKeyPressed(e.getKeyCode(), false);
 				}
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					InputUtility3.setKeyTriggered(e.getKeyCode(), true);
-					InputUtility3.setKeyPressed(e.getKeyCode(), true);
+					InputUtility_UI.setKeyTriggered(e.getKeyCode(), true);
+					InputUtility_UI.setKeyPressed(e.getKeyCode(), true);
 				}
 			});
 		}

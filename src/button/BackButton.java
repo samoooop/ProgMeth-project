@@ -9,6 +9,7 @@ import Game.GameManager;
 import Interface.IRenderable;
 import control.ScreenState;
 import util.DrawingUtility;
+import util.InputUtility_Game;
 
 public class BackButton extends Clickable implements IRenderable {
 	public BackButton() {
@@ -30,12 +31,15 @@ public class BackButton extends Clickable implements IRenderable {
 
 	@Override
 	public void onClickAction() {
+		InputUtility_Game.setMouseLeftDown(false);
 		GameManager.getInstance().setPause(true);
 		if (ScreenState.presentScreen == ScreenState.GAME)
-			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?",
-					"Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?", "Confirm",
+					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				GameManager.getInstance().endGame();
-		GameManager.getInstance().setPause(false);
+			} else {
+				GameManager.getInstance().setPause(false);
+			}
 	}
 
 	@Override

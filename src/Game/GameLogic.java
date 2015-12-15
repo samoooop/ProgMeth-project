@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import button.BackButton;
+import util.InputUtility_Game;
 
 public class GameLogic {
 	protected ArrayList<Target> targets;
@@ -42,7 +43,7 @@ public class GameLogic {
 			}
 		}
 		TargetSpawner.spawnNewTarget(targets);
-		InputUtility.update();
+		InputUtility_Game.update();
 
 	}
 
@@ -53,7 +54,7 @@ public class GameLogic {
 	}
 
 	public void selectionHandler() {
-		if (InputUtility.getMouseLeftDown()) {
+		if (InputUtility_Game.getMouseLeftDown()) {
 			if (selected == null) {
 				for (Target t : targets) {
 					if (t.isMouseOver()) {

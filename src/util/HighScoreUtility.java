@@ -36,7 +36,7 @@ public class HighScoreUtility {
 		}
 
 		public String getRecord() {
-			return String.format("%s : %d4",name.trim(),score);
+			return name.trim() + ":" + score;
 		}
 
 		private static String[] defaultRecord() {

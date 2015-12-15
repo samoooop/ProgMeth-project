@@ -14,6 +14,7 @@ import java.awt.AlphaComposite;
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
+import util.InputUtility_Game;
 
 public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	protected int x, y;
@@ -48,8 +49,8 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	public boolean isCanScore() {
 		return canScore;
 	}
-	
-	public void setCanScore(boolean b){
+
+	public void setCanScore(boolean b) {
 		canScore = b;
 	}
 
@@ -67,7 +68,7 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 		this.isSelected = false;
 		this.canScore = false;
 		this.canHitPlayer = true;
-		
+
 	}
 
 	@Override
@@ -139,7 +140,7 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 
 	public boolean isMouseOver() {
 
-		Point p = InputUtility.getMouseLocation();
+		Point p = InputUtility_Game.getMouseLocation();
 		if (p != null && p.getX() > x - RADIUS && p.getX() < x + RADIUS && p.getY() > y - RADIUS
 				&& p.getY() < y + RADIUS)
 			return true;
@@ -153,7 +154,7 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	}
 
 	private void changeSpeed() {
-		Point p = InputUtility.getMouseLocation();
+		Point p = InputUtility_Game.getMouseLocation();
 		double dx = p.x - x;
 		double dy = p.y - y;
 		double ds = Math.sqrt(dx * dx + dy * dy);
@@ -182,7 +183,7 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	}
 
 	private void changePosition() {
-		Point p = InputUtility.getMouseLocation();
+		Point p = InputUtility_Game.getMouseLocation();
 		if (isSelected) {
 			changeSpeed();
 			if (Math.abs(p.x - x) <= Math.abs(vel_x * SELECTED_SPEED)) {
@@ -240,10 +241,12 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 
 	public void destroy() {
 		this.setDestroyed(true);
-		AudioUtility.playSound(AudioUtility.flipSound);
+		if (Configuration.TARGET_HIT_SOUND_EFFECT) {
+			AudioUtility.playSound(AudioUtility.flipSound);
+		}
 		if (canScore) {
 			AudioUtility.playSound(AudioUtility.clickSound);
-			new ScoreAnimation(x,y);
+			new ScoreAnimation(x, y);
 			Player.getInstance().addScore(Configuration.TARGET_HIT_SCORE);
 		}
 		RenderableHolder.addFront(new HitAnimation(x, y, 1));

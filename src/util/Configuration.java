@@ -19,21 +19,27 @@ public class Configuration {
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
 	// GameLogic Configuration
-	public static final int SPAWN_DELAY = 50;
+	public static final int SPAWN_DELAY_TITLE = 100;
+	public static final int SPAWN_DELAY_GAME = 50;
+	public static int SPAWN_DELAY = 50;
 	public static final int TIME_PER_TICK = 20; // mils per tick
 
 	// Target Configuration
 	public static double SPEED = 5; // per tick
 	public static double SELECTED_SPEED = 7;
 	public static int TARGET_RADIUS = 40;
-	public static int TARGET_MOVING_DELAY = 1; // increase will result in target
-												// move laggy
+	public static int TARGET_RADIUS_GAME = 40;
+	public static int TARGET_RADIUS_TITLE = 40;
+	public static int TARGET_MOVING_DELAY = 1; // increase will result in target move laggy
 	public static int TAIL_ANIMATION_DELAY = 5;
+	public static boolean TARGET_HIT_SOUND_EFFECT = true;
+	
 
 	// Player Config
 	public static Color PLAYER_COLOR = Color.GREEN;
-	public static final double REGEN_SPEED = 0.005;
-	public static final boolean SHOW_HIT_EFFECT = true;
+	public static final double REGEN_SPEED_DEFAULT = 0.005;
+	public static double REGEN_SPEED = 0.005;
+	public static boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;
 	public static final int PLAYER_RADIUS = 150;
@@ -45,6 +51,9 @@ public class Configuration {
 	public static boolean canUseSkill = true;
 	public static boolean DRAW_HAT = true;
 	public static boolean DRAW_GLASS = true;
+	public static boolean DRAW_HEALTH_BAR = true;
+	public static boolean DRAW_SCORE = true;
+	public static final double SKILL_HEALTH_PERCENT_USAGE = 25;
 
 	// ScoreAnimation
 	public static final int MAX_LIFE = 100;
@@ -58,6 +67,6 @@ public class Configuration {
 	//UI configuration
 	public static final int HEALTH_BAR_SCREEN_OFFSET =10;
 	public static final int SCORE_SCREEN_OFFSET = 10;
-	public static final float HEALTH_BAR_FONT_SIZE = FONT_SIZE - 10f;
+	public static final float HEALTH_BAR_FONT_SIZE = FONT_SIZE - 15f;
 
 }

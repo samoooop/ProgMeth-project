@@ -35,7 +35,7 @@ public class RenderableHolder {
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 	}
-	
+
 	public static void add(IRenderable r) {
 		if (entities != null) {
 			synchronized (entities) {
@@ -70,18 +70,6 @@ public class RenderableHolder {
 					if (r instanceof IDestroyable && ((IDestroyable) r).isDestroyed()) {
 						itr.remove();
 					} else {
-						// System.out.println("HelloW"+ (r instanceof
-						// Target) +
-						// ((Target)r).getX());
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						r.draw(g);
 					}
 				}
