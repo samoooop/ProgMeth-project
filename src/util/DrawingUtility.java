@@ -125,7 +125,6 @@ public class DrawingUtility {
 
 	public static void setGameScreen(GameScreen gs) {
 		gameScreen = gs;
-<<<<<<< HEAD
 	}
 
 	
@@ -145,9 +144,7 @@ public class DrawingUtility {
 		}
 	}
 
-=======
-	}
->>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
+	
 	public static void drawCircle(Graphics2D g2, int x, int y, int innerRadius, int outterRadius, Color innerColor,
 			Color outterColor) {
 		g2.setColor(outterColor);
@@ -198,7 +195,7 @@ public class DrawingUtility {
 	public static BufferedImage resize(BufferedImage img, int newW, int newH) {
 		Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
 		BufferedImage dim = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
-          System.out.println(newH);
+         
 		Graphics2D g2d = dim.createGraphics();
 		g2d.drawImage(tmp, 0, 0, null);
 		g2d.dispose();
