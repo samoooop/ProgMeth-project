@@ -44,24 +44,26 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
+				
 			}
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
+				synchronized (GameManager.inputInterrupter) {
+					GameManager.inputInterrupter.notifyAll();
+				}
+				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
+					// Player.getInstance().setPause(!Player.getInstance().isPause());
+					Game.GameManager.getInstance().setPause(!Game.GameManager.getInstance().isPause());
+				}
+				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
+					// Player.getInstance().useSkill = true;
+				}
 			}
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				synchronized(GameManager.inputInterrupter){
-					GameManager.inputInterrupter.notifyAll();
-				}
-				if (arg0.getKeyChar() == KeyEvent.VK_ENTER) {
-					//Player.getInstance().setPause(!Player.getInstance().isPause());
-					Game.GameManager.getInstance().setPause(!Game.GameManager.getInstance().isPause());
-				}
-				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
-					//Player.getInstance().useSkill = true;
-				}
+				
 
 			}
 
