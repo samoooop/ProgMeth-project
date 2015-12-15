@@ -59,7 +59,7 @@ public class AudioUtility {
 	}
 
 	public static void playBG(long mili) {
-		soundTrackBG.setMicrosecondPosition(mili * 1000 *10000);
+		soundTrackBG.setMicrosecondPosition(mili * 1000);
 		soundTrackBG.loop(Clip.LOOP_CONTINUOUSLY);;
 	}
 
