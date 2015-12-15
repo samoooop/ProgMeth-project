@@ -13,7 +13,7 @@ public class Configuration {
 
 	// Drawing Util
 	public static final float FONT_SIZE = 60f;
-	public static final String FONT_NAME = "digital-7.ttf"; // best is
+	public static final String FONT_NAME = "ROCKETMAN.ttf"; // best is
 															// "digital-7.ttf"
 	public static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
 	public static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
