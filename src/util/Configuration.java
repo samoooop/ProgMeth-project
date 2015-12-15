@@ -33,7 +33,7 @@ public class Configuration {
 
 	// Player Config
 	public static Color PLAYER_COLOR = Color.GREEN;
-	public static final double REGEN_SPEED = 0.005;
+	public static final double REGEN_SPEED = 0.005*1000;
 	public static final boolean SHOW_HIT_EFFECT = true;
 	public static int HIT_EFFECT_TYPE = 2; // 1:full screen 2:only player
 	public static int TARGET_HIT_SCORE = 10000;
