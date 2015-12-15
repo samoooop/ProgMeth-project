@@ -40,7 +40,7 @@ public class Configuration {
 	public static int HEALTH_BAR_MAX_WIDTH = 500;
 	public static int HEALTH_BAR_MAX_HEIGHT = 50;
 	public static int HEALTH_BAR_THICK = 10;
-	public static double MAX_HIT_POINT = 100;
+	public static double MAX_HIT_POINT = 200;
 	public static int HIT_DAMAGE = 5;
 	public static boolean canUseSkill = true;
 	public static boolean DRAW_HAT = true;
