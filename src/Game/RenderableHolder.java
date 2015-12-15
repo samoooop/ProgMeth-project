@@ -5,7 +5,8 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import render.IRenderable;
+import Interface.IDestroyable;
+import Interface.IRenderable;
 
 public class RenderableHolder {
 	public ArrayList<IRenderable> getEntities() {
@@ -66,7 +67,7 @@ public class RenderableHolder {
 			for (Iterator<IRenderable> itr = entities.iterator(); itr.hasNext();) {
 				IRenderable r = itr.next();
 				synchronized (r) {
-					if (r instanceof Destroyable && ((Destroyable) r).isDestroyed()) {
+					if (r instanceof IDestroyable && ((IDestroyable) r).isDestroyed()) {
 						itr.remove();
 					} else {
 						// System.out.println("HelloW"+ (r instanceof

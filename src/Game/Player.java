@@ -1,12 +1,14 @@
 package Game;
 
 import java.awt.Graphics2D;
-import render.IRenderable;
+
+import Interface.IHitable;
+import Interface.IRenderable;
 import util.Configuration;
 import util.DrawingUtility;
 import util.TimeUtility;
 
-public class Player implements IRenderable, Hitable {
+public class Player implements IRenderable, IHitable {
 
 	private int x = Configuration.screenWidth / 2;
 	private int y = Configuration.screenHeight / 2;

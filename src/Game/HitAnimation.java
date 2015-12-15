@@ -2,11 +2,12 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import render.IRenderable;
+import Interface.IDestroyable;
+import Interface.IRenderable;
 import util.Configuration;
 import util.DrawingUtility;
 
-public class HitAnimation implements IRenderable, Destroyable {
+public class HitAnimation implements IRenderable, IDestroyable {
 
 	private static Color ANIMATION_COLOR = Color.ORANGE;
 	private int x, y;

@@ -3,14 +3,19 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+
+import Interface.IDestroyable;
+import Interface.IHitable;
+import Interface.IRenderable;
+import Interface.IUpdatable;
+
 import java.awt.AlphaComposite;
 
 import util.AudioUtility;
 import util.Configuration;
 import util.DrawingUtility;
-import render.IRenderable;
 
-public class Target implements Updatable, IRenderable, Destroyable, Hitable {
+public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	protected int x, y;
 	protected double vel_x, vel_y;
 	protected double SPEED = Configuration.SPEED;

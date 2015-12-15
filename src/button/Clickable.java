@@ -2,6 +2,8 @@
 package button;
 
 import Game.*;
+import Interface.IRenderable;
+import Interface.IUpdatable;
 import render.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

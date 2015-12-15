@@ -1,4 +1,4 @@
-package render;
+package Interface;
 
 public interface IUpdatable {
 	void update();

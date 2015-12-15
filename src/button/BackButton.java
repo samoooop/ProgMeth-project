@@ -6,8 +6,8 @@ import java.awt.Graphics2D;
 import javax.swing.JOptionPane;
 
 import Game.GameManager;
+import Interface.IRenderable;
 import control.ScreenState;
-import render.IRenderable;
 import util.DrawingUtility;
 
 public class BackButton extends Clickable implements IRenderable {
