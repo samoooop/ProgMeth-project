@@ -33,8 +33,6 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 	private int ran = RandomUtility.random(1, 5);
 	public int rotatecount = 1;
 	public int rotatespeed = 4;
-	protected static final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
-	protected static final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
 	public boolean isSelected() {
 		return isSelected;
@@ -111,15 +109,15 @@ public class Target implements IUpdatable, IRenderable, IDestroyable, IHitable {
 			rotatecount = 0;
 		}
 		if (isSelected) {
-			g2.setComposite(transcluentWhite);
+			g2.setComposite(Configuration.transcluentWhite);
 			g2.setColor(Color.RED);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
-			g2.setComposite(opaque);
+			g2.setComposite(Configuration.opaque);
 		} else if (isMouseOver()) {
-			g2.setComposite(transcluentWhite);
+			g2.setComposite(Configuration.transcluentWhite);
 			g2.setColor(Color.WHITE);
 			g2.fillOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
-			g2.setComposite(opaque);
+			g2.setComposite(Configuration.opaque);
 		}
 
 	}
