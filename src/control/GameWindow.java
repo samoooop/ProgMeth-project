@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Game.GameManager;
-import Game.GameScreen;
 import util.Configuration;
 import util.InputUtility3;
 

@@ -1,5 +1,6 @@
 package util;
 
+@SuppressWarnings("serial")
 public class ScoreParsingException extends Exception{
 	   
 	private int errorType;
