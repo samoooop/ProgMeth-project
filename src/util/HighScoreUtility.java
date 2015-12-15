@@ -1,16 +1,10 @@
 package util;
 
-
 import render.RankingFrame;
 import java.io.*;
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
-
-import control.ScreenState;
-import render.RankingFrame;
-
-//Fill import
 
 public class HighScoreUtility {
 
@@ -115,21 +109,10 @@ public class HighScoreUtility {
 	}
 	
 	public static void displayTop10(){
-		
-		
-		
-		
-		
 		if(!loadHighScore() || highScoreRecord == null){
 			JOptionPane.showMessageDialog(null, "Error loading highscore record", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
-		
-		
-		
-		
-		
 		String msg = ""+System.getProperty("line.separator");
 		int rank = 1;
 		for(HighScoreRecord record : highScoreRecord){
@@ -138,13 +121,6 @@ public class HighScoreUtility {
 		}
 		//JOptionPane.showMessageDialog(null, msg.trim(), "Top 10", JOptionPane.INFORMATION_MESSAGE);
 	   new RankingFrame(msg);
-	
-	
-	
-	
-	
-	
-	
 	}
 	
 	private static boolean loadHighScore(){
@@ -166,7 +142,6 @@ public class HighScoreUtility {
 	private static boolean readAndParseScoreFile(File f){
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(f));
-			String line;
 			highScoreRecord = new HighScoreRecord[10];
 			String str = "";
 			int c;
@@ -210,7 +185,6 @@ public class HighScoreUtility {
 	
 	private static final byte[] key = "METEOHERO".getBytes();
 
-	private static RankingFrame show;
 	
 	//This method does both encryption and decryption 
 	private static String getXORed(String in){

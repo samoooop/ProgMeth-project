@@ -20,7 +20,6 @@ import util.InputUtility3;
 public class GameWindow extends JFrame {
 
 	private Title gameTitle;
-	private GameScreen game = null;
 	Thread logicThread;
 	Thread drawThread;
 	GameManager gm = new GameManager(this);
@@ -51,7 +50,7 @@ public class GameWindow extends JFrame {
 			else if (ScreenState.presentScreen == ScreenState.TITLE) {
 				gameTitle = new Title(this);
 				this.remove(gameTitle);
-			} else if (ScreenState.presentScreen == ScreenState.GAME && game == null) {
+			} else if (ScreenState.presentScreen == ScreenState.GAME) {
 				this.remove(gameTitle);
 				gm.newGame();
 				try {
