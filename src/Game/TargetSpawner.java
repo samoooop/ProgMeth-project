@@ -15,13 +15,13 @@ public class TargetSpawner {
 			return 0;
 		}
 		if (TimeUtility.getEscalatedTime()%350000 >= 57225 && TimeUtility.getEscalatedTime()%350000 <= 57225+500) {
-			return 20;
+			return 30;
 		}
 		if (TimeUtility.getEscalatedTime()%350000 >= 59435 && TimeUtility.getEscalatedTime()%350000 <= 59435+500) {
-			return 20;
+			return 30;
 		}
 		if (TimeUtility.getEscalatedTime()%350000 >= 63535 && TimeUtility.getEscalatedTime()%350000 <= 63535+500) {
-			return 20;
+			return 30;
 		}
 		if (TimeUtility.getEscalatedTime()%350000 >= 69735 && TimeUtility.getEscalatedTime()%350000 <= 69735+500) {
 			return 30;
@@ -36,51 +36,27 @@ public class TargetSpawner {
 			return 30;
 		}
 		//bass drop second
-		if (TimeUtility.getEscalatedTime()%350000 >= 119225 && TimeUtility.getEscalatedTime()%350000<=119225+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 109000 && TimeUtility.getEscalatedTime()%350000<= 109000+500) {
 			return 30;
 		}
-		if (TimeUtility.getEscalatedTime()%350000 >= 107225 && TimeUtility.getEscalatedTime()%350000<= 107225+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 113000 && TimeUtility.getEscalatedTime()%350000<= 113000+500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 110725&& TimeUtility.getEscalatedTime()%350000<=  110725+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 116000 && TimeUtility.getEscalatedTime()%350000<= 116000+500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >=112725 && TimeUtility.getEscalatedTime()%350000<= 112725+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 119000 && TimeUtility.getEscalatedTime()%350000<= 119000 +500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 117225 && TimeUtility.getEscalatedTime()%350000<=117225+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 122000 && TimeUtility.getEscalatedTime()%350000<= 122000+500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 120725 && TimeUtility.getEscalatedTime()%350000<= 120725+500 ) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 125800 && TimeUtility.getEscalatedTime()%350000<= 125800+500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 124725 && TimeUtility.getEscalatedTime()%350000<= 124725+500) {
+		if (TimeUtility.getEscalatedTime()%350000 >= 132400 && TimeUtility.getEscalatedTime()%350000<= 132400+500) {
 			return 30;
 		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 127225 && TimeUtility.getEscalatedTime()%350000<= 132725+500) {
-			return 30;
-		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 180525 && TimeUtility.getEscalatedTime()%350000<= 180525+500) {
-			return 30;
-		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >= 172725 && TimeUtility.getEscalatedTime()%350000<= 172725 +500) {
-			return 30;
-		}
-		
-		if (TimeUtility.getEscalatedTime()%350000 >=199425&& TimeUtility.getEscalatedTime()%350000<= 199425+500) {
-			return 30;
-		}
-		
-		
-		
 		
 		
 		
