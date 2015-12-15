@@ -40,7 +40,7 @@ public class HighScoreUtility {
 			
 		}
 		
-		private String getRecord(){
+		public String getRecord(){
 			return name.trim()+":"+score;
 		}
 		
@@ -61,7 +61,7 @@ public class HighScoreUtility {
 		}
 	}
 	
-	private static HighScoreRecord[] highScoreRecord = null;
+	public static HighScoreRecord[] highScoreRecord = null;
 
 	private static String readFileName = "highscore";
 	
@@ -130,7 +130,7 @@ public class HighScoreUtility {
 		
 		
 		
-		String msg = ""+System.getProperty("line.separator");
+		String msg = "";//;+System.getProperty("line.separator");
 		int rank = 1;
 		for(HighScoreRecord record : highScoreRecord){
 			msg += rank+"\n"+" "+record.getRecord();//+System.getProperty("line.separator");
