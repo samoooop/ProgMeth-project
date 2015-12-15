@@ -14,7 +14,7 @@ public class AudioUtility {
 	public static final AudioClip crashSound = loadAudio("res/sound/crash.wav");
 	public static final AudioClip solvedSound = loadAudio("res/sound/solved.wav");
 	public static final AudioClip soundtrackBG = loadAudio("res/sound/xeno.wav");
-	public static final Clip soundTrackBG = loadClip("res/sound/xeno.wav");
+	//public static final Clip soundTrackBG = loadClip("res/sound/xeno.wav");
 	private static boolean isMuted;
 
 	private static AudioClip loadAudio(String directory) {
@@ -59,11 +59,11 @@ public class AudioUtility {
 	}
 
 	public static void playBG(long mili) {
-		soundTrackBG.setMicrosecondPosition(mili * 1000);
-		soundTrackBG.start();
+		//soundTrackBG.setMicrosecondPosition(mili * 1000);
+		//soundTrackBG.start();
 	}
 
 	public static void pauseBG() {
-		soundTrackBG.stop();
+		//soundTrackBG.stop();
 	}
 }

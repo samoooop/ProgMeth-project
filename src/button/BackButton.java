@@ -32,9 +32,10 @@ public class BackButton extends Clickable implements IRenderable {
 	public void onClickAction() {
 		GameManager.getInstance().setPause(true);
 		if (ScreenState.presentScreen == ScreenState.GAME)
-			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?\nGame score will not be saved.",
+			if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back?",
 					"Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-				ScreenState.presentScreen = ScreenState.TITLE;
+				GameManager.getInstance().endGame();
+		GameManager.getInstance().setPause(false);
 	}
 
 	@Override

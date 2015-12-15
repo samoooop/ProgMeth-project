@@ -3,22 +3,29 @@ package Game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import button.BackButton;
 
 public class GameLogic {
 	protected ArrayList<Target> targets;
 	private Target selected;
+	private button.BackButton backButton;
 
 	public GameLogic() {
 		targets = new ArrayList<Target>();
 		selected = null;
 		init();
+		
 	}
 
 	public void init() {
+		backButton  = new BackButton();
+		RenderableHolder.add(backButton);
 	}
 
 	public void logicUpdate() {
-		if (Player.getInstance().isDead()){
+		
+		backButton.update();
+		if (Player.getInstance().isDead()) {
 			GameManager.getInstance().endGame();
 		}
 		if (Player.getInstance().useSkill) {
@@ -37,6 +44,7 @@ public class GameLogic {
 		}
 		TargetSpawner.spawnNewTarget(targets);
 		InputUtility.update();
+
 	}
 
 	public void spawnNewTarget() {
@@ -81,7 +89,7 @@ public class GameLogic {
 			for (int j = i + 1; j < targets.size(); j++) {
 				Target t2 = targets.get(j);
 				if (t.hit(t2.getX(), t2.getY(), t2.getRadius())) {
-					if(t instanceof PlayerSkill || t2 instanceof PlayerSkill){
+					if (t instanceof PlayerSkill || t2 instanceof PlayerSkill) {
 						t.setCanScore(false);
 						t2.setCanScore(false);
 					}
