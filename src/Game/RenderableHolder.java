@@ -2,7 +2,6 @@ package Game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,29 +28,13 @@ public class RenderableHolder {
 		instance = new RenderableHolder();
 	}
 
-	private static Line currentLine;
 	public boolean candraw;
 	public static boolean isDebug = true;
 
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
-		currentLine = null;
 	}
-
-	public void addPointToLine(Point p, MovingObject a) {
-
-		if (currentLine == null) {
-			currentLine = new Line();
-			a.setObjectline(currentLine);
-			entities.add(currentLine);
-		}
-		currentLine.addPoint(p);
-	}
-
-	public static void endLine() {
-		currentLine = null;
-	}
-
+	
 	public static void add(IRenderable r) {
 		if (entities != null) {
 			synchronized (entities) {

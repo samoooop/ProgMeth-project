@@ -18,7 +18,6 @@ import java.awt.event.MouseMotionListener;
 @SuppressWarnings("serial")
 public class GameScreen extends JPanel {
 	public boolean checkboundary = false;
-	public MovingObject now;
 	public static int screenWidth = Configuration.screenWidth;
 	public static int screenHeight = Configuration.screenHeight;
 	public BackButton backButton;
@@ -49,6 +48,11 @@ public class GameScreen extends JPanel {
 
 			@Override
 			public void keyReleased(KeyEvent arg0) {
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
 				synchronized (GameManager.inputInterrupter) {
 					GameManager.inputInterrupter.notifyAll();
 				}
@@ -59,11 +63,6 @@ public class GameScreen extends JPanel {
 				if (arg0.getKeyChar() == KeyEvent.VK_SPACE) {
 					// Player.getInstance().useSkill = true;
 				}
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				
 
 			}
 

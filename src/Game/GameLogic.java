@@ -5,12 +5,10 @@ import java.util.Iterator;
 
 
 public class GameLogic {
-	protected ArrayList<MovingObject> movingObjects;
 	protected ArrayList<Target> targets;
 	private Target selected;
 
 	public GameLogic() {
-		movingObjects = new ArrayList<MovingObject>();
 		targets = new ArrayList<Target>();
 		selected = null;
 		init();
