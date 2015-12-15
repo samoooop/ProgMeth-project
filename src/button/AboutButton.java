@@ -3,7 +3,6 @@ package button;
 
 import java.awt.Graphics2D;
 
-import javax.swing.JOptionPane;
 import util.Configuration;
 import util.DrawingUtility;
 import util.HighScoreUtility;

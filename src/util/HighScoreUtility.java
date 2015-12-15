@@ -36,7 +36,7 @@ public class HighScoreUtility {
 		}
 
 		public String getRecord() {
-			return name.trim() + ":" + score;
+			return String.format("%s : %d4",name.trim(),score);
 		}
 
 		private static String[] defaultRecord() {
@@ -115,14 +115,8 @@ public class HighScoreUtility {
 			JOptionPane.showMessageDialog(null, "Error loading highscore record", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}	
-		String msg = "";//;+System.getProperty("line.separator");
-		int rank = 1;
-		for(HighScoreRecord record : highScoreRecord){
-			msg += rank+"\n"+" "+record.getRecord();//+System.getProperty("line.separator");
-			rank++;
-		}
 		//JOptionPane.showMessageDialog(null, msg.trim(), "Top 10", JOptionPane.INFORMATION_MESSAGE);
-	   new RankingFrame(msg);
+	   new RankingFrame();
 	}
 
 	private static boolean loadHighScore() {
