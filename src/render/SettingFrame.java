@@ -107,7 +107,7 @@ public class SettingFrame extends JFrame {
 				String text = "Apply\n";
 				text += "screenWidth = "+ wt.getText() +"\n"+"screenHeight = "+ ht.getText() ;
                 JOptionPane.showMessageDialog(null, text);
-                
+                DrawingUtility.dim = DrawingUtility.resize(DrawingUtility.gameBG, Configuration.screenWidth, Configuration.screenHeight);
                 Title.wind.setSizeImidiate();
 			     
 			}

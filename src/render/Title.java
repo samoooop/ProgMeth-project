@@ -91,7 +91,7 @@ public class Title extends JPanel{
 		Graphics2D g2 = (Graphics2D) g;
 		
 		
-		g2.drawImage(dimg,0,0,null);
+		g2.drawImage(DrawingUtility.dim,0,0,null);
 		//g.drawImage(DrawingUtility.myframe,0,0,null);
 		g2.drawImage(earth,Configuration.screenWidth/2-150,Configuration.screenHeight/2-150,null);
 		//g2.clearRect(0,0,Config.screenWidth,Config.screenHeight);

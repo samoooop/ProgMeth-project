@@ -68,7 +68,7 @@ public class GameWindow extends JFrame {
 		this.getContentPane().add(jp);
 	}
  public void setSizeImidiate(){
-	 setSize(Configuration.screenWidth , Configuration.screenHeight +24);
+	 setSize(Configuration.screenWidth , Configuration.screenHeight+24);
 	 validate();
  }
 	

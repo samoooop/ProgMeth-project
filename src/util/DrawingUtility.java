@@ -34,6 +34,10 @@ public class DrawingUtility {
 	public static final BufferedImage myframe2 = loadImage("res/img/myframe2.png");
 	public static final BufferedImage glasses = loadImage("res/img/thuglife.png");
 
+	public static  BufferedImage dim = resize(gameBG, Configuration.screenWidth*2, Configuration.screenHeight*2);
+	
+	
+	
 	public static final BufferedImage logoText2 = loadImage("res/img/logotext.png");
 	public static BufferedImage logoText = resize(logoText2, (int) (Configuration.PLAYER_RADIUS * 3),
 			(int) (Configuration.PLAYER_RADIUS / 2));
@@ -123,9 +127,7 @@ public class DrawingUtility {
 		gameScreen = gs;
 	}
 
-<<<<<<< HEAD
 	
-=======
 	public static double getWidthResizeFactor() {
 		if (gameScreen == null) {
 			return 1;
@@ -133,7 +135,6 @@ public class DrawingUtility {
 			return gameScreen.getWidth() * 1.0 / Configuration.screenWidth;
 		}
 	}
->>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
 
 	public static double getHeightResizeFactor() {
 		if (gameScreen == null) {
@@ -192,13 +193,13 @@ public class DrawingUtility {
 
 	public static BufferedImage resize(BufferedImage img, int newW, int newH) {
 		Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
-		BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
-
-		Graphics2D g2d = dimg.createGraphics();
+		BufferedImage dim = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+          System.out.println(newH);
+		Graphics2D g2d = dim.createGraphics();
 		g2d.drawImage(tmp, 0, 0, null);
 		g2d.dispose();
 
-		return dimg;
+		return dim;
 	}
 
 	public static void drawScore(Graphics2D g) {

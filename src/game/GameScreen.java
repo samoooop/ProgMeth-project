@@ -112,13 +112,11 @@ public class GameScreen extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		if (util.DrawingUtility.dimg != null) {
-			g2d.drawImage(util.DrawingUtility.dimg, 0, 0, null);
-		} else {
-			g2d.setColor(util.DrawingUtility.BACKGROUND_COLOR);
-			g2d.fillRect(0, 0, this.getWidth(), this.getHeight());// Clear
-																	// Screen
-		}
+		g2d.setColor(Color.black);
+		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+		if (util.DrawingUtility.dim != null) {
+			g2d.drawImage(util.DrawingUtility.dim, 0, 0, null);
+		} 
 		if (Configuration.ENABLE_ANTIALLIASING) {
 			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
