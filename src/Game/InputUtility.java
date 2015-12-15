@@ -37,6 +37,7 @@ public class InputUtility {
 
 	static public void update() {
 		mouseMoved = false;
+		mouseLeftTriggered = false;
 	}
 
 	public static void setMouseLocation(Point p) {

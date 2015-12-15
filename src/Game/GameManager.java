@@ -42,6 +42,7 @@ public class GameManager {
 					if (!pause) {
 						gameLogic.logicUpdate();
 						TimeUtility.inceaseTick();
+						Game.InputUtility.update();
 					}
 					try {
 						Thread.sleep(Configuration.TIME_PER_TICK);
