@@ -6,8 +6,8 @@ import java.awt.Color;
 
 public class Configuration {
 
-	public static int screenWidth = 1000;
-	public static int screenHeight = 700;
+	public static int screenWidth = 1600;
+	public static int screenHeight = 900;
 
 	public static int animationFrameCount = 10;
 
