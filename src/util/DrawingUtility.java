@@ -123,13 +123,7 @@ public class DrawingUtility {
 		gameScreen = gs;
 	}
 
-	public static double getWidthResizeFactor() {
-		if (gameScreen == null) {
-			return 1;
-		} else {
-			return gameScreen.getWidth() * 1.0 / GameScreen.screenWidth;
-		}
-	}
+	
 
 	public static double getHeightResizeFactor() {
 		if (gameScreen == null) {
