@@ -3,11 +3,12 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import render.IRenderable;
+import Interface.IDestroyable;
+import Interface.IRenderable;
 import util.Configuration;
 import util.DrawingUtility;
 
-public class ScoreAnimation implements IRenderable,Destroyable {
+public class ScoreAnimation implements IRenderable,IDestroyable {
 
 	private int x;
 	private int y;

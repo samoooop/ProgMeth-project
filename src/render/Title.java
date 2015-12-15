@@ -16,6 +16,8 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import Interface.IRenderable;
+import Interface.IUpdatable;
 import button.AboutButton;
 import button.PlayButton;
 import button.SettingsButton;

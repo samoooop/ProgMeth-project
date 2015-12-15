@@ -23,7 +23,6 @@ public class GameLogic {
 	}
 
 	public void logicUpdate() {
-		
 		backButton.update();
 		if (Player.getInstance().isDead()) {
 			GameManager.getInstance().endGame();
