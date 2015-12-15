@@ -70,6 +70,8 @@ public class Title extends JPanel{
 			if(InputUtility3.getKeyTriggered(KeyEvent.VK_SPACE)){
 				AudioUtility.playSound(AudioUtility.clickSound);
 				ScreenState.presentScreen = ScreenState.GAME;
+			    AudioUtility.bgm.stop();
+			
 			}
 			InputUtility3.postUpdate();
 		}
