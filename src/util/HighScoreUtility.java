@@ -115,19 +115,18 @@ public class HighScoreUtility {
 			JOptionPane.showMessageDialog(null, "Error loading highscore record", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}	
-		//JOptionPane.showMessageDialog(null, msg.trim(), "Top 10", JOptionPane.INFORMATION_MESSAGE);
+		
 	   new RankingFrame();
 	}
 
 	private static boolean loadHighScore() {
 		File f = new File(readFileName);
-		// If no high score, create default
+		
 		if (!f.exists()) {
 			if (!createDefaultScoreFile())
 				return false;
 		}
-		// Read high score -- if fail: delete the file, create default one and
-		// read it again
+		
 		if (!readAndParseScoreFile(f)) {
 			f.delete();
 			if (!createDefaultScoreFile())

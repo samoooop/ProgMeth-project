@@ -84,7 +84,7 @@ public class GameWindow extends JFrame {
 	public void addListener(Container pane) {
 		pane.setFocusable(true);
 		pane.requestFocus();
-		///////////////// Mouse/////////////////
+		
 		pane.addMouseListener(new MouseListener() {
 
 			@Override
@@ -93,20 +93,19 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
+				
 				InputUtility3.setPicking(true);
 				InputUtility3.setMouseDown(true);
-				// InputUtility.setPickedPoint(e.getX(), e.getY());
+				
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
+				
 				InputUtility3.setPicking(false);
 				InputUtility3.setMouseDown(false);
 				InputUtility3.setMouseReleased(true);
-				// InputUtility.setPickedPoint(InputUtility.NULL_POINT,
-				// InputUtility.NULL_POINT);
+				
 			}
 
 			@Override
@@ -133,7 +132,7 @@ public class GameWindow extends JFrame {
 			});
 		}
 
-		/////////////////////// key///////////////////////////
+		
 		if (ScreenState.presentScreen != ScreenState.GAME) {
 			pane.addKeyListener(new KeyListener() {
 
