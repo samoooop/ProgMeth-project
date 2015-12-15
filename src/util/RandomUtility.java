@@ -1,4 +1,4 @@
-package Game;
+package util;
 
 public class RandomUtility {
 public RandomUtility(){}

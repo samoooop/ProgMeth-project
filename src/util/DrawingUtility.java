@@ -8,9 +8,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Game.GameScreen;
-import Game.Player;
-import Game.TargetSpawner;
+import game.GameScreen;
+import game.Player;
+import game.TargetSpawner;
 
 public class DrawingUtility {
 
@@ -123,13 +123,23 @@ public class DrawingUtility {
 		gameScreen = gs;
 	}
 
+<<<<<<< HEAD
 	
+=======
+	public static double getWidthResizeFactor() {
+		if (gameScreen == null) {
+			return 1;
+		} else {
+			return gameScreen.getWidth() * 1.0 / Configuration.screenWidth;
+		}
+	}
+>>>>>>> branch 'TEST_inputUtility' of https://github.com/samoooop/ProgMeth-project.git
 
 	public static double getHeightResizeFactor() {
 		if (gameScreen == null) {
 			return 1;
 		} else {
-			return gameScreen.getHeight() * 1.0 / GameScreen.screenHeight;
+			return gameScreen.getHeight() * 1.0 / Configuration.screenHeight;
 		}
 	}
 

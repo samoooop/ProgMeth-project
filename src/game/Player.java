@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import java.awt.Graphics2D;
 
@@ -10,8 +10,6 @@ import util.TimeUtility;
 
 public class Player implements IRenderable, IHitable {
 
-	private int x = Configuration.screenWidth / 2;
-	private int y = Configuration.screenHeight / 2;
 	public static int RADIUS = Configuration.PLAYER_RADIUS;
 	private long score = 0;
 	private static Player instance = new Player();
@@ -60,7 +58,7 @@ public class Player implements IRenderable, IHitable {
 
 	@Override
 	public boolean hit(int x, int y, int r) {
-		double dist = Target.calculateDistance(this.x, this.y, x, y);
+		double dist = Target.calculateDistance(Configuration.screenWidth/2, Configuration.screenHeight/2, x, y);
 		if (Player.RADIUS + r > dist) {
 			hit = true;
 			reduceHitPoint(Configuration.HIT_DAMAGE);
